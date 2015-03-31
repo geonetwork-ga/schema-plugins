@@ -12,13 +12,16 @@
 							xmlns:gco="http://standards.iso.org/19139/gco/1.0/2014-12-25">
 
     <elements>
-			<mdb:metadataStandard>
+			<mdb:metadataProfile>
 				<cit:CI_Citation>
 					<cit:title>
 						<gco:CharacterString>Geoscience Australia Community Metadata Profile of ISO 19115-1:2014|Geoscience Australia Community Metadata Profile of ISO19115-1:2014</gco:CharacterString>
 					</cit:title>
+          <cit:edition>
+            <gco:CharacterString>Version 2.0, April 2015</gco:CharacterString>
+          </cit:edition>
 				</cit:CI_Citation>
-			</mdb:metadataStandard>
+			</mdb:metadataProfile>
     </elements>
   </autodetect>
 </schema>
