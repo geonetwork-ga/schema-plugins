@@ -24,7 +24,7 @@
 
   <xsl:import href="metadata-geo.xsl"/>
 
-  <xsl:template name="view-with-header-iso19115-3">
+  <xsl:template name="view-with-header-iso19115-3.ga">
     <xsl:param name="tabs"/>
     
     <xsl:call-template name="md-content">

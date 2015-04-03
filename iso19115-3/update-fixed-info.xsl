@@ -90,8 +90,11 @@
           <mdb:metadataStandard>
             <cit:CI_Citation>
               <cit:title>
-                <gco:CharacterString>ISO 19115-3</gco:CharacterString>
+                <gco:CharacterString>ISO19115-1:2014/ISO19115-3:2014-12-25</gco:CharacterString>
               </cit:title>
+              <cit:edition>
+                <gco:CharacterString>2014-12-25</gco:CharacterString>
+              </cit:edition>
             </cit:CI_Citation>
           </mdb:metadataStandard>
         </xsl:when>
@@ -100,7 +103,25 @@
         </xsl:otherwise>
       </xsl:choose>
       
-      <xsl:apply-templates select="mdb:metadataProfile"/>
+      <!-- Add metadataProfile if it doesn't exist -->
+      <xsl:choose>
+        <xsl:when test="not(mdb:metadataProfile)">
+          <mdb:metadataProfile>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>Geoscience Australia Community Metadata Profile of ISO 19115-1:2014</gco:CharacterString>
+              </cit:title>
+              <cit:edition>
+                <gco:CharacterString>Version 2.0, April 2015</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mdb:metadataProfile>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="mdb:metadataProfile"/>
+        </xsl:otherwise>
+      </xsl:choose>
+      
       <xsl:apply-templates select="mdb:alternativeMetadataReference"/>
       <xsl:apply-templates select="mdb:otherLocale"/>
       <xsl:apply-templates select="mdb:metadataLinkage"/>
