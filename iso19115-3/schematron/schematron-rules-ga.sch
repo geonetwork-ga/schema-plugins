@@ -197,4 +197,106 @@
 				<sch:report test="normalize-space(mrl:statement)" diagnostics="rule.ga.mrl.resourcelineagestatementpresent-success-en"/>
 			</sch:rule>
   </sch:pattern>
+	 <!-- ============================================================================================================ -->
+	 <!-- Assert that the Constraint Information is present -->
+	 <!-- ============================================================================================================ -->
+   <sch:diagnostics>
+	 		<sch:diagnostic id="rule.ga.mco.metadataconstraintspresent-failure-en" xml:lang="en">Metadata Constraint elements not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mco.metadataconstraintspresent-success-en" xml:lang="en">Metadata Constraint elements are present.</sch:diagnostic>
+
+
+	 		<sch:diagnostic id="rule.ga.mco.metadatasecurityconstraintspresent-failure-en" xml:lang="en">Metadata Security Constraint elements not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mco.metadatasecurityconstraintspresent-success-en" xml:lang="en">Metadata Security Constraint elements are present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mco.securityconstraintsclassificationpresent-failure-en" xml:lang="en">Classification code not present in Security Constraints.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mco.securityconstraintsclassificationpresent-success-en" xml:lang="en">Classification code is present in Security Constraints.</sch:diagnostic>
+   </sch:diagnostics>
+   <sch:pattern id="rule.ga.mco.securityconstraints">
+	 		<sch:title>Constraint Information must be present and correctly filled out.</sch:title>
+			<sch:rule context="//mdb:MD_Metadata">
+				<sch:assert test="mdb:metadataConstraints/*" diagnostics="rule.ga.mco.metadataconstraintspresent-failure-en"/>
+				<sch:report test="mdb:metadataConstraints/*" diagnostics="rule.ga.mco.metadataconstraintspresent-success-en"/>
+
+				<sch:assert test="mdb:metadataConstraints/mco:MD_SecurityConstraints" diagnostics="rule.ga.mco.metadatasecurityconstraintspresent-failure-en"/>
+				<sch:report test="mdb:metadataConstraints/mco:MD_SecurityConstraints" diagnostics="rule.ga.mco.metadatasecurityconstraintspresent-success-en"/>
+			</sch:rule>
+			<sch:rule context="//mco:MD_SecurityConstraints/mco:classification">
+				<sch:assert test="normalize-space(mco:MD_ClassificationCode/@codeList) and normalize-space(mco:MD_ClassificationCode/@codeListValue)" diagnostics="rule.ga.mco.securityconstraintsclassificationpresent-failure-en"/>
+				<sch:report test="normalize-space(mco:MD_ClassificationCode/@codeList) and normalize-space(mco:MD_ClassificationCode/@codeListValue)" diagnostics="rule.ga.mco.securityconstraintsclassificationpresent-success-en"/>
+			</sch:rule>
+  </sch:pattern>
+	 <!-- ============================================================================================================ -->
+	 <!-- Assert that the Data Identification Information is present -->
+	 <!-- ============================================================================================================ -->
+   <sch:diagnostics>
+	 		<sch:diagnostic id="rule.ga.mri.identificationinformationpresent-failure-en" xml:lang="en">Data Identification Information element not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.identificationinformationpresent-success-en" xml:lang="en">Data Identification Information element is present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.pointofcontactpresent-failure-en" xml:lang="en">MD_DataIdentification/pointOfContact information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.maintenanceinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/resourceMaintenance/MD_MaintenanceInformation not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.resourceformatpresent-failure-en" xml:lang="en">MD_DataIdentification/resourceFormat/MD_Format not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.resourceconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.topiccategorypresent-failure-en" xml:lang="en">MD_DataIdentification/topicCategory not present or empty.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.extentinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/extent information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.securityconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_SecurityConstraints not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.legalconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints not present.</sch:diagnostic>
+   </sch:diagnostics>
+   <sch:pattern id="rule.ga.mri.identificationinformation">
+	 		<sch:title>Identification Information must be present and correctly filled out.</sch:title>
+			<sch:rule context="//mdb:MD_Metadata">
+				<sch:assert test="mdb:identificationInfo/mri:MD_DataIdentification" diagnostics="rule.ga.mri.identificationinformationpresent-failure-en"/>
+				<sch:report test="mdb:identificationInfo/mri:MD_DataIdentification" diagnostics="rule.ga.mri.identificationinformationpresent-success-en"/>
+			</sch:rule>
+			<sch:rule context="//mri:MD_DataIdentification[parent::mdb:identificationInfo[parent::mdb:MD_Metadata]]">
+      	<sch:assert test="normalize-space(mri:pointOfContact)" 									 diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
+      	<sch:report test="normalize-space(mri:pointOfContact)" 									 diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
+
+      	<sch:assert test="mri:resourceMaintenance/mmi:MD_MaintenanceInformation" diagnostics="rule.ga.mri.maintenanceinformationpresent-failure-en"/> 
+      	<sch:report test="mri:resourceMaintenance/mmi:MD_MaintenanceInformation" diagnostics="rule.ga.mri.maintenanceinformationpresent-failure-en"/> 
+
+      	<sch:assert test="mri:resourceFormat/mrd:MD_Format" 										 diagnostics="rule.ga.mri.resourceformatpresent-failure-en"/>
+      	<sch:report test="mri:resourceFormat/mrd:MD_Format" 										 diagnostics="rule.ga.mri.resourceformatpresent-failure-en"/>
+
+      	<sch:assert test="mri:resourceConstraints/*"														 diagnostics="rule.ga.mri.resourceconstraintspresent-failure-en"/>
+      	<sch:report test="mri:resourceConstraints/*"														 diagnostics="rule.ga.mri.resourceconstraintspresent-failure-en"/>
+
+      	<sch:assert test="normalize-space(mri:topicCategory)"		diagnostics="rule.ga.mri.topiccategorypresent-failure-en"/>
+      	<sch:report test="normalize-space(mri:topicCategory)"		diagnostics="rule.ga.mri.topiccategorypresent-failure-en"/>
+
+      	<sch:assert test="mri:extent/gex:EX_Extent/*"						diagnostics="rule.ga.mri.extentinformationpresent-failure-en"/>
+      	<sch:report test="mri:extent/gex:EX_Extent/*"						diagnostics="rule.ga.mri.extentinformationpresent-failure-en"/>
+
+      	<sch:assert test="mri:resourceConstraints/mco:MD_SecurityConstraints"	diagnostics="rule.ga.mri.securityconstraintspresent-failure-en"/>
+      	<sch:report test="mri:resourceConstraints/mco:MD_SecurityConstraints"	diagnostics="rule.ga.mri.securityconstraintspresent-failure-en"/>
+
+      	<sch:assert test="mri:resourceConstraints/mco:MD_LegalConstraints"    diagnostics="rule.ga.mri.legalconstraintspresent-failure-en"/>
+      	<sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints"    diagnostics="rule.ga.mri.legalconstraintspresent-failure-en"/>
+    </sch:rule>
+  </sch:pattern>
+	<!-- ============================================================================================================ -->
+  <!-- Assert that Legal Constraints has required mandatory descendent elements  -->
+	<!-- ============================================================================================================ -->
+  <sch:diagnostics>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/accessConstraints not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/useConstraints not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/accessConstraints/MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/useConstraints/MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
+  </sch:diagnostics>
+  <sch:pattern rule="rule.ga.mco.legalconstraints">
+    <sch:title>Legal Constraints has required mandatory descendent elements.</sch:title>
+    <sch:rule context="//mri:MD_DataIdentification">
+      <sch:assert test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints" diagnostics="rule.ga.mco.accessconstraintspresent-failure-en"/>
+      <sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints" diagnostics="rule.ga.mco.accessconstraintspresent-failure-en"/>
+
+      <sch:assert test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"    diagnostics="rule.ga.mco.useconstraintspresent-failure-en"/>
+      <sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"    diagnostics="rule.ga.mco.useconstraintspresent-failure-en"/>
+
+    </sch:rule>
+    <sch:rule context="//mco:MD_LegalConstraints/mco:accessConstraints">
+      <sch:assert test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.accessconstraintscodepresent-failure-en"/>
+      <sch:report test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.accessconstraintscodepresent-failure-en"/>
+    </sch:rule>
+    <sch:rule context="//mco:MD_LegalConstraints/mco:useConstraints">
+      <sch:assert test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.useconstraintscodepresent-failure-en"/>
+      <sch:report test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.useconstraintscodepresent-failure-en"/>
+    </sch:rule>
+  </sch:pattern>
 </sch:schema>
