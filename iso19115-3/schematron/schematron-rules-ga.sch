@@ -276,56 +276,101 @@
 	<!-- ============================================================================================================ -->
   <sch:diagnostics>
 	 	<sch:diagnostic id="rule.ga.mco.accessconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/accessConstraints not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/accessConstraints is present.</sch:diagnostic>
 	 	<sch:diagnostic id="rule.ga.mco.useconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/useConstraints not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/useConstraints is present.</sch:diagnostic>
 	 	<sch:diagnostic id="rule.ga.mco.accessconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/accessConstraints/MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintscodepresent-success-en" xml:lang="en">MD_LegalConstraints/accessConstraints/MD_RestrictionCode is present.</sch:diagnostic>
 	 	<sch:diagnostic id="rule.ga.mco.useconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/useConstraints/MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintscodepresent-success-en" xml:lang="en">MD_LegalConstraints/useConstraints/MD_RestrictionCode is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern rule="rule.ga.mco.legalconstraints">
-    <sch:title>Legal Constraints has required mandatory descendent elements.</sch:title>
+    <sch:title>Legal Constraints has required/mandatory descendent elements.</sch:title>
     <sch:rule context="//mri:MD_DataIdentification">
       <sch:assert test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints" diagnostics="rule.ga.mco.accessconstraintspresent-failure-en"/>
-      <sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints" diagnostics="rule.ga.mco.accessconstraintspresent-failure-en"/>
+      <sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints" diagnostics="rule.ga.mco.accessconstraintspresent-success-en"/>
 
       <sch:assert test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"    diagnostics="rule.ga.mco.useconstraintspresent-failure-en"/>
-      <sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"    diagnostics="rule.ga.mco.useconstraintspresent-failure-en"/>
+      <sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"    diagnostics="rule.ga.mco.useconstraintspresent-success-en"/>
 
     </sch:rule>
     <sch:rule context="//mco:MD_LegalConstraints/mco:accessConstraints">
       <sch:assert test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.accessconstraintscodepresent-failure-en"/>
-      <sch:report test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.accessconstraintscodepresent-failure-en"/>
+      <sch:report test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.accessconstraintscodepresent-success-en"/>
     </sch:rule>
     <sch:rule context="//mco:MD_LegalConstraints/mco:useConstraints">
       <sch:assert test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.useconstraintscodepresent-failure-en"/>
-      <sch:report test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.useconstraintscodepresent-failure-en"/>
+      <sch:report test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.useconstraintscodepresent-success-en"/>
     </sch:rule>
   </sch:pattern>
-	 <!-- ======================================================================= -->
+	<!-- ============================================================================================================ -->
   <!-- Assert that Security Constraints has required mandatory descendent elements  -->
-  <!-- ======================================================================= -->
+	<!-- ============================================================================================================ -->
   <sch:diagnostics>
 	 	<sch:diagnostic id="rule.ga.mco.securityconstraintspresent-failure-en" xml:lang="en">MD_ClassificationCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.securityconstraintspresent-success-en" xml:lang="en">MD_ClassificationCode is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern rule="rule.ga.mco.securityconstraints">
-    <sch:title>Security Constraints must have required/mandatory descendent elements.</sch:title>
+    <sch:title>Security Constraints has required/mandatory descendent elements.</sch:title>
     <sch:rule context="//mco:MD_SecurityConstraints/mco:classification">
       <sch:assert test="normalize-space(mco:MD_ClassificationCode/@codeList) and normalize-space(mco:MD_ClassificationCode/@codeListValue)" diagnostics="rule.ga.mco.securityconstraintspresent-failure-en"/>
       <sch:report test="normalize-space(mco:MD_ClassificationCode/@codeList) and normalize-space(mco:MD_ClassificationCode/@codeListValue)" diagnostics="rule.ga.mco.securityconstraintspresent-success-en"/>
     </sch:rule>
   </sch:pattern>
-  <!-- ======================================================================= -->
+	<!-- ============================================================================================================ -->
   <!-- Assert that Resource Format has required mandatory descendent elements  -->
-  <!-- ======================================================================= -->
+	<!-- ============================================================================================================ -->
   <sch:diagnostics>
 	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-failure-en" xml:lang="en">resourceFormat/MD_Format/name not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-success-en" xml:lang="en">resourceFormat/MD_Format/name is present.</sch:diagnostic>
 	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-failure-en" xml:lang="en">resourceFormat/MD_Format/version not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-success-en" xml:lang="en">resourceFormat/MD_Format/version is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern rule="rule.ga.mrd.resourceformat">
-    <sch:title>Resource Format must have required/mandatory descendent elements.</sch:title>
+    <sch:title>Resource Format has required/mandatory descendent elements.</sch:title>
     <sch:rule context="//mrd:MD_Format[parent::mri:resourceFormat]">
       <sch:assert test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.resourceformatnamepresent-failure-en"/>
-      <sch:report test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.resourceformatnamepresent-failure-en"/>
+      <sch:report test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.resourceformatnamepresent-success-en"/>
       <sch:assert test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.resourceformatversionpresent-failure-en"/>
-      <sch:report test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.resourceformatversionpresent-failure-en"/>
+      <sch:report test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.resourceformatversionpresent-success-en"/>
     </sch:rule>
   </sch:pattern>	
+	<!-- ============================================================================================================ -->
+  <!-- Assert that Maintenance Information has required mandatory descendent elements  -->
+	<!-- ============================================================================================================ -->
+  <sch:diagnostics>
+	 	<sch:diagnostic id="rule.ga.mmi.resourcemaintenancecodelistpresent-failure-en" xml:lang="en">resourceMaintenance/maintenanceAndUpdateFrequency/MD_MaintenanceFrequencyCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mmi.resourcemaintenancecodelistpresent-success-en" xml:lang="en">resourceMaintenance/maintenanceAndUpdateFrequency/MD_MaintenanceFrequencyCode is present.</sch:diagnostic>
+  </sch:diagnostics>
+  <sch:pattern rule="rule.ga.mmi.resourcemaintenancecodelist">
+		<sch:title>Maintenance Information has required/mandatory descendent elements.</sch:title>
+		<sch:rule context="//mmi:maintenanceAndUpdateFrequency[ancestor::mri:resourceMaintenance]">
+			<sch:assert test="normalize-space(mmi:MD_MaintenanceFrequencyCode/@codeList) and normalize-space(mmi:MD_MaintenanceFrequencyCode/@codeListValue)" diagnostics="rule.ga.mmi.resourcemaintenancecodelistpresent-failure-en"/>
+			<sch:report test="normalize-space(mmi:MD_MaintenanceFrequencyCode/@codeList) and normalize-space(mmi:MD_MaintenanceFrequencyCode/@codeListValue)" diagnostics="rule.ga.mmi.resourcemaintenancecodelistpresent-success-en"/>
+		</sch:rule>
+	</sch:pattern>
+	<!-- ============================================================================================================ -->
+	<!-- Assert that Distribution Information has required mandatory descendent elements   -->
+	<!-- ============================================================================================================ -->
+  <sch:diagnostics>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-failure-en" xml:lang="en">distributionInfo/MD_Distribution/distributionFormat/MD_Format not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-success-en" xml:lang="en">distributionInfo/MD_Distribution/distributionFormat/MD_Format is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-failure-en" xml:lang="en">distributionFormat/MD_Format/name not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-success-en" xml:lang="en">distributionFormat/MD_Format/name is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-failure-en" xml:lang="en">distributionFormat/MD_Format/version not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-success-en" xml:lang="en">distributionFormat/MD_Format/version is present.</sch:diagnostic>
+  </sch:diagnostics>
+	<sch:pattern rule="ga.rule.mrd.distribution">
+		<sch:title>Distribution Information has required/mandatory descendent elements.</sch:title>
+		<sch:rule context="//mrd:MD_Distribution[parent::mdb:distributionInfo]">
+			<sch:assert test="mrd:distributionFormat/mrd:MD_Format" diagnostic="rule.ga.mrd.distributionformatpresent-failure-en"/>
+			<sch:report test="mrd:distributionFormat/mrd:MD_Format" diagnostic="rule.ga.mrd.distributionformatpresent-success-en"/>
+		</sch:rule>
+    <sch:rule context="//mrd:MD_Format[parent::mrd:distributionFormat]">
+			<sch:assert test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.distributionformatnamepresent-failure-en"/>
+			<sch:report test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.distributionformatnamepresent-success-en"/>
+			<sch:assert test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.distributionformatversionpresent-failure-en"/>
+			<sch:assert test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.distributionformatversionpresent-success-en"/>
+		</sch:rule>
+	</sch:pattern>
 </sch:schema>
