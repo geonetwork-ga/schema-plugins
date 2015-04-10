@@ -299,4 +299,33 @@
       <sch:report test="normalize-space(mco:MD_RestrictionCode/@codeList) and normalize-space(mco:MD_RestrictionCode/@codeListValue)" diagnostics="rule.ga.mco.useconstraintscodepresent-failure-en"/>
     </sch:rule>
   </sch:pattern>
+	 <!-- ======================================================================= -->
+  <!-- Assert that Security Constraints has required mandatory descendent elements  -->
+  <!-- ======================================================================= -->
+  <sch:diagnostics>
+	 	<sch:diagnostic id="rule.ga.mco.securityconstraintspresent-failure-en" xml:lang="en">MD_ClassificationCode not present or missing code list values.</sch:diagnostic>
+  </sch:diagnostics>
+  <sch:pattern rule="rule.ga.mco.securityconstraints">
+    <sch:title>Security Constraints must have required/mandatory descendent elements.</sch:title>
+    <sch:rule context="//mco:MD_SecurityConstraints/mco:classification">
+      <sch:assert test="normalize-space(mco:MD_ClassificationCode/@codeList) and normalize-space(mco:MD_ClassificationCode/@codeListValue)" diagnostics="rule.ga.mco.securityconstraintspresent-failure-en"/>
+      <sch:report test="normalize-space(mco:MD_ClassificationCode/@codeList) and normalize-space(mco:MD_ClassificationCode/@codeListValue)" diagnostics="rule.ga.mco.securityconstraintspresent-success-en"/>
+    </sch:rule>
+  </sch:pattern>
+  <!-- ======================================================================= -->
+  <!-- Assert that Resource Format has required mandatory descendent elements  -->
+  <!-- ======================================================================= -->
+  <sch:diagnostics>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-failure-en" xml:lang="en">resourceFormat/MD_Format/name not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-failure-en" xml:lang="en">resourceFormat/MD_Format/version not present or empty.</sch:diagnostic>
+  </sch:diagnostics>
+  <sch:pattern rule="rule.ga.mrd.resourceformat">
+    <sch:title>Resource Format must have required/mandatory descendent elements.</sch:title>
+    <sch:rule context="//mrd:MD_Format[parent::mri:resourceFormat]">
+      <sch:assert test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.resourceformatnamepresent-failure-en"/>
+      <sch:report test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.resourceformatnamepresent-failure-en"/>
+      <sch:assert test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.resourceformatversionpresent-failure-en"/>
+      <sch:report test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.resourceformatversionpresent-failure-en"/>
+    </sch:rule>
+  </sch:pattern>	
 </sch:schema>
