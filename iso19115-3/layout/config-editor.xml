@@ -87,6 +87,14 @@
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
+    <for name="mri:resourceConstraints" addDirective="data-gn-directory-entry-selector">
+      <directiveAttributes
+						  data-schema="iso19115-3"
+              data-template-add-action="true"
+              data-template-type="constraint"
+              data-filter='{"_root": "mco:MD_LegalConstraints"}'
+              data-variables=""/>
+    </for>
     <for name="mrd:distributor" addDirective="data-gn-directory-entry-selector">
       <directiveAttributes
 						  data-schema="iso19115-3"
