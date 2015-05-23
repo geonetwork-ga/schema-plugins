@@ -75,7 +75,7 @@
       <directiveAttributes
 						  data-schema="iso19115-3"
               data-template-add-action="false"
-              data-template-type="Contact"
+              data-template-type="contact"
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
@@ -83,7 +83,7 @@
       <directiveAttributes
 						  data-schema="iso19115-3"
               data-template-add-action="true"
-              data-template-type="Contact"
+              data-template-type="contact"
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
@@ -91,7 +91,7 @@
       <directiveAttributes
 						  data-schema="iso19115-3"
               data-template-add-action="false"
-              data-template-type="Constraint"
+              data-template-type="constraint"
               data-filter='{"_root": "mco:MD_LegalConstraints"}'
               data-variables=""/>
     </for>
@@ -99,7 +99,7 @@
       <directiveAttributes
 						  data-schema="iso19115-3"
               data-template-add-action="true"
-              data-template-type="Contact"
+              data-template-type="contact"
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
@@ -107,7 +107,7 @@
       <directiveAttributes
 						  data-schema="iso19115-3"
               data-template-add-action="true"
-              data-template-type="Contact"
+              data-template-type="contact"
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
@@ -115,7 +115,7 @@
       <directiveAttributes
 						  data-schema="iso19115-3"
               data-template-add-action="true"
-              data-template-type="Contact"
+              data-template-type="contact"
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
