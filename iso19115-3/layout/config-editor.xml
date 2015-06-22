@@ -179,57 +179,6 @@
     to restrict the list.
     -->
     <exclude>
-      <!-- TODO: Update namespace prefix -->
-      <name>gmd:identifier</name>
-      <name>gmd:metadataStandardName</name>
-      <name>gmd:metadataStandardVersion</name>
-      <name>gmd:hierarchyLevelName</name>
-      <name>gmd:dataSetURI</name>
-      <name>gmd:postalCode</name>
-      <name>gmd:city</name>
-      <name>gmd:administrativeArea</name>
-      <name>gmd:voice</name>
-      <name>gmd:facsimile</name>
-      <name>gmd:dataset</name>
-      <name>gmd:other</name>
-      <name>gmd:hoursOfService</name>
-      <name>gmd:applicationProfile</name>
-      <name>gmd:page</name>
-      <name>gmd:date</name>
-      <name>gmd:fileName</name>
-      <name>gmd:protocol</name>
-      <name>gmd:fileType</name>
-      <name>gmd:unitsOfDistribution</name>
-      <name>gmd:amendmentNumber</name>
-      <name>gmd:specification</name>
-      <name>gmd:fileDecompressionTechnique</name>
-      <name>gmd:turnaround</name>
-      <name>gmd:fees</name>
-      <name>gmd:userDeterminedLimitations</name>
-      <name>gmd:codeSpace</name>
-      <name>gmd:version</name>
-      <name>gmd:edition</name>
-      <name>gmd:ISBN</name>
-      <name>gmd:ISSN</name>
-      <name>gmd:errorStatistic</name>
-      <name>gmd:schemaAscii</name>
-      <name>gmd:softwareDevelopmentFileFormat</name>
-      <name>gmd:shortName</name>
-      <name>gmd:condition</name>
-      <name>gmd:maximumOccurence</name>
-      <name>gmd:domainValue</name>
-      <name>gmd:densityUnits</name>
-      <name>gmd:descriptor</name>
-      <name>gmd:denominator</name>
-      <name>gmd:classificationSystem</name>
-      <name>gmd:checkPointDescription</name>
-      <name>gmd:transformationDimensionDescription</name>
-      <name>gmd:orientationParameterDescription</name>
-      <name>srv:name</name>
-      <name>srv:invocationName</name>
-      <name>srv:serviceTypeVersion</name>
-      <name>srv:operationName</name>
-      <name>srv:identifier</name>
     </exclude>
   </multilingualFields>
 
@@ -238,303 +187,38 @@
   <views>
     <view name="default">
       <tab id="default" default="true" mode="flat">
+        <section name="resourceCitation">
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:edition" or="edition" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/cit:citation/cit:CI_Citation"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:editionDate" or="editionDate" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/cit:citation/cit:CI_Citation"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier" or="identifier" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/cit:citation/cit:CI_Citation"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty" or="citedResponsibleParty" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/cit:citation/cit:CI_Citation"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:series" or="series" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/cit:citation/cit:CI_Citation"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:ISBN" or="ISBN" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/cit:citation/cit:CI_Citation"/>
+				</section>
         <section name="resourceIdentification">
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:purpose"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:credit" or="credit" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:status" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceMaintenance"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:environmentDescription"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:supplementalInformation" or="supplementalInformation" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>		
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:graphicOverview"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceFormat"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceSpecficUsage"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialRepresentationType"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:temporalResolution"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceMaintenance"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
 				</section>
-
-				<section xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo" or="referenceSystemInfo" in="/mdb:MD_Metadata"/>
-
-        <section name="resourceQuality">
-					<!-- DQ_CompletenessOmission -->
-          <field name="completenessOmission" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report[mdq:DQ_CompletenessOmission]" del=".">
-            <template>
-              <values>
-                <key label="conformity_title" xpath="mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:CharacterString" tooltip="mdq:pass">
-                  <helper name="mdq:title" context="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title"></helper>
-                </key>
-                <key label="conformity_date" xpath="mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date" use="date"/>
-                <key label="explanation" xpath="mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString" use="textarea"/>
-                <key label="pass" use="checkbox" xpath="mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean"/>
-              </values>
-              <snippet>
-								<mdq:report>
-									<mdq:DQ_CompletenessOmission>
-
-                <mdq:result>
-                  <mdq:DQ_ConformanceResult>
-                    <mdq:specification>
-                      <cit:CI_Citation>
-                        <cit:title>
-                          <gco:CharacterString>{{conformity_title}}</gco:CharacterString>
-                        </cit:title>
-                        <gn:copy select="cit:alternateTitle"/>
-                        <cit:date>
-                          <cit:CI_Date>
-                            <cit:date>
-                              <gco:Date>{{conformity_date}}</gco:Date>
-                            </cit:date>
-                            <cit:dateType>
-                              <cit:CI_DateTypeCode
-                                codeList="codeListLocation#CI_DateTypeCode"
-                                codeListValue="publication"/>
-                            </cit:dateType>
-                          </cit:CI_Date>
-                        </cit:date>
-                        <gn:copy select="cit:edition"/>
-                        <gn:copy select="cit:editionDate"/>
-                        <gn:copy select="cit:identifier"/>
-                        <gn:copy select="cit:citedResponsibleParty"/>
-                        <gn:copy select="cit:presentationForm"/>
-                        <gn:copy select="cit:series"/>
-                        <gn:copy select="cit:otherCitationDetails"/>
-                        <gn:copy select="cit:collectiveTitle"/>
-                        <gn:copy select="cit:ISBN"/>
-                        <gn:copy select="cit:ISSN"/>
-                      </cit:CI_Citation>
-                    </mdq:specification>
-                    <mdq:explanation>
-                      <gco:CharacterString>{{explanation}}</gco:CharacterString>
-                    </mdq:explanation>
-                    <mdq:pass>
-                      <gco:Boolean>{{pass}}</gco:Boolean>
-                    </mdq:pass>
-                  </mdq:DQ_ConformanceResult>
-                </mdq:result>
-
-									</mdq:DQ_CompletenessOmission>
-								</mdq:report>
-              </snippet>
-            </template>
-        	</field>
-
-					<!-- DQ_NonQuantitativeAttributeCorrectness -->
-          <field name="nonQuantitativeAttributeCorrectness" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report[mdq:DQ_NonQuantitativeAttributeCorrectness]" del=".">
-            <template>
-              <values>
-                <key label="conformity_title" xpath="mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:CharacterString" tooltip="mdq:pass">
-                  <helper name="mdq:title" context="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title"></helper>
-                </key>
-                <key label="conformity_date" xpath="mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date" use="date"/>
-                <key label="explanation" xpath="mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString" use="textarea"/>
-                <key label="pass" use="checkbox" xpath="mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean"/>
-              </values>
-              <snippet>
-								<mdq:report>
-									<mdq:DQ_NonQuantitativeAttributeCorrectness>
-
-                <mdq:result>
-                  <mdq:DQ_ConformanceResult>
-                    <mdq:specification>
-                      <cit:CI_Citation>
-                        <cit:title>
-                          <gco:CharacterString>{{conformity_title}}</gco:CharacterString>
-                        </cit:title>
-                        <gn:copy select="cit:alternateTitle"/>
-                        <cit:date>
-                          <cit:CI_Date>
-                            <cit:date>
-                              <gco:Date>{{conformity_date}}</gco:Date>
-                            </cit:date>
-                            <cit:dateType>
-                              <cit:CI_DateTypeCode
-                                codeList="codeListLocation#CI_DateTypeCode"
-                                codeListValue="publication"/>
-                            </cit:dateType>
-                          </cit:CI_Date>
-                        </cit:date>
-                        <gn:copy select="cit:edition"/>
-                        <gn:copy select="cit:editionDate"/>
-                        <gn:copy select="cit:identifier"/>
-                        <gn:copy select="cit:citedResponsibleParty"/>
-                        <gn:copy select="cit:presentationForm"/>
-                        <gn:copy select="cit:series"/>
-                        <gn:copy select="cit:otherCitationDetails"/>
-                        <gn:copy select="cit:collectiveTitle"/>
-                        <gn:copy select="cit:ISBN"/>
-                        <gn:copy select="cit:ISSN"/>
-                      </cit:CI_Citation>
-                    </mdq:specification>
-                    <mdq:explanation>
-                      <gco:CharacterString>{{explanation}}</gco:CharacterString>
-                    </mdq:explanation>
-                    <mdq:pass>
-                      <gco:Boolean>{{pass}}</gco:Boolean>
-                    </mdq:pass>
-                  </mdq:DQ_ConformanceResult>
-                </mdq:result>
-
-									</mdq:DQ_NonQuantitativeAttributeCorrectness>
-								</mdq:report>
-              </snippet>
-            </template>
-        	</field>
-
-					<!-- DQ_ConceptualConsistency -->
-          <field name="conceptualConsistency" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report[mdq:DQ_ConceptualConsistency]" del=".">
-            <template>
-              <values>
-                <key label="conformity_title" xpath="mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:CharacterString" tooltip="mdq:pass">
-                  <helper name="mdq:title" context="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title"></helper>
-                </key>
-                <key label="conformity_date" xpath="mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date" use="date"/>
-                <key label="explanation" xpath="mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString" use="textarea"/>
-                <key label="pass" use="checkbox" xpath="mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean"/>
-              </values>
-              <snippet>
-								<mdq:report>
-									<mdq:DQ_ConceptualConsistency>
-
-                <mdq:result>
-                  <mdq:DQ_ConformanceResult>
-                    <mdq:specification>
-                      <cit:CI_Citation>
-                        <cit:title>
-                          <gco:CharacterString>{{conformity_title}}</gco:CharacterString>
-                        </cit:title>
-                        <gn:copy select="cit:alternateTitle"/>
-                        <cit:date>
-                          <cit:CI_Date>
-                            <cit:date>
-                              <gco:Date>{{conformity_date}}</gco:Date>
-                            </cit:date>
-                            <cit:dateType>
-                              <cit:CI_DateTypeCode
-                                codeList="codeListLocation#CI_DateTypeCode"
-                                codeListValue="publication"/>
-                            </cit:dateType>
-                          </cit:CI_Date>
-                        </cit:date>
-                        <gn:copy select="cit:edition"/>
-                        <gn:copy select="cit:editionDate"/>
-                        <gn:copy select="cit:identifier"/>
-                        <gn:copy select="cit:citedResponsibleParty"/>
-                        <gn:copy select="cit:presentationForm"/>
-                        <gn:copy select="cit:series"/>
-                        <gn:copy select="cit:otherCitationDetails"/>
-                        <gn:copy select="cit:collectiveTitle"/>
-                        <gn:copy select="cit:ISBN"/>
-                        <gn:copy select="cit:ISSN"/>
-                      </cit:CI_Citation>
-                    </mdq:specification>
-                    <mdq:explanation>
-                      <gco:CharacterString>{{explanation}}</gco:CharacterString>
-                    </mdq:explanation>
-                    <mdq:pass>
-                      <gco:Boolean>{{pass}}</gco:Boolean>
-                    </mdq:pass>
-                  </mdq:DQ_ConformanceResult>
-                </mdq:result>
-
-									</mdq:DQ_ConceptualConsistency>
-								</mdq:report>
-              </snippet>
-            </template>
-        	</field>
-
-					<!-- DQ_AbsoluteExternalPositionalAccuracy -->
-          <field name="absoluteExternalPositionalAccuracy" templateModeOnly="true" isMissingLabel="notEvaluated" xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report[mdq:DQ_AbsoluteExternalPositionalAccuracy]" del=".">
-            <template>
-              <values>
-                <key label="conformity_title" xpath="mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:CharacterString" tooltip="mdq:pass">
-                  <helper name="mdq:title" context="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title"></helper>
-                </key>
-                <key label="conformity_date" xpath="mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date" use="date"/>
-                <key label="explanation" xpath="mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString" use="textarea"/>
-                <key label="pass" use="checkbox" xpath="mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean"/>
-              </values>
-              <snippet>
-								<mdq:report>
-									<mdq:DQ_AbsoluteExternalPositionalAccuracy>
-
-                <mdq:result>
-                  <mdq:DQ_ConformanceResult>
-                    <mdq:specification>
-                      <cit:CI_Citation>
-                        <cit:title>
-                          <gco:CharacterString>{{conformity_title}}</gco:CharacterString>
-                        </cit:title>
-                        <gn:copy select="cit:alternateTitle"/>
-                        <cit:date>
-                          <cit:CI_Date>
-                            <cit:date>
-                              <gco:Date>{{conformity_date}}</gco:Date>
-                            </cit:date>
-                            <cit:dateType>
-                              <cit:CI_DateTypeCode
-                                codeList="codeListLocation#CI_DateTypeCode"
-                                codeListValue="publication"/>
-                            </cit:dateType>
-                          </cit:CI_Date>
-                        </cit:date>
-                        <gn:copy select="cit:edition"/>
-                        <gn:copy select="cit:editionDate"/>
-                        <gn:copy select="cit:identifier"/>
-                        <gn:copy select="cit:citedResponsibleParty"/>
-                        <gn:copy select="cit:presentationForm"/>
-                        <gn:copy select="cit:series"/>
-                        <gn:copy select="cit:otherCitationDetails"/>
-                        <gn:copy select="cit:collectiveTitle"/>
-                        <gn:copy select="cit:ISBN"/>
-                        <gn:copy select="cit:ISSN"/>
-                      </cit:CI_Citation>
-                    </mdq:specification>
-                    <mdq:explanation>
-                      <gco:CharacterString>{{explanation}}</gco:CharacterString>
-                    </mdq:explanation>
-                    <mdq:pass>
-                      <gco:Boolean>{{pass}}</gco:Boolean>
-                    </mdq:pass>
-                  </mdq:DQ_ConformanceResult>
-                </mdq:result>
-
-									</mdq:DQ_AbsoluteExternalPositionalAccuracy>
-								</mdq:report>
-              </snippet>
-            </template>
-        	</field>
-
-				</section>
-
-        <section xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>
 
         <section xpath="/mdb:MD_Metadata/mdb:resourceLineage" or="resourceLineage" in="/mdb:MD_Metadata"/>
+
+        <section xpath="/mdb:MD_Metadata/mdb:distributionInfo" or="distributionInfo" in="/mdb:MD_Metadata"/>
 
         <section name="mdb:MD_Metadata">
           <field xpath="/mdb:MD_Metadata/mdb:metadataIdentifier"/>
           <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:defaultLocale" or="defaultLocale"
-                 in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:otherLocale" or="otherLocale"
-                 in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:parentMetadata" or="parentMetadata"
-                 in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:metadataScope" or="metadataScope"
-                 in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:alternativeMetadataReference" or="alternativeMetadataReference"
-                 in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:metadataLinkage" or="metadataLinkage"
-                 in="/mdb:MD_Metadata"/>
+          <field xpath="/mdb:MD_Metadata/mdb:metadataScope" or="metadataScope" in="/mdb:MD_Metadata"/>
           <field xpath="/mdb:MD_Metadata/mdb:dateInfo"/>
-          <field xpath="/mdb:MD_Metadata/mdb:metadataStandard"/>
-          <field xpath="/mdb:MD_Metadata/mdb:metadataProfile"/>
+          <field xpath="/mdb:MD_Metadata/mdb:metadataConstraints" or="metadataConstraints" in="/mdb:MD_Metadata"/>
         </section>
       </tab>
 
