@@ -129,7 +129,6 @@
 
 
   <fieldsWithFieldset>
-    <name>mcc:MD_Identifier</name>
     <name>mdb:metadataScope</name>
     <name>mdb:alternativeMetadataReference</name>
     <name>mdb:metadataLinkage</name>
@@ -257,9 +256,9 @@
 
         <section name="mdb:MD_Metadata">
           <field xpath="/mdb:MD_Metadata/mdb:metadataIdentifier"/>
-          <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:metadataScope" or="metadataScope" in="/mdb:MD_Metadata"/>
           <field xpath="/mdb:MD_Metadata/mdb:dateInfo"/>
+          <field xpath="/mdb:MD_Metadata/mdb:metadataScope" or="metadataScope" in="/mdb:MD_Metadata"/>
+          <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
           <field xpath="/mdb:MD_Metadata/mdb:metadataConstraints" or="metadataConstraints" in="/mdb:MD_Metadata"/>
         </section>
       </tab>
