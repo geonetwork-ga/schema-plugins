@@ -131,7 +131,6 @@
   <fieldsWithFieldset>
     <name>mcc:MD_Identifier</name>
     <name>mdb:metadataScope</name>
-    <name>mdb:dateInfo</name>
     <name>mdb:alternativeMetadataReference</name>
     <name>mdb:metadataLinkage</name>
     <name>mdb:identificationInfo</name>
@@ -164,6 +163,7 @@
     <name>mdb:metadataStandard</name>
     <name>mdb:metadataProfile</name>
     <name>mri:associatedResource</name>
+		<name>mrl:source</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -214,7 +214,43 @@
         <section name="mdb:resourceLineage">
           <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement"/>
           <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:scope"/>
-          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source" or="source" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage"/>
+          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source"/>
+					<action type="add" name="source" or="source" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage">
+						<template>
+							<snippet>
+							<mrl:source>
+								<mrl:LI_Source>
+									<mrl:description>
+                  	<gco:CharacterString></gco:CharacterString>
+               		</mrl:description>
+               		<mrl:sourceSpatialResolution>
+                  	<mri:MD_Resolution>
+											<mri:equivalentScale>
+                  			<mri:MD_RepresentativeFraction>
+                     			<mri:denominator>
+                        			<gco:Integer/>
+                     			</mri:denominator>
+                  			</mri:MD_RepresentativeFraction>
+               				</mri:equivalentScale>	
+										</mri:MD_Resolution>
+               		</mrl:sourceSpatialResolution>
+               		<mrl:scope>
+                  	<mcc:MD_Scope>
+                    	<mcc:level>
+                     		<mcc:MD_ScopeCode codeList="codeListLocation#MD_ScopeCode" codeListValue="dataset"/>
+                     	</mcc:level>
+											<mcc:extent>
+												<gex:EX_Extent>
+													<gex:geographicElement/>
+												</gex:EX_Extent>
+											</mcc:extent>
+                  	</mcc:MD_Scope>
+               		</mrl:scope>
+								</mrl:LI_Source>
+							</mrl:source>
+							</snippet>
+						</template>
+					</action>
 				</section>
 
         <section xpath="/mdb:MD_Metadata/mdb:distributionInfo" or="distributionInfo" in="/mdb:MD_Metadata"/>

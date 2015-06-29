@@ -43,6 +43,7 @@
 	<contact>Metadata Contact</contact>
 
 	<resourceCitation>Resource Citation</resourceCitation>
+	<source>Source</source>
 	<resourceIdentification>Resource Identification</resourceIdentification>
 
 	<resourceConstraints>Resource Constraints</resourceConstraints>
