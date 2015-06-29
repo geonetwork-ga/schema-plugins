@@ -79,6 +79,11 @@
     <suggest name="cit:ISBN"/>
   </field>
 	
+  <field name="cit:CI_Series">
+    <suggest name="cit:name"/>
+    <suggest name="cit:issueIdentification"/>
+  </field>
+
   <field name="mrl:LI_Lineage">
     <suggest name="mrl:statement"/>
     <suggest name="mrl:scope"/>
