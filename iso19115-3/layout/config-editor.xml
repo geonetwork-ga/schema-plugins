@@ -240,7 +240,22 @@
                      	</mcc:level>
 											<mcc:extent>
 												<gex:EX_Extent>
-													<gex:geographicElement/>
+													<gex:geographicElement>
+														<gex:EX_GeographicBoundingBox>
+                     					<gex:westBoundLongitude>
+                        					<gco:Decimal>-180</gco:Decimal>
+                     					</gex:westBoundLongitude>
+                     					<gex:eastBoundLongitude>
+                        					<gco:Decimal>180</gco:Decimal>
+                     					</gex:eastBoundLongitude>
+                     					<gex:southBoundLatitude>
+                        					<gco:Decimal>-90</gco:Decimal>
+                     					</gex:southBoundLatitude>
+                     					<gex:northBoundLatitude>
+                        					<gco:Decimal>90</gco:Decimal>
+                     					</gex:northBoundLatitude>
+                  					</gex:EX_GeographicBoundingBox>	
+													</gex:geographicElement>
 												</gex:EX_Extent>
 											</mcc:extent>
                   	</mcc:MD_Scope>
