@@ -42,6 +42,7 @@
 	<pointOfContact>Resource Contact</pointOfContact>
 	<contact>Metadata Contact</contact>
 
+	<resourceCitation>Resource Citation</resourceCitation>
 	<resourceIdentification>Resource Identification</resourceIdentification>
 
 	<resourceConstraints>Resource Constraints</resourceConstraints>

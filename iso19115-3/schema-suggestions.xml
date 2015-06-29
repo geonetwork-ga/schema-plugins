@@ -68,6 +68,17 @@
     <suggest name="cit:CI_Individual"/>
   </field>
 	
+  <field name="cit:CI_Citation">
+    <suggest name="cit:title"/>
+    <suggest name="cit:date"/>
+    <suggest name="cit:edition"/>
+    <suggest name="cit:editionDate"/>
+    <suggest name="cit:identifier"/>
+    <suggest name="cit:citedResponsibleParty"/>
+    <suggest name="cit:series"/>
+    <suggest name="cit:ISBN"/>
+  </field>
+	
 	<field name="cit:CI_Individual">
 		<suggest name="cit:name"/>
     <suggest name="cit:contactInfo"/>
