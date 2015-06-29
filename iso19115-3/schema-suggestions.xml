@@ -79,6 +79,18 @@
     <suggest name="cit:ISBN"/>
   </field>
 	
+  <field name="mrl:LI_Lineage">
+    <suggest name="mrl:statement"/>
+    <suggest name="mrl:scope"/>
+    <suggest name="mrl:source"/>
+  </field>
+	
+  <field name="mrl:LI_Source">
+    <suggest name="mrl:description"/>
+    <suggest name="mrl:sourceSpatialResolution"/>
+    <suggest name="mrl:scope"/>
+	</field>
+
 	<field name="cit:CI_Individual">
 		<suggest name="cit:name"/>
     <suggest name="cit:contactInfo"/>

@@ -159,17 +159,6 @@
       </mri:defaultLocale>
     </mri:MD_DataIdentification>
   </mdb:identificationInfo>
-	<mdb:dataQualityInfo>
-      <mdq:DQ_DataQuality>
-         <mdq:scope>
-            <mcc:MD_Scope>
-               <mcc:level>
-                  <mcc:MD_ScopeCode codeList="codeListLocattion#MD_ScopeCode" codeListValue="dataset">dataset</mcc:MD_ScopeCode>
-               </mcc:level>
-            </mcc:MD_Scope>
-         </mdq:scope>
-      </mdq:DQ_DataQuality>
-	</mdb:dataQualityInfo>
   <mdb:resourceLineage>
     <mrl:LI_Lineage>
       <mrl:statement>
