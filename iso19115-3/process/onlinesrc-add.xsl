@@ -39,15 +39,10 @@
       
       
       <xsl:choose>
-        <xsl:when
-          test="count(mdb:distributionInfo) = 0">
+        <xsl:when test="count(mdb:distributionInfo) = 0">
           <mdb:distributionInfo>
             <mrd:MD_Distribution>
-              <mrd:transferOptions>
-                <mrd:MD_DigitalTransferOptions>
-                  <xsl:call-template name="fill"/>
-                </mrd:MD_DigitalTransferOptions>
-              </mrd:transferOptions>
+                <xsl:call-template name="fill"/>
             </mrd:MD_Distribution>
           </mdb:distributionInfo>
         </xsl:when>
@@ -56,32 +51,8 @@
             <xsl:copy>
               <xsl:copy-of select="@*"/>
               <mrd:MD_Distribution>
-                <xsl:apply-templates select="mrd:MD_Distribution/mrd:description"/>
-                <xsl:apply-templates select="mrd:MD_Distribution/mrd:distributionFormat"/>
-                <xsl:apply-templates select="mrd:MD_Distribution/mrd:distributor"/>
-                <xsl:choose>
-                  <xsl:when test="position() = 1">
-                    <mrd:transferOptions>
-                      <mrd:MD_DigitalTransferOptions>
-                        <xsl:apply-templates select="mrd:MD_Distribution/mrd:transferOptions[1]/mrd:MD_DigitalTransferOptions/mrd:unitsOfDistribution"/>
-                        <xsl:apply-templates select="mrd:MD_Distribution/mrd:transferOptions[1]/mrd:MD_DigitalTransferOptions/mrd:transferSize"/>
-                        <xsl:apply-templates select="mrd:MD_Distribution/mrd:transferOptions[1]/mrd:MD_DigitalTransferOptions/mrd:onLine"/>
-                        
-                        <xsl:call-template name="fill"/>
-                        
-                        <xsl:apply-templates select="mrd:MD_Distribution/mrd:transferOptions[1]/mrd:MD_DigitalTransferOptions/mrd:offLine"/>
-                        <xsl:apply-templates select="mrd:MD_Distribution/mrd:transferOptions[1]/mrd:MD_DigitalTransferOptions/mrd:transferFrequency"/>
-                        <xsl:apply-templates select="mrd:MD_Distribution/mrd:transferOptions[1]/mrd:MD_DigitalTransferOptions/mrd:distributionFormat"/>
-                      </mrd:MD_DigitalTransferOptions>
-                   </mrd:transferOptions>
-                   
-                   <xsl:apply-templates
-                     select="mrd:MD_Distribution/mrd:transferOptions[position() > 1]"/>
-                 </xsl:when>
-                 <xsl:otherwise>
-                   <xsl:apply-templates select="mrd:transferOptions"/>
-                 </xsl:otherwise>
-               </xsl:choose>
+								<xsl:copy-of select="mrd:MD_Distribution/*"/>
+                <xsl:call-template name="fill"/>
               </mrd:MD_Distribution>
             </xsl:copy>
           </xsl:for-each>
@@ -121,36 +92,117 @@
           <xsl:copy-of select="*"/>
         </mrd:onLine>
       </xsl:for-each>
+      <xsl:for-each select="//extra//mrd:distributionFormat[descendant::mrd:onLine]">
+        <mrd:distributionFormat>
+          <xsl:if test="$extra_metadata_uuid">
+            <xsl:attribute name="uuidref" select="$extra_metadata_uuid"/>
+          </xsl:if>
+          <xsl:copy-of select="*"/>
+        </mrd:distributionFormat>
+      </xsl:for-each>
     </xsl:if>
     
     <!-- Add online source from URL -->
     <xsl:if test="$url">
       <xsl:for-each select="tokenize($name, ',')">
         <xsl:variable name="pos" select="position()"/>
-        <mrd:onLine>
-          <cit:CI_OnlineResource>
-            <cit:linkage>
-              <gco:CharacterString>
-                <xsl:value-of select="$url"/>
-              </gco:CharacterString>
-            </cit:linkage>
-            <cit:protocol>
-              <gco:CharacterString>
-                <xsl:value-of select="$protocol"/>
-              </gco:CharacterString>
-            </cit:protocol>
-            <cit:name>
-              <gco:CharacterString>
-                <xsl:value-of select="."/>
-              </gco:CharacterString>
-            </cit:name>
-            <cit:description>
-              <gco:CharacterString>
-                <xsl:value-of select="tokenize($desc, ',')[position() = $pos]"/>
-              </gco:CharacterString>
-            </cit:description>
-          </cit:CI_OnlineResource>
-        </mrd:onLine>
+							<mrd:distributionFormat>
+								<mrd:MD_Format>
+									<mrd:formatSpecificationCitation/>
+									<mrd:formatDistributor>
+										<mrd:MD_Distributor>
+											<mrd:distributorContact>
+												<cit:CI_Responsibility>
+                					<cit:role>
+                  					<cit:CI_RoleCode codeList="http://asdd.ga.gov.au/asdd/profileinfo/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor">distributor</cit:CI_RoleCode>
+                					</cit:role>
+													<cit:party>
+														<cit:CI_Organisation>
+															<cit:name>
+																<gco:CharacterString>Geoscience Australia</gco:CharacterString>
+															</cit:name>
+															<cit:contactInfo>
+                  							<cit:CI_Contact>
+               										<cit:phone>
+                  										<cit:CI_Telephone>
+                     										<cit:number>
+                          									<gco:CharacterString>+61 2 6249 9966</gco:CharacterString>
+                     										</cit:number>
+                     										<cit:numberType>
+                        										<cit:CI_TelephoneTypeCode codeList="codeListLocation#CI_TelephoneTypeCode" codeListValue="voice">voice</cit:CI_TelephoneTypeCode>
+                     										</cit:numberType>
+                  										</cit:CI_Telephone>
+               										</cit:phone>
+               										<cit:phone>
+                  										<cit:CI_Telephone>
+                     										<cit:number>
+                          									<gco:CharacterString>+61 2 6249 9960</gco:CharacterString>
+                     										</cit:number>
+                     										<cit:numberType>
+                        										<cit:CI_TelephoneTypeCode codeList="codeListLocation#CI_TelephoneTypeCode" codeListValue="facsimile">facsimile</cit:CI_TelephoneTypeCode>
+                     										</cit:numberType>
+                  										</cit:CI_Telephone>
+               										</cit:phone>
+                    							<cit:address>
+                      							<cit:CI_Address>
+                        							<cit:deliveryPoint>
+                          							<gco:CharacterString>GPO Box 378</gco:CharacterString>
+                        							</cit:deliveryPoint>
+                        							<cit:city>
+                          							<gco:CharacterString>Canberra</gco:CharacterString>
+                        							</cit:city>
+                        							<cit:administrativeArea>
+                          							<gco:CharacterString>ACT</gco:CharacterString>
+                        							</cit:administrativeArea>
+                        							<cit:postalCode>
+                          							<gco:CharacterString>2601</gco:CharacterString>
+                        							</cit:postalCode>
+                        							<cit:country>
+                          							<gco:CharacterString>Australia</gco:CharacterString>
+                        							</cit:country>
+                        							<cit:electronicMailAddress>
+                          							<gco:CharacterString>sales@ga.gov.au</gco:CharacterString>
+                        							</cit:electronicMailAddress>
+                      							</cit:CI_Address>
+                    							</cit:address>
+                  							</cit:CI_Contact>
+                							</cit:contactInfo>
+														</cit:CI_Organisation>
+													</cit:party>
+												</cit:CI_Responsibility>
+											</mrd:distributorContact>
+              				<mrd:distributorTransferOptions>
+                				<mrd:MD_DigitalTransferOptions>
+        									<mrd:onLine>
+          									<cit:CI_OnlineResource>
+            									<cit:linkage>
+              									<gco:CharacterString>
+                									<xsl:value-of select="$url"/>
+              									</gco:CharacterString>
+            									</cit:linkage>
+            									<cit:protocol>
+              									<gco:CharacterString>
+                									<xsl:value-of select="$protocol"/>
+              									</gco:CharacterString>
+            									</cit:protocol>
+            									<cit:name>
+              									<gco:CharacterString>
+                									<xsl:value-of select="."/>
+              									</gco:CharacterString>
+            									</cit:name>
+            									<cit:description>
+              									<gco:CharacterString>
+                									<xsl:value-of select="tokenize($desc, ',')[position() = $pos]"/>
+              									</gco:CharacterString>
+            									</cit:description>
+          									</cit:CI_OnlineResource>
+        									</mrd:onLine>
+                				</mrd:MD_DigitalTransferOptions>
+              				</mrd:distributorTransferOptions>
+										</mrd:MD_Distributor>
+									</mrd:formatDistributor>
+								</mrd:MD_Format>
+							</mrd:distributionFormat>
       </xsl:for-each>
     </xsl:if>
   </xsl:template>
