@@ -231,13 +231,13 @@
 	 		<sch:diagnostic id="rule.ga.mri.identificationinformationpresent-failure-en" xml:lang="en">Data Identification Information element not present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.identificationinformationpresent-success-en" xml:lang="en">Data Identification Information element is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.pointofcontactpresent-failure-en" xml:lang="en">MD_DataIdentification/pointOfContact information not present.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.maintenanceinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/resourceMaintenance/MD_MaintenanceInformation not present.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.resourceformatpresent-failure-en" xml:lang="en">MD_DataIdentification/resourceFormat/MD_Format not present.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.resourceconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints information not present.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.topiccategorypresent-failure-en" xml:lang="en">MD_DataIdentification/topicCategory not present or empty.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.extentinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/extent information not present.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.securityconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_SecurityConstraints not present.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.legalconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.maintenanceinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceMaintenance/ MD_MaintenanceInformation not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.resourceformatpresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceFormat/ MD_Format not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.resourceconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.topiccategorypresent-failure-en" xml:lang="en">MD_DataIdentification/ topicCategory not present or empty.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.extentinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/ extent information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.securityconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_SecurityConstraints not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.legalconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_LegalConstraints not present.</sch:diagnostic>
    </sch:diagnostics>
    <sch:pattern id="rule.ga.mri.identificationinformation">
 	 		<sch:title>Identification Information must be present and correctly filled out.</sch:title>
@@ -275,14 +275,14 @@
   <!-- Assert that Legal Constraints has required mandatory descendent elements  -->
 	<!-- ============================================================================================================ -->
   <sch:diagnostics>
-	 	<sch:diagnostic id="rule.ga.mco.accessconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/accessConstraints not present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mco.accessconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/accessConstraints is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mco.useconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/useConstraints not present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mco.useconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/resourceConstraints/MD_LegalConstraints/useConstraints is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mco.accessconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/accessConstraints/MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mco.accessconstraintscodepresent-success-en" xml:lang="en">MD_LegalConstraints/accessConstraints/MD_RestrictionCode is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mco.useconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/useConstraints/MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mco.useconstraintscodepresent-success-en" xml:lang="en">MD_LegalConstraints/useConstraints/MD_RestrictionCode is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_LegalConstraints/ accessConstraints not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_LegalConstraints/ accessConstraints is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/MD_LegalConstraints/useConstraints not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/MD_LegalConstraints/useConstraints is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/ accessConstraints/ MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.accessconstraintscodepresent-success-en" xml:lang="en">MD_LegalConstraints/ accessConstraints/ MD_RestrictionCode is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintscodepresent-failure-en" xml:lang="en">MD_LegalConstraints/ useConstraints/ MD_RestrictionCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mco.useconstraintscodepresent-success-en" xml:lang="en">MD_LegalConstraints/ useConstraints/ MD_RestrictionCode is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern rule="rule.ga.mco.legalconstraints">
     <sch:title>Legal Constraints has required/mandatory descendent elements.</sch:title>
@@ -321,10 +321,10 @@
   <!-- Assert that Resource Format has required mandatory descendent elements  -->
 	<!-- ============================================================================================================ -->
   <sch:diagnostics>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-failure-en" xml:lang="en">resourceFormat/MD_Format/name not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-success-en" xml:lang="en">resourceFormat/MD_Format/name is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-failure-en" xml:lang="en">resourceFormat/MD_Format/version not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-success-en" xml:lang="en">resourceFormat/MD_Format/version is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-failure-en" xml:lang="en">resourceFormat/ MD_Format/ name not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-success-en" xml:lang="en">resourceFormat/ MD_Format/ name is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-failure-en" xml:lang="en">resourceFormat/ MD_Format/ version not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-success-en" xml:lang="en">resourceFormat/ MD_Format/ version is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern rule="rule.ga.mrd.resourceformat">
     <sch:title>Resource Format has required/mandatory descendent elements.</sch:title>
@@ -339,8 +339,8 @@
   <!-- Assert that Maintenance Information has required mandatory descendent elements  -->
 	<!-- ============================================================================================================ -->
   <sch:diagnostics>
-	 	<sch:diagnostic id="rule.ga.mmi.resourcemaintenancecodelistpresent-failure-en" xml:lang="en">resourceMaintenance/maintenanceAndUpdateFrequency/MD_MaintenanceFrequencyCode not present or missing code list values.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mmi.resourcemaintenancecodelistpresent-success-en" xml:lang="en">resourceMaintenance/maintenanceAndUpdateFrequency/MD_MaintenanceFrequencyCode is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mmi.resourcemaintenancecodelistpresent-failure-en" xml:lang="en">resourceMaintenance/ maintenanceAndUpdateFrequency/ MD_MaintenanceFrequencyCode not present or missing code list values.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mmi.resourcemaintenancecodelistpresent-success-en" xml:lang="en">resourceMaintenance/ maintenanceAndUpdateFrequency/ MD_MaintenanceFrequencyCode is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern rule="rule.ga.mmi.resourcemaintenancecodelist">
 		<sch:title>Maintenance Information has required/mandatory descendent elements.</sch:title>
@@ -353,12 +353,12 @@
 	<!-- Assert that Distribution Information has required mandatory descendent elements   -->
 	<!-- ============================================================================================================ -->
   <sch:diagnostics>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-failure-en" xml:lang="en">distributionInfo/MD_Distribution/distributionFormat/MD_Format not present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-success-en" xml:lang="en">distributionInfo/MD_Distribution/distributionFormat/MD_Format is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-failure-en" xml:lang="en">distributionFormat/MD_Format/name not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-success-en" xml:lang="en">distributionFormat/MD_Format/name is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-failure-en" xml:lang="en">distributionFormat/MD_Format/version not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-success-en" xml:lang="en">distributionFormat/MD_Format/version is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-failure-en" xml:lang="en">distributionInfo/ MD_Distribution/ distributionFormat/ MD_Format not present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-success-en" xml:lang="en">distributionInfo/ MD_Distribution/ distributionFormat/ MD_Format is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-failure-en" xml:lang="en">distributionFormat/ MD_Format/ name not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-success-en" xml:lang="en">distributionFormat/ MD_Format/ name is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-failure-en" xml:lang="en">distributionFormat/ MD_Format/ version not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-success-en" xml:lang="en">distributionFormat/ MD_Format/ version is present.</sch:diagnostic>
   </sch:diagnostics>
 	<sch:pattern rule="ga.rule.mrd.distribution">
 		<sch:title>Distribution Information has required/mandatory descendent elements.</sch:title>
