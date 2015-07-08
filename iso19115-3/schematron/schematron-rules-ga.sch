@@ -95,11 +95,11 @@
       <sch:title xml:lang="en">Dataset URI must be present if metadataScope is one of ('dataset','').</sch:title>
       
     
-      <sch:rule context="/mdb:MD_Metadata">
+      <sch:rule context="/mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode=('dataset', '')]">
       
          <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode"/>
          <sch:let name="dataseturi" value="mdb:identificationInfo/*/mri:citation/*/cit:identifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='ga-dataSetURI']/mcc:code/gco:CharacterString"/>
-         <sch:let name="hasDataseturi" value="normalize-space($dataseturi) and $scopeCode = ('dataset','')"/>
+         <sch:let name="hasDataseturi" value="normalize-space($dataseturi) and $scopeCode = ('dataset', '')"/>
       
          <sch:assert test="$hasDataseturi" diagnostics="rule.ga.mdb.dataseturipresent-failure-en"/>
       
@@ -146,7 +146,7 @@
       <sch:title xml:lang="en">Reference system information must be present and correctly filled out if metadataScope is one of ('dataset','').</sch:title>
       
     
-      <sch:rule context="//mdb:MD_Metadata">
+      <sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode=('dataset','')]">
          <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode"/>
          <sch:let name="hasReferenceSystemInfo" value="count(mdb:referenceSystemInfo)>0 and $scopeCode = ('dataset','')"/>
       
@@ -165,9 +165,9 @@
 	 		<sch:diagnostic id="rule.ga.mdq.dataqualityinfoscopepresent-success-en" xml:lang="en">DQ_DataQuality/scope/DQ_Scope is present.</sch:diagnostic>
   </sch:diagnostics>
    <sch:pattern id="rule.ga.mdq.dataqualityinfopresent">
-	 		<sch:title xml:lang="en">Data Quality Information must be present and correctly filled out.</sch:title>
+	 		<sch:title xml:lang="en">Data Quality Information must be present and correctly filled out if metadataScope is one of ('dataset','').</sch:title>
 
-	 		<sch:rule context="//mdb:MD_Metadata">
+	 		<sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode=('dataset','')]">
 				<sch:assert test="mdb:dataQualityInfo/mdq:DQ_DataQuality" diagnostics="rule.ga.mdq.dataqualityinfopresent-failure-en"/>
 				<sch:report test="mdb:dataQualityInfo/mdq:DQ_DataQuality" diagnostics="rule.ga.mdq.dataqualityinfopresent-success-en"/>
 			</sch:rule>
