@@ -98,7 +98,7 @@
       <sch:rule context="/mdb:MD_Metadata">
       
          <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode"/>
-         <sch:let name="dataseturi" value="mdb:identificatioInfo/*/mri:citation/*/cit:identifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='ga-dataSetURI']/mcc:code/gco:CharacterString"/>
+         <sch:let name="dataseturi" value="mdb:identificationInfo/*/mri:citation/*/cit:identifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='ga-dataSetURI']/mcc:code/gco:CharacterString"/>
          <sch:let name="hasDataseturi" value="normalize-space($dataseturi) and $scopeCode = ('dataset','')"/>
       
          <sch:assert test="$hasDataseturi" diagnostics="rule.ga.mdb.dataseturipresent-failure-en"/>
