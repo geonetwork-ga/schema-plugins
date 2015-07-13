@@ -16,6 +16,8 @@
   <xsl:param name="url"/>
   <xsl:param name="name"/>
   <xsl:param name="desc"/>
+  <xsl:param name="format"/>
+  <xsl:param name="version"/>
   
   <xsl:template match="/mdb:MD_Metadata|*[contains(@gco:isoType, 'mdb:MD_Metadata')]">
     <xsl:copy>
@@ -108,7 +110,23 @@
         <xsl:variable name="pos" select="position()"/>
 							<mrd:distributionFormat>
 								<mrd:MD_Format>
-									<mrd:formatSpecificationCitation/>
+									<mrd:formatSpecificationCitation>
+										<cit:CI_Citation>
+											<cit:title>
+												<gco:CharacterString><xsl:value-of select="$format"/></gco:CharacterString>
+											</cit:title>
+											<cit:date>
+												<cit:CI_Date>
+													<!-- TODO: do what with this? -->
+													<cit:date gco:nilReason="missing"/>
+													<cit:dateType gco:nilReason="missing"/>
+												</cit:CI_Date>
+											</cit:date>
+											<cit:edition>
+												<gco:CharacterString><xsl:value-of select="$version"/></gco:CharacterString>
+											</cit:edition>
+										</cit:CI_Citation>
+									</mrd:formatSpecificationCitation>
 									<mrd:formatDistributor>
 										<mrd:MD_Distributor>
 											<mrd:distributorContact>
