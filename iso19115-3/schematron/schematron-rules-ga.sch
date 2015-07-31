@@ -355,10 +355,10 @@
   <sch:diagnostics>
 	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-failure-en" xml:lang="en">distributionInfo/ MD_Distribution/ distributionFormat/ MD_Format not present.</sch:diagnostic>
 	 	<sch:diagnostic id="rule.ga.mrd.distributionformatpresent-success-en" xml:lang="en">distributionInfo/ MD_Distribution/ distributionFormat/ MD_Format is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-failure-en" xml:lang="en">distributionFormat/ MD_Format/ name not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-success-en" xml:lang="en">distributionFormat/ MD_Format/ name is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-failure-en" xml:lang="en">distributionFormat/ MD_Format/ version not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-success-en" xml:lang="en">distributionFormat/ MD_Format/ version is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-failure-en" xml:lang="en">distributionFormat/ MD_Format/ formatSpecificationCitation/ */ title (format name) not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatnamepresent-success-en" xml:lang="en">distributionFormat/ MD_Format/ formatSpecificationCitation/ */ title (format name) is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-failure-en" xml:lang="en">distributionFormat/ MD_Format/ formatSpecificationCitation/ */ edition (format version) not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.distributionformatversionpresent-success-en" xml:lang="en">distributionFormat/ MD_Format/ formatSpecificationCitation/ */ edition (format version) is present.</sch:diagnostic>
   </sch:diagnostics>
 	<sch:pattern rule="ga.rule.mrd.distribution">
 		<sch:title>Distribution Information has required/mandatory descendent elements.</sch:title>
@@ -367,10 +367,10 @@
 			<sch:report test="mrd:distributionFormat/mrd:MD_Format" diagnostic="rule.ga.mrd.distributionformatpresent-success-en"/>
 		</sch:rule>
     <sch:rule context="//mrd:MD_Format[parent::mrd:distributionFormat]">
-			<sch:assert test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.distributionformatnamepresent-failure-en"/>
-			<sch:report test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.distributionformatnamepresent-success-en"/>
-			<sch:assert test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.distributionformatversionpresent-failure-en"/>
-			<sch:assert test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.distributionformatversionpresent-success-en"/>
+			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatnamepresent-failure-en"/>
+			<sch:report test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatnamepresent-success-en"/>
+			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:edition/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatversionpresent-failure-en"/>
+			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:edition/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatversionpresent-success-en"/>
 		</sch:rule>
 	</sch:pattern>
 </sch:schema>
