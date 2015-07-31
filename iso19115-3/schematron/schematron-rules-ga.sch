@@ -246,8 +246,8 @@
 				<sch:report test="mdb:identificationInfo/mri:MD_DataIdentification" diagnostics="rule.ga.mri.identificationinformationpresent-success-en"/>
 			</sch:rule>
 			<sch:rule context="//mri:MD_DataIdentification[parent::mdb:identificationInfo[parent::mdb:MD_Metadata]]">
-      	<sch:assert test="count(descendant::mri:pointOfContact[text()])>0" diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
-      	<sch:report test="count(descendant::mri:pointOfContact[text()])>0" diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
+      	<sch:assert test="count(mri:pointOfContact[descendant::text()])>0" diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
+      	<sch:report test="count(mri:pointOfContact[descendant::text()])>0" diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
 
       	<sch:assert test="mri:resourceMaintenance/mmi:MD_MaintenanceInformation" diagnostics="rule.ga.mri.maintenanceinformationpresent-failure-en"/> 
       	<sch:report test="mri:resourceMaintenance/mmi:MD_MaintenanceInformation" diagnostics="rule.ga.mri.maintenanceinformationpresent-failure-en"/> 
