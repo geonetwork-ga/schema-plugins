@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+V?xml version="1.0" encoding="UTF-8"?><sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
    <sch:title xmlns="http://www.w3.org/2001/XMLSchema" xml:lang="en">Schematron validation for Version 2.0 of Geoscience Australia profile of ISO 19115-1:2014 standard</sch:title>
    
    <sch:ns prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
@@ -51,7 +51,7 @@
       </sch:rule>
   </sch:pattern>
 
-	 <!-- mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode -->
+	 <!-- mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue -->
 
 	 <!-- mdb:parentMetadata/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString -->
 
@@ -72,7 +72,7 @@
     
       <sch:rule context="/mdb:MD_Metadata">
       
-         <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode"/>
+         <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue"/>
          <sch:let name="parentId" value="mdb:parentMetadata/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString"/>
          <sch:let name="hasParent" value="normalize-space($parentId) and $scopeCode = ('feature','featureType','attribute','attributeType')"/>
       
@@ -95,9 +95,9 @@
       <sch:title xml:lang="en">Dataset URI must be present if metadataScope is one of ('dataset','').</sch:title>
       
     
-      <sch:rule context="/mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode=('dataset', '')]">
+      <sch:rule context="/mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue=('dataset', '')]">
       
-         <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode"/>
+         <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue"/>
          <sch:let name="dataseturi" value="mdb:identificationInfo/*/mri:citation/*/cit:identifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='ga-dataSetURI']/mcc:code/gco:CharacterString"/>
          <sch:let name="hasDataseturi" value="normalize-space($dataseturi) and $scopeCode = ('dataset', '')"/>
       
@@ -146,10 +146,10 @@
       <sch:title xml:lang="en">Reference system information must be present and correctly filled out if metadataScope is one of ('dataset','').</sch:title>
       
     
-      <sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode=('dataset','')]">
-         <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode"/>
-         <sch:let name="hasReferenceSystemInfo" value="count(mdb:referenceSystemInfo)>0 and $scopeCode = ('dataset','')"/>
-      
+      <sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue=('dataset','')]">
+         <sch:let name="scopeCode" value="mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue"/>
+         <sch:let name="hasReferenceSystemInfo" value="count(mdb:referenceSystemInfo)>0 and $scopeCode = ('dataset', '')"/>
+
          <sch:assert test="$hasReferenceSystemInfo" diagnostics="rule.ga.mdb.referencesysteminfopresent-failure-en"/>
       
          <sch:report test="$hasReferenceSystemInfo" diagnostics="rule.ga.mdb.referencesysteminfopresent-success-en"/>
@@ -158,6 +158,7 @@
 	 <!-- ============================================================================================================ -->
 	 <!-- Assert that the Data Quality Information is present and has required mandatory descendent elements -->
 	 <!-- ============================================================================================================ -->
+	 <!-- Disabled by request of Irina and Martin - August 17, 2015
    <sch:diagnostics>
 	 		<sch:diagnostic id="rule.ga.mdq.dataqualityinfopresent-failure-en" xml:lang="en">Data Quality elements not present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mdq.dataqualityinfopresent-success-en" xml:lang="en">Data Quality elements are present.</sch:diagnostic>
@@ -167,7 +168,7 @@
    <sch:pattern id="rule.ga.mdq.dataqualityinfopresent">
 	 		<sch:title xml:lang="en">Data Quality Information must be present and correctly filled out if metadataScope is one of ('dataset','').</sch:title>
 
-	 		<sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode=('dataset','')]">
+	 		<sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue=('dataset','')]">
 				<sch:assert test="mdb:dataQualityInfo/mdq:DQ_DataQuality" diagnostics="rule.ga.mdq.dataqualityinfopresent-failure-en"/>
 				<sch:report test="mdb:dataQualityInfo/mdq:DQ_DataQuality" diagnostics="rule.ga.mdq.dataqualityinfopresent-success-en"/>
 			</sch:rule>
@@ -176,6 +177,7 @@
 				<sch:report test="mdq:scope/mdq:DQ_Scope" diagnostics="rule.ga.mdq.dataqualityinfoscopepresent-success-en"/>
 			</sch:rule>
   </sch:pattern>
+	-->
 	 <!-- ============================================================================================================ -->
 	 <!-- Assert that the Lineage Information is present and has required mandatory descendent elements -->
 	 <!-- ============================================================================================================ -->
