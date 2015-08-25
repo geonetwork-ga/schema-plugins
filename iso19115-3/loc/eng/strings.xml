@@ -46,6 +46,8 @@
 	<source>Source</source>
 	<resourceIdentification>Resource Identification</resourceIdentification>
 
+	<metadataScope>Type of Resource</metadataScope>
+
 	<resourceConstraints>Resource Constraints</resourceConstraints>
 
 	<resourceExtents>Resource Extents</resourceExtents>

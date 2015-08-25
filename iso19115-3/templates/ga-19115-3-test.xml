@@ -26,6 +26,7 @@
       </mcc:code>
     </mcc:MD_Identifier>
   </mdb:metadataIdentifier>
+	<mdb:contact xlink:href="local://subtemplate?uuid=urn:ga-contacts:11&amp;process=cit:role/cit:CI_RoleCode/@codeListValue~author"/>
   <mdb:dateInfo>
     <cit:CI_Date>
       <cit:date>
@@ -62,7 +63,7 @@
       <mri:citation>
         <cit:CI_Citation>
           <cit:title>
-            <gco:CharacterString>GA Draft Template for 19115-1:2014 and 19115-3 for testing (preferred!)</gco:CharacterString>
+            <gco:CharacterString>GA Draft Template for 19115-1:2014 and 19115-3</gco:CharacterString>
           </cit:title>
           <cit:date>
             <cit:CI_Date>
@@ -85,19 +86,16 @@
       <mri:status>
         <mcc:MD_ProgressCode codeList="codeListLocation#MD_ProgressCode" codeListValue=""/>
       </mri:status>
+			<mri:pointOfContact xlink:href="local://subtemplate?uuid=urn:ga-contacts:11&amp;process=cit:role/cit:CI_RoleCode/@codeListValue~pointOfContact"/>
       <mri:spatialRepresentationType>
         <mcc:MD_SpatialRepresentationTypeCode codeList="codeListLocation#MD_SpatialRepresentationTypeCode"
           codeListValue=""/>
       </mri:spatialRepresentationType>
       <mri:spatialResolution>
         <mri:MD_Resolution>
-          <mri:equivalentScale>
-            <mri:MD_RepresentativeFraction>
-              <mri:denominator>
-                <gco:Integer/>
-              </mri:denominator>
-            </mri:MD_RepresentativeFraction>
-          </mri:equivalentScale>
+          <mri:levelOfDetail>
+        		<gco:CharacterString/>
+          </mri:levelOfDetail>
         </mri:MD_Resolution>
       </mri:spatialResolution>
       <mri:topicCategory>

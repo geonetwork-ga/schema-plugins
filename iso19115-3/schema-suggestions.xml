@@ -123,6 +123,7 @@
   <field name="cit:CI_Contact">
     <suggest name="cit:phone"/>
     <suggest name="cit:address"/>
+    <suggest name="cit:contactInstructions"/>
   </field>
 	
 	<field name="cit:CI_Telephone">
