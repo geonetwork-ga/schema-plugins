@@ -323,19 +323,19 @@
   <!-- Assert that Resource Format has required mandatory descendent elements  -->
 	<!-- ============================================================================================================ -->
   <sch:diagnostics>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-failure-en" xml:lang="en">resourceFormat/ MD_Format/ name not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-success-en" xml:lang="en">resourceFormat/ MD_Format/ name is present.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-failure-en" xml:lang="en">resourceFormat/ MD_Format/ version not present or empty.</sch:diagnostic>
-	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-success-en" xml:lang="en">resourceFormat/ MD_Format/ version is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-failure-en" xml:lang="en">resourceFormat/ MD_Format/ formatSpecificationCitation/ */ title (format name) not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatnamepresent-success-en" xml:lang="en">resourceFormat/ MD_Format/ formatSpecificationCitation/ */ title (format name) is present.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-failure-en" xml:lang="en">resourceFormat/ MD_Format/ formatSpecificationCitation/ */ edition (format version) not present or empty.</sch:diagnostic>
+	 	<sch:diagnostic id="rule.ga.mrd.resourceformatversionpresent-success-en" xml:lang="en">resourceFormat/ MD_Format/ formatSpecificationCitation/ */ edition (format version) is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern rule="rule.ga.mrd.resourceformat">
     <sch:title>Resource Format has required/mandatory descendent elements.</sch:title>
     <sch:rule context="//mrd:MD_Format[parent::mri:resourceFormat]">
-      <sch:assert test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.resourceformatnamepresent-failure-en"/>
-      <sch:report test="normalize-space(mrd:name)" diagnostics="rule.ga.mrd.resourceformatnamepresent-success-en"/>
-      <sch:assert test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.resourceformatversionpresent-failure-en"/>
-      <sch:report test="normalize-space(mrd:version)" diagnostics="rule.ga.mrd.resourceformatversionpresent-success-en"/>
-    </sch:rule>
+			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString)" diagnostics="rule.ga.mrd.resourceformatnamepresent-failure-en"/>
+			<sch:report test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString)" diagnostics="rule.ga.mrd.resourceformatnamepresent-success-en"/>
+			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:edition/gco:CharacterString)" diagnostics="rule.ga.mrd.resourceformatversionpresent-failure-en"/>
+			<sch:report test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:edition/gco:CharacterString)" diagnostics="rule.ga.mrd.resourceformatversionpresent-success-en"/>
+		</sch:rule>
   </sch:pattern>	
 	<!-- ============================================================================================================ -->
   <!-- Assert that Maintenance Information has required mandatory descendent elements  -->
@@ -372,7 +372,7 @@
 			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatnamepresent-failure-en"/>
 			<sch:report test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatnamepresent-success-en"/>
 			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:edition/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatversionpresent-failure-en"/>
-			<sch:assert test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:edition/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatversionpresent-success-en"/>
+			<sch:report test="normalize-space(mrd:formatSpecificationCitation/cit:CI_Citation/cit:edition/gco:CharacterString)" diagnostics="rule.ga.mrd.distributionformatversionpresent-success-en"/>
 		</sch:rule>
 	</sch:pattern>
 </sch:schema>
