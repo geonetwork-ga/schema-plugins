@@ -117,7 +117,7 @@
       <directiveAttributes
 						  data-schema="iso19115-3"
               data-template-add-action="true"
-              data-template-type="contact"
+              data-template-type="author"
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
@@ -189,8 +189,29 @@
         <section name=" ">
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date"/>
-					<!-- Don't offer an identifier - this needs to be looked up/have another solution
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier" or="identifier" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/> -->
+
+					<!-- offer a cit:identifier for ga datasetURI if this record
+					     describes a dataset -->
+          <field name="gaDatasetURI" templateModeOnly="true" xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier[mcc:MD_Identifier/mcc:codeSpace/gco:CharacterString='ga-dataSetURI']" del="." if="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='' or @codeListValue='dataset']) > 0">
+            <template>
+              <values>
+                <key label="gaDatasetURI" xpath="mcc:MD_Identifier/mcc:code/gco:CharacterString" tooltip="gaDatasetURI" use="textarea"/>
+              </values>
+              <snippet>
+								<cit:identifier>
+        					<mcc:MD_Identifier>
+          					<mcc:code>
+            					<gco:CharacterString>{{gaDatasetURI}}</gco:CharacterString>
+          					</mcc:code>
+            				<mcc:codeSpace>
+              				<gco:CharacterString>ga-dataSetURI</gco:CharacterString>
+            				</mcc:codeSpace>
+        					</mcc:MD_Identifier>
+      					</cit:identifier>
+              </snippet>
+            </template>
+					</field>
+
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty" or="citedResponsibleParty" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
 				</section>
 			</tab>
@@ -333,13 +354,13 @@
       </flatModeExceptions>
     </view>
 
+		<!-- 
     <view name="simple">
       <tab id="default" default="true" mode="flat">
         <section name="resourceCitation">
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date"/>
-					<!-- Don't offer an identifier - this needs to be looked up/have another solution
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier" or="identifier" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/> -->
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier" or="identifier" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/> 
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty" or="citedResponsibleParty" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
 				</section>
         <section name="resourceIdentification">
@@ -438,7 +459,6 @@
         </section>
       </tab>
 
-      <!-- Elements that should not use the "flat" mode -->
       <flatModeExceptions>
         <for name="mri:descriptiveKeywords" />
         <for name="cit:party"/>
@@ -447,6 +467,8 @@
 				<for name="mrl:LI_Lineage"/>
       </flatModeExceptions>
     </view>
+
+		-->
 
     <view name="advanced">
       <tab id="identificationInfo" default="true">

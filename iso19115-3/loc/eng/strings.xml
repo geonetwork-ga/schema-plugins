@@ -89,4 +89,7 @@
 	<resourceType>Type</resourceType>
   <resourceLineageTab>Lineage</resourceLineageTab>
 
+	<!-- gaDatasetURI -->
+	<gaDatasetURI>GA Dataset URI</gaDatasetURI>
+
 </strings>
