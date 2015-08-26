@@ -35,6 +35,7 @@
     <for name="mri:supplementalInformation" use="textarea"/>
     <for name="mri:specificUsage" use="textarea"/>
     <for name="mco:useLimitation" use="textarea"/>
+    <for name="mri:levelOfDetail" use="textarea"/>
 
 
     <for name="gco:Distance" use="number"/>
@@ -129,8 +130,6 @@
 
 
   <fieldsWithFieldset>
-    <name>mdb:metadataScope</name>
-    <name>mdb:alternativeMetadataReference</name>
     <name>mdb:metadataLinkage</name>
     <name>mdb:identificationInfo</name>
     <name>mdb:distributionInfo</name>
@@ -186,6 +185,155 @@
   <!-- View configuration -->
   <views>
     <view name="default">
+      <tab id="resourceCitation" default="true" mode="flat">
+        <section name=" ">
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date"/>
+					<!-- Don't offer an identifier - this needs to be looked up/have another solution
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier" or="identifier" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/> -->
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty" or="citedResponsibleParty" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
+				</section>
+			</tab>
+
+      <tab id="resourceDescription" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:purpose"/>
+				</section>
+			</tab>
+
+      <tab id="resourceKeywords" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+				</section>
+			</tab>
+
+      <tab id="resourceMaintenance" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceMaintenance"/>
+				</section>
+			</tab>
+
+      <tab id="resourceResolution" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution"/>
+				</section>
+			</tab>
+
+      <tab id="constraints" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+          <field xpath="/mdb:MD_Metadata/mdb:metadataConstraints" or="metadataConstraints" in="/mdb:MD_Metadata"/>
+				</section>
+
+			</tab>
+
+      <tab id="contacts" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+          <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
+				</section>
+			</tab>
+
+      <tab id="resourceExtents" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent"/>
+				</section>
+			</tab>
+
+      <tab id="resourceType" mode="flat">
+        <section name=" ">
+					<field xpath="/mdb:MD_Metadata/mdb:metadataScope" in="/mdb:MD_Metadata"/>
+					<action type="add" name="metadataScope" or="metadataScope" in="/mdb:MD_Metadata">
+						<template>
+							<snippet>
+							<mdb:metadataScope>
+								<mdb:MD_MetadataScope>
+									<mdb:resourceScope>
+                    <mcc:MD_ScopeCode codeList="codeListLocation#MD_ScopeCode" codeListValue="dataset"/>
+               		</mdb:resourceScope>
+									<mdb:name>
+                  	<gco:CharacterString></gco:CharacterString>
+               		</mdb:name>
+								</mdb:MD_MetadataScope>
+							</mdb:metadataScope>
+							</snippet>
+						</template>
+					</action>
+				</section>
+			</tab>
+
+      <tab id="resourceLineageTab" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement"/>
+          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:scope"/>
+          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source"/>
+					<action type="add" name="source" or="source" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage">
+						<template>
+							<snippet>
+							<mrl:source>
+								<mrl:LI_Source>
+									<mrl:description>
+                  	<gco:CharacterString></gco:CharacterString>
+               		</mrl:description>
+               		<mrl:sourceSpatialResolution>
+                  	<mri:MD_Resolution>
+											<mri:equivalentScale>
+                  			<mri:MD_RepresentativeFraction>
+                     			<mri:denominator>
+                        			<gco:Integer/>
+                     			</mri:denominator>
+                  			</mri:MD_RepresentativeFraction>
+               				</mri:equivalentScale>	
+										</mri:MD_Resolution>
+               		</mrl:sourceSpatialResolution>
+               		<mrl:scope>
+                  	<mcc:MD_Scope>
+                    	<mcc:level>
+                     		<mcc:MD_ScopeCode codeList="codeListLocation#MD_ScopeCode" codeListValue="dataset"/>
+                     	</mcc:level>
+											<mcc:extent>
+												<gex:EX_Extent>
+													<gex:geographicElement>
+														<gex:EX_GeographicBoundingBox>
+                     					<gex:westBoundLongitude>
+                        					<gco:Decimal>-180</gco:Decimal>
+                     					</gex:westBoundLongitude>
+                     					<gex:eastBoundLongitude>
+                        					<gco:Decimal>180</gco:Decimal>
+                     					</gex:eastBoundLongitude>
+                     					<gex:southBoundLatitude>
+                        					<gco:Decimal>-90</gco:Decimal>
+                     					</gex:southBoundLatitude>
+                     					<gex:northBoundLatitude>
+                        					<gco:Decimal>90</gco:Decimal>
+                     					</gex:northBoundLatitude>
+                  					</gex:EX_GeographicBoundingBox>	
+													</gex:geographicElement>
+												</gex:EX_Extent>
+											</mcc:extent>
+                  	</mcc:MD_Scope>
+               		</mrl:scope>
+								</mrl:LI_Source>
+							</mrl:source>
+							</snippet>
+						</template>
+					</action>
+				</section>
+			</tab>
+
+      <!-- Elements that should not use the "flat" mode -->
+      <flatModeExceptions>
+        <for name="mri:descriptiveKeywords" />
+        <for name="cit:party"/>
+				<for name="cit:CI_Individual"/>
+				<for name="cit:CI_Organisation"/>
+				<for name="mrl:LI_Lineage"/>
+      </flatModeExceptions>
+    </view>
+
+    <view name="simple">
       <tab id="default" default="true" mode="flat">
         <section name="resourceCitation">
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
@@ -299,6 +447,7 @@
 				<for name="mrl:LI_Lineage"/>
       </flatModeExceptions>
     </view>
+
     <view name="advanced">
       <tab id="identificationInfo" default="true">
         <section xpath="/mdb:MD_Metadata/mdb:identificationInfo" or="identificationInfo"

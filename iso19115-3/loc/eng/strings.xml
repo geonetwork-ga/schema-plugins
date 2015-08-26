@@ -10,13 +10,12 @@
   <constraintInfo>Access constraint information</constraintInfo>
   <xml_iso19139>Save this metadata as an ISO19139 XML file</xml_iso19139>
   <xml_iso19139Tooai_dc>Save this metadata as an OAI Dublin Core XML file</xml_iso19139Tooai_dc>
-  <resourceLineageTab>Lineage</resourceLineageTab>
 
   <!-- New strings added for the AngularJS editor -->
   <!-- View and tabs -->
-  <advanced>Full</advanced>
-  <default>Simple</default>
-  <simple>Simple</simple>
+  <advanced>Full Standard</advanced>
+  <default>Tabs</default>
+  <simple>Simple Standard</simple>
   <inspire>INSPIRE</inspire>
   <resource>Resource</resource>
   <xml>XML</xml>
@@ -29,7 +28,6 @@
   <referenceSystemInfo>Ref. system</referenceSystemInfo>
   <contentInfo>Content</contentInfo>
   <portrayalCatalogueInfo>Portrayal</portrayalCatalogueInfo>
-  <metadataConstraints>Md. constraints</metadataConstraints>
   <metadataMaintenance>Md. maintenance</metadataMaintenance>
   <applicationSchemaInfo>Schema info</applicationSchemaInfo>
   <acquisitionInformation>Acquisition info</acquisitionInformation>
@@ -42,15 +40,11 @@
 	<pointOfContact>Resource Contact</pointOfContact>
 	<contact>Metadata Contact</contact>
 
-	<resourceCitation>Resource Citation</resourceCitation>
 	<source>Source</source>
 	<resourceIdentification>Resource Identification</resourceIdentification>
 
 	<metadataScope>Type of Resource</metadataScope>
 
-	<resourceConstraints>Resource Constraints</resourceConstraints>
-
-	<resourceExtents>Resource Extents</resourceExtents>
 
 	<resourceQuality>Resource Quality</resourceQuality>
 	<conceptualConsistency>Logical Consistency</conceptualConsistency>
@@ -78,5 +72,21 @@
   <enum1>Value </enum1>
   <enum2> is not valid for the field </enum2>
   <enum3>List of values is :</enum3>
+
+	<!-- new tabs in default mode -->
+	<resourceCitation>Citation</resourceCitation>
+	<resourceDescription>Description</resourceDescription>
+	<resourceKeywords>Keywords</resourceKeywords>
+	<resourceMaintenance>Maintenance</resourceMaintenance>
+	<constraints>Constraints</constraints>
+	<resourceConstraints>Resource Constraints</resourceConstraints>
+	<metadataConstraints>Metadata Constraints</metadataConstraints>
+	<contacts>Contacts</contacts>
+	<resourceContact>Resource Contacts</resourceContact>
+	<metadataContact>Metadata Contacts</metadataContact>
+	<resourceResolution>Resolution</resourceResolution>
+	<resourceExtents>Extents</resourceExtents>
+	<resourceType>Type</resourceType>
+  <resourceLineageTab>Lineage</resourceLineageTab>
 
 </strings>
