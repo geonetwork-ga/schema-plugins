@@ -84,7 +84,7 @@
 	<contacts>Contacts</contacts>
 	<resourceContact>Resource Contacts</resourceContact>
 	<metadataContact>Metadata Contacts</metadataContact>
-	<resourceResolution>Resolution</resourceResolution>
+	<resourceSpatial>Spatial</resourceSpatial>
 	<resourceExtents>Extents</resourceExtents>
 	<resourceType>Type</resourceType>
   <resourceLineageTab>Lineage</resourceLineageTab>

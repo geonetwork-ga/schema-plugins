@@ -255,15 +255,18 @@
 				</section>
 			</tab>
 
-      <tab id="resourceResolution" mode="flat">
+      <tab id="resourceSpatial" mode="flat">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialRepresentationType"/>
 				</section>
 			</tab>
 
       <tab id="constraints" mode="flat">
-        <section name=" ">
+        <section name="resourceConstraints">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+				</section>
+        <section name="metadataConstraints">
           <field xpath="/mdb:MD_Metadata/mdb:metadataConstraints" or="metadataConstraints" in="/mdb:MD_Metadata"/>
 				</section>
 
