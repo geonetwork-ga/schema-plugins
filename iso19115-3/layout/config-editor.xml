@@ -259,6 +259,7 @@
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialRepresentationType"/>
+        	<field xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo" or="referenceSystemInfo" in="/mdb:MD_Metadata"/>
 				</section>
 			</tab>
 

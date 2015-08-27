@@ -2739,7 +2739,7 @@
     <description>Angular sampling measure</description>
   </element>
   <element name="mri:levelOfDetail">
-    <label>Level of detail</label>
+    <label>Spatial resolution description</label>
     <description>Brief textual description of the spatial resolution of the resource</description>
   </element>
   <element name="mri:MD_Resolution_Type">
