@@ -88,6 +88,9 @@
 	<resourceExtents>Extents</resourceExtents>
 	<resourceType>Type</resourceType>
   <resourceLineageTab>Lineage</resourceLineageTab>
+  <distribution>Distribution</distribution>
+
+  <useAssociatedResources><span>Add an online resource using the "<i class="fa fa-link"></i><i class="icon-external-link"></i>Associated resources" panel</span></useAssociatedResources>
 
 	<!-- gaDatasetURI -->
 	<gaDatasetURI>GA Dataset URI</gaDatasetURI>
