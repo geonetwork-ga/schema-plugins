@@ -68,12 +68,12 @@
 									</cit:title>
 								</cit:CI_Citation>
 							</mcc:authority>
-         			<mcc:codeSpace>
-           			<gco:CharacterString>http://www.ga.gov.au</gco:CharacterString>
-         			</mcc:codeSpace>
          			<mcc:code>
            			<gco:CharacterString><xsl:value-of select="/root/env/gaid"/></gco:CharacterString>
          			</mcc:code>
+         			<mcc:codeSpace>
+           			<gco:CharacterString>http://www.ga.gov.au</gco:CharacterString>
+         			</mcc:codeSpace>
        			</mcc:MD_Identifier>
       		</mdb:metadataIdentifier>
 				</xsl:when>
