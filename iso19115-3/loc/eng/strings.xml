@@ -86,6 +86,10 @@
 	<metadataContact>Metadata Contacts</metadataContact>
 	<resourceSpatial>Spatial</resourceSpatial>
 	<resourceExtents>Extents</resourceExtents>
+	<resourceFormat>Format</resourceFormat>
+	<resourceFormatNoTitle></resourceFormatNoTitle>
+	<distribution_name>Name</distribution_name>
+	<distribution_version>Version</distribution_version>
 	<resourceType>Type</resourceType>
   <resourceLineageTab>Lineage</resourceLineageTab>
   <distribution>Distribution</distribution>
