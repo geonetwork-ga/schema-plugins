@@ -263,6 +263,7 @@
 				</section>
 			</tab>
 
+			<!-- constraints are not required for now....
       <tab id="constraints" mode="flat">
         <section name="resourceConstraints">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
@@ -272,6 +273,7 @@
 				</section>
 
 			</tab>
+			-->
 
       <tab id="contacts" mode="flat">
         <section name=" ">
