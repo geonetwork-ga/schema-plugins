@@ -629,7 +629,7 @@
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
     <!-- ga identifier -->
-		<xsl:for-each select="mdb:metadataIdentifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='http://www.ga.gov.au']">
+		<xsl:for-each select="mdb:alternativeMetadataReference/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='http://www.ga.gov.au']">
 			<Field name="gaId" string="{string(mcc:code/gco:CharacterString)}" store="false" index="true"/>
 		</xsl:for-each>
 

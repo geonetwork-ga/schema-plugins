@@ -57,14 +57,7 @@
         <gco:CharacterString>ISO 19115-3 (Draft Schemas 2015)</gco:CharacterString>
       </cit:title>
   		<cit:editionDate>
-    		<cit:CI_Date>
-      		<cit:date>
-        		<gco:DateTime>2015-07-01T00:00:00</gco:DateTime>
-      		</cit:date>
-      		<cit:dateType>
-        		<cit:CI_DateTypeCode codeList="codeListLocation#CI_DateTypeCode" codeListValue="creation">creation</cit:CI_DateTypeCode>
-      		</cit:dateType>
-    		</cit:CI_Date>
+       	<gco:DateTime>2015-07-01T00:00:00</gco:DateTime>
   		</cit:editionDate>
     </cit:CI_Citation>
   </mdb:metadataStandard>
@@ -165,6 +158,9 @@
                      <cit:alternateTitle>
                         <gco:CharacterString>CC-BY</gco:CharacterString>
                      </cit:alternateTitle>
+                     <cit:edition>
+                        <gco:CharacterString>4.0</gco:CharacterString>
+                     </cit:edition>
                      <cit:onlineResource>
                         <cit:CI_OnlineResource>
                            <cit:linkage>
@@ -172,9 +168,6 @@
                            </cit:linkage>
                         </cit:CI_OnlineResource>
                      </cit:onlineResource>
-                     <cit:edition>
-                        <gco:CharacterString>4.0</gco:CharacterString>
-                     </cit:edition>
                   </cit:CI_Citation>
                </mco:reference>
                <mco:accessConstraints>
