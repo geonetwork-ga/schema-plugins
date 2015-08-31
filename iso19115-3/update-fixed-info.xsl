@@ -37,12 +37,16 @@
       
       <xsl:call-template name="add-iso19115-3-namespaces"/>
       
-      <!-- Add metadataIdentifier if it doesn't exist -->
+      <!-- Add metadataIdentifier with uuid in geonetwork -->
       <mdb:metadataIdentifier>
         <mcc:MD_Identifier>
-          <!-- authority could be for this GeoNetwork node ?
-            <mcc:authority><cit:CI_Citation>etc</cit:CI_Citation></mcc:authority>
-          -->
+         	<mcc:authority>
+						<cit:CI_Citation>
+							<cit:title>
+           			<gco:CharacterString>GeoNetwork UUID</gco:CharacterString>
+							</cit:title>
+						</cit:CI_Citation>
+					</mcc:authority>
           <mcc:code>
             <gco:CharacterString><xsl:value-of select="/root/env/uuid"/></gco:CharacterString>
           </mcc:code>
@@ -51,6 +55,35 @@
           </mcc:codeSpace>
         </mcc:MD_Identifier>
       </mdb:metadataIdentifier>
+
+      <!-- Add gaid if specified, otherwise copy it -->
+			<xsl:choose>
+				<xsl:when test="/root/env/gaid">
+      		<mdb:metadataIdentifier>
+       			<mcc:MD_Identifier>
+         			<mcc:authority>
+								<cit:CI_Citation>
+									<cit:title>
+           					<gco:CharacterString>Geoscience Australia - alternative metadata identifier</gco:CharacterString>
+									</cit:title>
+								</cit:CI_Citation>
+							</mcc:authority>
+         			<mcc:codeSpace>
+           			<gco:CharacterString>http://www.ga.gov.au</gco:CharacterString>
+         			</mcc:codeSpace>
+         			<mcc:code>
+           			<gco:CharacterString><xsl:value-of select="/root/env/gaid"/></gco:CharacterString>
+         			</mcc:code>
+       			</mcc:MD_Identifier>
+      		</mdb:metadataIdentifier>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:copy-of select="mdb:metadataIdentifier[mcc:MD_Identifier/mcc:codeSpace/gco:CharacterString='http://www.ga.gov.au']"/>
+				</xsl:otherwise>
+			</xsl:choose>
+
+			<!-- copy all identifiers except urn:uuid and http://www.ga.gov.au -->
+			<xsl:copy-of select="mdb:metadataIdentifier[mcc:MD_Identifier/mcc:codeSpace/gco:CharacterString!='http://www.ga.gov.au' and mcc:MD_Identifier/mcc:codeSpace/gco:CharacterString!='urn:uuid']"/>
       
       <xsl:apply-templates select="mdb:defaultLocale"/>
       <xsl:apply-templates select="mdb:parentMetadata"/>
