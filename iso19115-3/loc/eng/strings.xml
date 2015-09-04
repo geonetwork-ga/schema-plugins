@@ -99,4 +99,16 @@
 	<!-- gaDatasetURI -->
 	<gaDatasetURI>GA Dataset URI</gaDatasetURI>
 
+	<!-- Service stuff -->
+	<serviceDescription>Description</serviceDescription>
+	<serviceParameter>Parameter</serviceParameter>
+	<containsOperations>Operations</containsOperations>
+	<operatesOn>Operates On</operatesOn>
+	<parameter-name>Name</parameter-name>
+	<parameter-direction>Direction</parameter-direction>
+	<parameter-description>Description</parameter-description>
+	<optionality>Optional?</optionality>
+	<repeatability>Repeatable?</repeatability>
+
+  <useAssociatedResourcesForOperatesOn><span>Select metadata records describing datasets that the service operates on using the "<i class="fa fa-link"></i><i class="icon-external-link"></i>Associated resources" panel at the right hand side of the form</span></useAssociatedResourcesForOperatesOn>
 </strings>

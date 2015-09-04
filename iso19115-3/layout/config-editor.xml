@@ -162,6 +162,7 @@
     <name>mdb:metadataProfile</name>
     <name>mri:associatedResource</name>
 		<name>mrl:source</name>
+		<name>srv:parameter</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -184,8 +185,7 @@
 
   <!-- View configuration -->
   <views>
-    <view name="default">
-
+    <view name="default" displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='service']) = 0">
       <tab id="resourceDescription" default="true" mode="flat">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
@@ -405,6 +405,7 @@
                		</mrl:description>
                		<mrl:sourceSpatialResolution>
                   	<mri:MD_Resolution>
+										<!-- TODO: Fix this should be used mri:levelOfDetail -->
 											<mri:equivalentScale>
                   			<mri:MD_RepresentativeFraction>
                      			<mri:denominator>
@@ -468,111 +469,156 @@
       </flatModeExceptions>
     </view>
 
-		<!-- 
-    <view name="simple">
-      <tab id="default" default="true" mode="flat">
-        <section name="resourceCitation">
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date"/>
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier" or="identifier" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/> 
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty" or="citedResponsibleParty" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
-				</section>
-        <section name="resourceIdentification">
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:purpose"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceMaintenance"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints" or="resourceConstraints" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent"/>
-				</section>
-
-        <section name="mdb:resourceLineage">
-          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement"/>
-          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:scope"/>
-          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source"/>
-					<action type="add" name="source" or="source" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage">
+    <view name="services" displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='service']) > 0">
+      <tab id="resourceDescription" default="true" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:abstract"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType" or="serviceType" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification" del=".">
 						<template>
+							<values>
+                <key label="service-type" xpath="gco:ScopedName" tooltip="service-type"/>
+							</values>
 							<snippet>
-							<mrl:source>
-								<mrl:LI_Source>
-									<mrl:description>
-                  	<gco:CharacterString></gco:CharacterString>
-               		</mrl:description>
-               		<mrl:sourceSpatialResolution>
-                  	<mri:MD_Resolution>
-											<mri:equivalentScale>
-                  			<mri:MD_RepresentativeFraction>
-                     			<mri:denominator>
-                        			<gco:Integer/>
-                     			</mri:denominator>
-                  			</mri:MD_RepresentativeFraction>
-               				</mri:equivalentScale>	
-										</mri:MD_Resolution>
-               		</mrl:sourceSpatialResolution>
-               		<mrl:scope>
-                  	<mcc:MD_Scope>
-                    	<mcc:level>
-                     		<mcc:MD_ScopeCode codeList="codeListLocation#MD_ScopeCode" codeListValue="dataset"/>
-                     	</mcc:level>
-											<mcc:extent>
-												<gex:EX_Extent>
-													<gex:geographicElement>
-														<gex:EX_GeographicBoundingBox>
-                     					<gex:westBoundLongitude>
-                        					<gco:Decimal>-180</gco:Decimal>
-                     					</gex:westBoundLongitude>
-                     					<gex:eastBoundLongitude>
-                        					<gco:Decimal>180</gco:Decimal>
-                     					</gex:eastBoundLongitude>
-                     					<gex:southBoundLatitude>
-                        					<gco:Decimal>-90</gco:Decimal>
-                     					</gex:southBoundLatitude>
-                     					<gex:northBoundLatitude>
-                        					<gco:Decimal>90</gco:Decimal>
-                     					</gex:northBoundLatitude>
-                  					</gex:EX_GeographicBoundingBox>	
-													</gex:geographicElement>
-												</gex:EX_Extent>
-											</mcc:extent>
-                  	</mcc:MD_Scope>
-               		</mrl:scope>
-								</mrl:LI_Source>
-							</mrl:source>
+              	<srv:serviceType>
+                	<gco:ScopedName>{{service-type}}</gco:ScopedName>
+								</srv:serviceType>
 							</snippet>
 						</template>
-					</action>
+					</field>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceTypeVersion" or="serviceTypeVersion" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:couplingType"/>
 				</section>
+			</tab>
 
-        <section xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>
+      <tab id="resourceCitation" mode="flat">
+        <section name=" ">
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:title"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:date"/>
+				</section>
+			</tab>
 
-        <section name="mdb:MD_Metadata">
+      <tab id="resourceKeywords" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
+				</section>
+			</tab>
+
+      <tab id="resourceMaintenance" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:resourceMaintenance"/>
+				</section>
+			</tab>
+
+      <tab id="contacts" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentifcation/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
           <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
-          <field xpath="/mdb:MD_Metadata/mdb:metadataConstraints" or="metadataConstraints" in="/mdb:MD_Metadata"/>
-					<field xpath="/mdb:MD_Metadata/mdb:metadataScope" in="/mdb:MD_Metadata"/>
-					<action type="add" name="metadataScope" or="metadataScope" in="/mdb:MD_Metadata">
+				</section>
+			</tab>
+
+      <tab id="resourceExtents" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:extent"/>
+				</section>
+			</tab>
+
+      <tab id="containsOperations" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:operationName"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:distributedComputingPlatform"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:connectPoint"/>
+          <field name="serviceParameter" templateModeOnly="true" xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:parameter[srv:SV_Parameter]" or="parameter" del=".">
+						<template>
+							<values>
+                <key label="parameter-name" xpath="srv:SV_Parameter/srv:name/gco:MemberName/gco:aName/gco:CharacterString" tooltip="parameter-name"/>
+                <key label="parameter-direction" xpath="srv:SV_Parameter/srv:direction/srv:SV_ParameterDirection" tooltip="parameter-description">
+                  <helper name="parameter-direction" context="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:parameter/srv:SV_Parameter/srv:direction"></helper>
+                </key>
+                <key label="optionality" use="checkbox" xpath="srv:SV_Parameter/srv:optionality/gco:Boolean"/>
+                <key label="parameter-description" xpath="srv:SV_Parameter/srv:description/gco:CharacterString" tooltip="parameter-description"/>
+                <key label="repeatability" use="checkbox" xpath="srv:SV_Parameter/srv:repeatability/gco:Boolean"/>
+              </values>
+							<snippet>
+								<srv:parameter>
+            			<srv:SV_Parameter>
+              			<srv:name>
+                			<gco:MemberName>
+                  			<gco:aName>
+                    			<gco:CharacterString>{{parameter-name}}</gco:CharacterString>
+                  			</gco:aName>
+                  			<gco:attributeType>
+                    			<gco:TypeName>
+                      			<gco:aName>
+                        			<gco:CharacterString>TEXT</gco:CharacterString>
+                      			</gco:aName>
+                    			</gco:TypeName>
+                  			</gco:attributeType>
+                			</gco:MemberName>
+              			</srv:name>
+              			<srv:direction>
+                			<srv:SV_ParameterDirection>{{parameter-direction}}</srv:SV_ParameterDirection>
+              			</srv:direction>
+              			<srv:description>
+                			<gco:CharacterString>{{parameter-description}}</gco:CharacterString>
+              			</srv:description>
+              			<srv:optionality>
+                			<gco:Boolean>{{optionality}}</gco:Boolean>
+              			</srv:optionality>
+              			<srv:repeatability>
+                			<gco:Boolean>{{repeatability}}</gco:Boolean>
+              			</srv:repeatability>
+            			</srv:SV_Parameter>
+          			</srv:parameter>	
+							</snippet>
+						</template>
+					</field>
+
+					<action type="add" name="serviceParameter" or="parameter" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata">
 						<template>
 							<snippet>
-							<mdb:metadataScope>
-								<mdb:MD_MetadataScope>
-									<mdb:resourceScope>
-                    <mcc:MD_ScopeCode codeList="codeListLocation#MD_ScopeCode" codeListValue="dataset"/>
-               		</mdb:resourceScope>
-									<mdb:name>
-                  	<gco:CharacterString></gco:CharacterString>
-               		</mdb:name>
-								</mdb:MD_MetadataScope>
-							</mdb:metadataScope>
+								<srv:parameter>
+            			<srv:SV_Parameter>
+              			<srv:name>
+                			<gco:MemberName>
+                  			<gco:aName>
+                    			<gco:CharacterString></gco:CharacterString>
+                  			</gco:aName>
+                  			<gco:attributeType>
+                    			<gco:TypeName>
+                      			<gco:aName>
+                        			<gco:CharacterString>TEXT</gco:CharacterString>
+                      			</gco:aName>
+                    			</gco:TypeName>
+                  			</gco:attributeType>
+                			</gco:MemberName>
+              			</srv:name>
+              			<srv:direction>
+                			<srv:SV_ParameterDirection></srv:SV_ParameterDirection>
+              			</srv:direction>
+              			<srv:description>
+                			<gco:CharacterString></gco:CharacterString>
+              			</srv:description>
+              			<srv:optionality>
+                			<gco:Boolean></gco:Boolean>
+              			</srv:optionality>
+              			<srv:repeatability>
+                			<gco:Boolean></gco:Boolean>
+              			</srv:repeatability>
+            			</srv:SV_Parameter>
+          			</srv:parameter>	
 							</snippet>
 						</template>
 					</action>
+				</section>
+			</tab>
 
-          <field xpath="/mdb:MD_Metadata/mdb:alternativeMetadataReference" or="alternativeMetadataReference" in="/mdb:MD_Metadata"/>
-        </section>
-      </tab>
+      <tab id="operatesOn" mode="flat">
+        <section name=" ">
+					<text ref="useAssociatedResourcesForOperatesOn"/>
+				</section>
+			</tab>
 
+      <!-- Elements that should not use the "flat" mode -->
       <flatModeExceptions>
         <for name="mri:descriptiveKeywords" />
         <for name="cit:party"/>
@@ -582,9 +628,7 @@
       </flatModeExceptions>
     </view>
 
-		-->
-
-    <view name="advanced">
+    <view name="advanced" displayIfServiceInfo="count(session[profile='Administrator'])=1">
       <tab id="identificationInfo" default="true">
         <section xpath="/mdb:MD_Metadata/mdb:identificationInfo" or="identificationInfo"
                  in="/mdb:MD_Metadata"/>
@@ -654,7 +698,8 @@
       </tab>
       <!-- mdb:metadataExtensionInfo-->
     </view>
-    <view name="xml">
+
+    <view name="xml" displayIfServiceInfo="count(session[profile='Administrator'])=1">
       <tab id="xml" default="true"/>
     </view>
   </views>

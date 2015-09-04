@@ -3370,8 +3370,8 @@
 		<label>Operation</label>
 		<description>Operation Metadata</description>
 	</element>
-	<element name="srv:DCP">
-		<label>Distributed Computing Platforms</label>
+	<element name="srv:distributedComputingPlatform">
+		<label>Computing Platform</label>
 		<description>Distributed computing platforms on which the operation has been
             implemented</description>
 	</element>
@@ -3388,6 +3388,10 @@
 	<element name="srv:parameters">
 		<label>Parameters</label>
 		<description>The parameters that are required for this interface</description>
+	</element>
+	<element name="srv:parameter">
+		<label>Parameter</label>
+		<description>Parameter required for this interface</description>
 	</element>
 	<element name="srv:SV_Parameter">
 		<label>Parameter</label>
