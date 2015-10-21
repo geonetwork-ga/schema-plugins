@@ -135,6 +135,8 @@
 	 <!-- ============================================================================================================ -->
 	 <!-- Assert that the Reference System Information is conditionally present -->
 	 <!-- ============================================================================================================ -->
+	 <!-- Actually, no - doesn't seem like we want this rule after all....... Disabled by request of
+	      Martin - October 21, 2015
    <sch:diagnostics>
       <sch:diagnostic id="rule.ga.mdb.referencesysteminfopresent-failure-en" xml:lang="en">The reference system information (mdb:referenceSystemInfo) is not present if metadataScope is one of ('dataset','').</sch:diagnostic>
       
@@ -155,6 +157,7 @@
          <sch:report test="$hasReferenceSystemInfo" diagnostics="rule.ga.mdb.referencesysteminfopresent-success-en"/>
       </sch:rule>
   </sch:pattern>
+	-->
 	 <!-- ============================================================================================================ -->
 	 <!-- Assert that the Data Quality Information is present and has required mandatory descendent elements -->
 	 <!-- ============================================================================================================ -->
