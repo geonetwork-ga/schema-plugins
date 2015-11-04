@@ -511,7 +511,7 @@
 
       <tab id="contacts" mode="flat">
         <section name=" ">
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentifcation/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
           <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
 				</section>
 			</tab>

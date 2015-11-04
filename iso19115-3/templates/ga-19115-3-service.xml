@@ -131,25 +131,14 @@
                   <mco:MD_RestrictionCode codeList="codeListLocation#MD_RestrictionCode" codeListValue="license"/>
                </mco:useConstraints>
             </mco:MD_LegalConstraints>
-         </mri:resourceConstraints>
-         <mri:resourceConstraints>
+      </mri:resourceConstraints>
+      <mri:resourceConstraints>
             <mco:MD_SecurityConstraints>
                <mco:classification>
                   <mco:MD_ClassificationCode codeList="codeListLocation#MD_ClassificationCode" codeListValue="unclassified"/>
                </mco:classification>
             </mco:MD_SecurityConstraints>
-         </mri:resourceConstraints>
-				<mri:defaultLocale>
-        <lan:PT_Locale>
-          <lan:language>
-            <lan:LanguageCode codeList="codeListLocation#LanguageCode" codeListValue="eng"/>
-          </lan:language>
-          <lan:characterEncoding>
-            <lan:MD_CharacterSetCode codeList="codeListLocation#MD_CharacterSetCode"
-              codeListValue="utf8"/>
-          </lan:characterEncoding>
-        </lan:PT_Locale>
-      </mri:defaultLocale>
+      </mri:resourceConstraints>
       <srv:serviceType>
         <gco:ScopedName></gco:ScopedName>
       </srv:serviceType>
