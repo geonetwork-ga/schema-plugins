@@ -15,6 +15,7 @@
   <!-- View and tabs -->
   <advanced>Full Standard</advanced>
   <default>Tabs</default>
+  <services>Services Tabs</services>
   <simple>Simple Standard</simple>
   <inspire>INSPIRE</inspire>
   <resource>Resource</resource>
