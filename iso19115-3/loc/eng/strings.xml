@@ -103,6 +103,7 @@
 	<serviceDescription>Description</serviceDescription>
 	<serviceParameter>Parameter</serviceParameter>
 	<containsOperations>Operations</containsOperations>
+	<operation>Operation</operation>
 	<operatesOn>Operates On</operatesOn>
 	<parameter-name>Name</parameter-name>
 	<parameter-direction>Direction</parameter-direction>

@@ -523,60 +523,30 @@
 			</tab>
 
       <tab id="containsOperations" mode="flat">
-        <section name=" ">
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:operationName"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:distributedComputingPlatform"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:connectPoint"/>
-          <field name="serviceParameter" templateModeOnly="true" xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:parameter[srv:SV_Parameter]" or="parameter" del=".">
-						<template>
-							<values>
-                <key label="parameter-name" xpath="srv:SV_Parameter/srv:name/gco:MemberName/gco:aName/gco:CharacterString" tooltip="parameter-name"/>
-                <key label="parameter-direction" xpath="srv:SV_Parameter/srv:direction/srv:SV_ParameterDirection" tooltip="parameter-description">
-                  <helper name="parameter-direction" context="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata/srv:parameter/srv:SV_Parameter/srv:direction"></helper>
-                </key>
-                <key label="optionality" use="checkbox" xpath="srv:SV_Parameter/srv:optionality/gco:Boolean"/>
-                <key label="parameter-description" xpath="srv:SV_Parameter/srv:description/gco:CharacterString" tooltip="parameter-description"/>
-                <key label="repeatability" use="checkbox" xpath="srv:SV_Parameter/srv:repeatability/gco:Boolean"/>
-              </values>
-							<snippet>
-								<srv:parameter>
-            			<srv:SV_Parameter>
-              			<srv:name>
-                			<gco:MemberName>
-                  			<gco:aName>
-                    			<gco:CharacterString>{{parameter-name}}</gco:CharacterString>
-                  			</gco:aName>
-                  			<gco:attributeType>
-                    			<gco:TypeName>
-                      			<gco:aName>
-                        			<gco:CharacterString>TEXT</gco:CharacterString>
-                      			</gco:aName>
-                    			</gco:TypeName>
-                  			</gco:attributeType>
-                			</gco:MemberName>
-              			</srv:name>
-              			<srv:direction>
-                			<srv:SV_ParameterDirection>{{parameter-direction}}</srv:SV_ParameterDirection>
-              			</srv:direction>
-              			<srv:description>
-                			<gco:CharacterString>{{parameter-description}}</gco:CharacterString>
-              			</srv:description>
-              			<srv:optionality>
-                			<gco:Boolean>{{optionality}}</gco:Boolean>
-              			</srv:optionality>
-              			<srv:repeatability>
-                			<gco:Boolean>{{repeatability}}</gco:Boolean>
-              			</srv:repeatability>
-            			</srv:SV_Parameter>
-          			</srv:parameter>	
-							</snippet>
-						</template>
-					</field>
-
-					<action type="add" name="serviceParameter" or="parameter" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations/srv:SV_OperationMetadata">
+				<section name=" ">
+        	<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
+					<action type="add" name="operation" or="containsOperations" if="true()" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification">
 						<template>
 							<snippet>
-								<srv:parameter>
+							<srv:containsOperations>
+								<srv:SV_OperationMetadata>
+               		<srv:operationName>
+                  	<gco:CharacterString/>
+               		</srv:operationName>
+               		<srv:distributedComputingPlatform>
+                  		<srv:DCPList codeList="codeListLocation#DCPList" codeListValue="WebServices"/>
+               		</srv:distributedComputingPlatform>
+               		<srv:connectPoint>
+                  		<cit:CI_OnlineResource>
+                     		<cit:linkage>
+                        		<gco:CharacterString/>
+                     		</cit:linkage>
+                     		<cit:protocol>
+                        		<gco:CharacterString/>
+                     		</cit:protocol>
+                  		</cit:CI_OnlineResource>
+               		</srv:connectPoint>
+               		<srv:parameter>
             			<srv:SV_Parameter>
               			<srv:name>
                 			<gco:MemberName>
@@ -605,7 +575,9 @@
                 			<gco:Boolean></gco:Boolean>
               			</srv:repeatability>
             			</srv:SV_Parameter>
-          			</srv:parameter>	
+               		</srv:parameter>
+            		</srv:SV_OperationMetadata>	
+							</srv:containsOperations>
 							</snippet>
 						</template>
 					</action>
@@ -625,6 +597,8 @@
 				<for name="cit:CI_Individual"/>
 				<for name="cit:CI_Organisation"/>
 				<for name="mrl:LI_Lineage"/>
+				<for name="srv:containsOperations"/>
+				<for name="srv:parameter"/>
       </flatModeExceptions>
     </view>
 

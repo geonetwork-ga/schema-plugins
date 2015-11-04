@@ -166,10 +166,36 @@
               </cit:protocol>
             </cit:CI_OnlineResource>
           </srv:connectPoint>
-          <srv:parameter>
-            <srv:SV_Parameter>	
-						</srv:SV_Parameter>
-					</srv:parameter>
+               		<srv:parameter>
+            			<srv:SV_Parameter>
+              			<srv:name>
+                			<gco:MemberName>
+                  			<gco:aName>
+                    			<gco:CharacterString></gco:CharacterString>
+                  			</gco:aName>
+                  			<gco:attributeType>
+                    			<gco:TypeName>
+                      			<gco:aName>
+                        			<gco:CharacterString>TEXT</gco:CharacterString>
+                      			</gco:aName>
+                    			</gco:TypeName>
+                  			</gco:attributeType>
+                			</gco:MemberName>
+              			</srv:name>
+              			<srv:direction>
+                			<srv:SV_ParameterDirection></srv:SV_ParameterDirection>
+              			</srv:direction>
+              			<srv:description>
+                			<gco:CharacterString></gco:CharacterString>
+              			</srv:description>
+              			<srv:optionality>
+                			<gco:Boolean></gco:Boolean>
+              			</srv:optionality>
+              			<srv:repeatability>
+                			<gco:Boolean></gco:Boolean>
+              			</srv:repeatability>
+            			</srv:SV_Parameter>
+               		</srv:parameter>
 				</srv:SV_OperationMetadata>
       </srv:containsOperations>
     </srv:SV_ServiceIdentification>
