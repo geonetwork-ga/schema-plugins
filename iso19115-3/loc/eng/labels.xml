@@ -2612,8 +2612,10 @@
 <option value="OGC:SOS-1.0.0-http-post-observation">OGC-SOSGetObservationPOSTVer1.0.0</option>
 <option value="OGC:WNS">OGC-WNSWebNotificationService</option>
 <option value="OGC:WPS">OGC-WPSWebProcessingService</option>
-<option value="WWW:DOWNLOAD-1.0-ftp--download">FilefordownloadthroughFTP</option>
-<option value="WWW:DOWNLOAD-1.0-http--download">Filefordownload</option>
+<!-- These aren't applicable to eCat
+<option value="WWW:DOWNLOAD-1.0-ftp- -download">FilefordownloadthroughFTP</option>
+<option value="WWW:DOWNLOAD-1.0-http- -download">Filefordownload</option>
+-->
 <option value="FILE:GEO">GISfile</option>
 <option value="FILE:RASTER">GISRASTERfile</option>
 <option value="WWW:LINK-1.0-http--ical">iCalendarURL</option>
