@@ -240,7 +240,6 @@
 	 		<sch:diagnostic id="rule.ga.mri.resourceformatpresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceFormat/ MD_Format not present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.resourceconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints information not present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.topiccategorypresent-failure-en" xml:lang="en">MD_DataIdentification/ topicCategory not present or empty.</sch:diagnostic>
-	 		<sch:diagnostic id="rule.ga.mri.extentinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/ extent information not present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.securityconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_SecurityConstraints not present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.legalconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_LegalConstraints not present.</sch:diagnostic>
    </sch:diagnostics>
@@ -266,14 +265,24 @@
       	<sch:assert test="normalize-space(mri:topicCategory)"		diagnostics="rule.ga.mri.topiccategorypresent-failure-en"/>
       	<sch:report test="normalize-space(mri:topicCategory)"		diagnostics="rule.ga.mri.topiccategorypresent-failure-en"/>
 
-      	<sch:assert test="mri:extent/gex:EX_Extent/*"						diagnostics="rule.ga.mri.extentinformationpresent-failure-en"/>
-      	<sch:report test="mri:extent/gex:EX_Extent/*"						diagnostics="rule.ga.mri.extentinformationpresent-failure-en"/>
-
       	<sch:assert test="mri:resourceConstraints/mco:MD_SecurityConstraints"	diagnostics="rule.ga.mri.securityconstraintspresent-failure-en"/>
       	<sch:report test="mri:resourceConstraints/mco:MD_SecurityConstraints"	diagnostics="rule.ga.mri.securityconstraintspresent-failure-en"/>
 
       	<sch:assert test="mri:resourceConstraints/mco:MD_LegalConstraints"    diagnostics="rule.ga.mri.legalconstraintspresent-failure-en"/>
       	<sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints"    diagnostics="rule.ga.mri.legalconstraintspresent-failure-en"/>
+    </sch:rule>
+  </sch:pattern>
+	<!-- ============================================================================================================ -->
+  <!-- Assert that Data Identification has extent element if scope is 'dataset'  -->
+	<!-- ============================================================================================================ -->
+  <sch:diagnostics>
+	 		<sch:diagnostic id="rule.ga.gex.extentinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/ extent information not present.</sch:diagnostic>
+  </sch:diagnostics>
+  <sch:pattern id="rule.ga.gex.identificationinformation">
+	 	<sch:title>Identification Information must have an extent if metadataScope is dataset.</sch:title>
+		<sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue=('dataset','')]">
+      	<sch:assert test="count(mdb:identificationInfo/*/mri:extent/gex:EX_Extent/*)>0"		diagnostics="rule.ga.gex.extentinformationpresent-failure-en"/>
+      	<sch:report test="count(mdb:identificationInfo/*/mri:extent/gex:EX_Extent/*)>0"		diagnostics="rule.ga.gex.extentinformationpresent-failure-en"/>
     </sch:rule>
   </sch:pattern>
 	<!-- ============================================================================================================ -->
