@@ -160,6 +160,7 @@
     <name>mdb:metadataConstraints</name>
     <name>mdb:metadataStandard</name>
     <name>mdb:metadataProfile</name>
+    <name>mdb:metadataScope</name>
     <name>mri:associatedResource</name>
 		<name>mrl:source</name>
 		<name>srv:parameter</name>
