@@ -102,6 +102,7 @@
 
 	<!-- Service stuff -->
 	<serviceDescription>Description</serviceDescription>
+	<serviceType>Service Type</serviceType>
 	<serviceParameter>Parameter</serviceParameter>
 	<containsOperations>Operations</containsOperations>
 	<operation>Operation</operation>

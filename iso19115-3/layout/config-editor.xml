@@ -358,7 +358,7 @@
 				</section>
 			</tab>
 
-      <tab id="resourceSpatial" mode="flat">
+      <tab id="resourceSpatial" mode="flat" displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','dataset','series')]) > 0">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialRepresentationType"/>
@@ -385,7 +385,7 @@
 				</section>
 			</tab>
 
-      <tab id="resourceExtents" mode="flat">
+      <tab id="resourceExtents" mode="flat" displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','dataset','series')]) > 0">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent"/>
 				</section>
@@ -474,7 +474,7 @@
       <tab id="resourceDescription" default="true" mode="flat">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:abstract"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType" or="serviceType" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification" del=".">
+          <field name="serviceType" templateModeOnly="true" xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType" or="serviceType" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification" del=".">
 						<template>
 							<values>
                 <key label="service-type" xpath="gco:ScopedName" tooltip="service-type"/>
@@ -487,7 +487,6 @@
 						</template>
 					</field>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceTypeVersion" or="serviceTypeVersion" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:couplingType"/>
 				</section>
 			</tab>
 
@@ -587,6 +586,7 @@
 
       <tab id="operatesOn" mode="flat">
         <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:couplingType"/>
 					<text ref="useAssociatedResourcesForOperatesOn"/>
 				</section>
 			</tab>
