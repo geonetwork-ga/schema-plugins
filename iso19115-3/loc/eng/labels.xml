@@ -3321,21 +3321,16 @@
 	<element name="srv:SV_ParameterDirection">
 		<label>Parameter direction</label>
 	</element>
-	<element name="srv:serviceType"><!-- readonly="true" -->
+	<element name="srv:serviceType" context="srv:SV_ServiceIdentification">
 		<label>Service Type</label>
 		<description>Service type name from a registry of services. For example, the values of the
             nameSpace and name attributes of GeneralName may be 'OGC' and 'catalogue'</description>
-		<helper>
+		<helper sort="true">
 			<option value="OGC:WMS">OGC Web Map Service (OGC:WMS)</option>
 			<option value="OGC:WFS">OGC Web Feature Service (OGC:WFS)</option>
 			<option value="OGC:WCS">OGC Web Coverage Service (OGC:WCS)</option>
 			<option value="W3C:HTML:DOWNLOAD">Download (W3C:HTML:DOWNLOAD)</option>
 			<option value="W3C:HTML:LINK">Information (W3C:HTML:LINK)</option>
-			<!--INSPIRE Service type defined in MD IR / 1.3.1 Spatial data service 
-				type <option value="discovery">Discovery Service (discovery)</option> <option 
-				value="view">View Service (view)</option> <option value="download">Download 
-				Service (download)</option> <option value="transformation">Transformation 
-				Service (transformation)</option> <option value="other">Other Services (other)</option> -->
 		</helper>
 	</element>
 	<element name="srv:serviceTypeVersion">

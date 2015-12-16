@@ -477,11 +477,13 @@
           <field name="serviceType" templateModeOnly="true" xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType" or="serviceType" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification" del=".">
 						<template>
 							<values>
-                <key label="service-type" xpath="gco:ScopedName" tooltip="service-type"/>
+                <key label="serviceType" xpath="gco:ScopedName" tooltip="srv:serviceType">
+								 	<helper name="srv:serviceType" context="srv:SV_ServiceIdentification"></helper>
+								</key>
 							</values>
 							<snippet>
               	<srv:serviceType>
-                	<gco:ScopedName>{{service-type}}</gco:ScopedName>
+                	<gco:ScopedName>{{serviceType}}</gco:ScopedName>
 								</srv:serviceType>
 							</snippet>
 						</template>
