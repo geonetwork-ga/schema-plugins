@@ -152,6 +152,7 @@
     <name>msr:projection</name>
     <name>mdb:extent</name>
     <name>cit:extent</name>
+    <name>cit:date</name>
     <name>gex:geographicBox</name>
     <name>gex:EX_TemporalExtent</name>
     <name>mrd:MD_Distributor</name>
@@ -215,7 +216,7 @@
       <tab id="resourceCitation" mode="flat">
         <section name=" ">
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation"/>
 
 					<!-- offer a cit:identifier for ga datasetURI if this record
 					     describes a dataset -->
@@ -462,6 +463,7 @@
 
       <!-- Elements that should not use the "flat" mode -->
       <flatModeExceptions>
+        <for name="cit:date" />
         <for name="mri:descriptiveKeywords" />
         <for name="cit:party"/>
 				<for name="cit:CI_Individual"/>
@@ -495,7 +497,7 @@
       <tab id="resourceCitation" mode="flat">
         <section name=" ">
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:title"/>
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:date"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation"/>
 				</section>
 			</tab>
 
@@ -595,6 +597,7 @@
 
       <!-- Elements that should not use the "flat" mode -->
       <flatModeExceptions>
+        <for name="cit:date" />
         <for name="mri:descriptiveKeywords" />
         <for name="cit:party"/>
 				<for name="cit:CI_Individual"/>
