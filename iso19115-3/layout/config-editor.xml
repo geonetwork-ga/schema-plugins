@@ -216,7 +216,7 @@
       <tab id="resourceCitation" mode="flat">
         <section name=" ">
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation"/>
+					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
 
 					<!-- offer a cit:identifier for ga datasetURI if this record
 					     describes a dataset -->
