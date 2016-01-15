@@ -595,6 +595,14 @@
 				</section>
 			</tab>
 
+      <tab id="distribution" mode="flat">
+        <section name=" ">
+          <field xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>
+					<!-- <text ref="useAssociatedResources" if="count(mdb:MD_Metadata/mdb:distributionInfo/*) = 0"/> -->
+					<text ref="useAssociatedResources"/>
+				</section>
+			</tab>
+
       <!-- Elements that should not use the "flat" mode -->
       <flatModeExceptions>
         <for name="cit:date" />
