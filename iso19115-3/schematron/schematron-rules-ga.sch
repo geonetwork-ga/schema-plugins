@@ -245,7 +245,7 @@
    </sch:diagnostics>
    <sch:pattern id="rule.ga.mri.identificationinformation">
 	 		<sch:title>Identification Information must be present and correctly filled out.</sch:title>
-			<sch:rule context="//mdb:MD_Metadata">
+			<sch:rule context="//mdb:MD_Metadata[descendant::mri:MD_DataIdentification]">
 				<sch:assert test="mdb:identificationInfo/mri:MD_DataIdentification" diagnostics="rule.ga.mri.identificationinformationpresent-failure-en"/>
 				<sch:report test="mdb:identificationInfo/mri:MD_DataIdentification" diagnostics="rule.ga.mri.identificationinformationpresent-success-en"/>
 			</sch:rule>
