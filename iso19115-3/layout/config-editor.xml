@@ -613,6 +613,7 @@
 				<for name="mrl:LI_Lineage"/>
 				<for name="srv:containsOperations"/>
 				<for name="srv:parameter"/>
+				<for name="srv:description"/>
       </flatModeExceptions>
     </view>
 
