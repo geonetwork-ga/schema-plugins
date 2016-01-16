@@ -570,13 +570,13 @@
                 			<srv:SV_ParameterDirection></srv:SV_ParameterDirection>
               			</srv:direction>
               			<srv:description>
-                			<gco:CharacterString></gco:CharacterString>
+                			<gco:CharacterString>Describe the parameter eg. Name for service</gco:CharacterString>
               			</srv:description>
               			<srv:optionality>
-                			<gco:Boolean></gco:Boolean>
+                			<gco:Boolean>false</gco:Boolean>
               			</srv:optionality>
               			<srv:repeatability>
-                			<gco:Boolean></gco:Boolean>
+                			<gco:Boolean>false</gco:Boolean>
               			</srv:repeatability>
             			</srv:SV_Parameter>
                		</srv:parameter>

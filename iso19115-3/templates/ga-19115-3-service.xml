@@ -189,10 +189,10 @@
                 			<gco:CharacterString></gco:CharacterString>
               			</srv:description>
               			<srv:optionality>
-                			<gco:Boolean></gco:Boolean>
+                			<gco:Boolean>false</gco:Boolean>
               			</srv:optionality>
               			<srv:repeatability>
-                			<gco:Boolean></gco:Boolean>
+                			<gco:Boolean>false</gco:Boolean>
               			</srv:repeatability>
             			</srv:SV_Parameter>
                		</srv:parameter>
