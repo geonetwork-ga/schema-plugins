@@ -236,12 +236,19 @@
 	 		<sch:diagnostic id="rule.ga.mri.identificationinformationpresent-failure-en" xml:lang="en">Data Identification Information element not present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.identificationinformationpresent-success-en" xml:lang="en">Data Identification Information element is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.pointofcontactpresent-failure-en" xml:lang="en">MD_DataIdentification/pointOfContact information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.pointofcontactpresent-success-en" xml:lang="en">MD_DataIdentification/pointOfContact information is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.maintenanceinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceMaintenance/ MD_MaintenanceInformation not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.maintenanceinformationpresent-success-en" xml:lang="en">MD_DataIdentification/ resourceMaintenance/ MD_MaintenanceInformation is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.resourceformatpresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceFormat/ MD_Format not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.resourceformatpresent-success-en" xml:lang="en">MD_DataIdentification/ resourceFormat/ MD_Format is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.resourceconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.resourceconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/ resourceConstraints information is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.topiccategorypresent-failure-en" xml:lang="en">MD_DataIdentification/ topicCategory not present or empty.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.topiccategorypresent-success-en" xml:lang="en">MD_DataIdentification/ topicCategory is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.securityconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_SecurityConstraints not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.securityconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_SecurityConstraints is present.</sch:diagnostic>
 	 		<sch:diagnostic id="rule.ga.mri.legalconstraintspresent-failure-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_LegalConstraints not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.mri.legalconstraintspresent-success-en" xml:lang="en">MD_DataIdentification/ resourceConstraints/ MD_LegalConstraints is present.</sch:diagnostic>
    </sch:diagnostics>
    <sch:pattern id="rule.ga.mri.identificationinformation">
 	 		<sch:title>Identification Information must be present and correctly filled out.</sch:title>
@@ -251,25 +258,25 @@
 			</sch:rule>
 			<sch:rule context="//mri:MD_DataIdentification[parent::mdb:identificationInfo[parent::mdb:MD_Metadata]]">
       	<sch:assert test="count(mri:pointOfContact[descendant::text()])>0" diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
-      	<sch:report test="count(mri:pointOfContact[descendant::text()])>0" diagnostics="rule.ga.mri.pointofcontactpresent-failure-en"/>
+      	<sch:report test="count(mri:pointOfContact[descendant::text()])>0" diagnostics="rule.ga.mri.pointofcontactpresent-success-en"/>
 
       	<sch:assert test="mri:resourceMaintenance/mmi:MD_MaintenanceInformation" diagnostics="rule.ga.mri.maintenanceinformationpresent-failure-en"/> 
-      	<sch:report test="mri:resourceMaintenance/mmi:MD_MaintenanceInformation" diagnostics="rule.ga.mri.maintenanceinformationpresent-failure-en"/> 
+      	<sch:report test="mri:resourceMaintenance/mmi:MD_MaintenanceInformation" diagnostics="rule.ga.mri.maintenanceinformationpresent-success-en"/> 
 
       	<sch:assert test="mri:resourceFormat/mrd:MD_Format" 										 diagnostics="rule.ga.mri.resourceformatpresent-failure-en"/>
-      	<sch:report test="mri:resourceFormat/mrd:MD_Format" 										 diagnostics="rule.ga.mri.resourceformatpresent-failure-en"/>
+      	<sch:report test="mri:resourceFormat/mrd:MD_Format" 										 diagnostics="rule.ga.mri.resourceformatpresent-success-en"/>
 
       	<sch:assert test="mri:resourceConstraints/*"														 diagnostics="rule.ga.mri.resourceconstraintspresent-failure-en"/>
-      	<sch:report test="mri:resourceConstraints/*"														 diagnostics="rule.ga.mri.resourceconstraintspresent-failure-en"/>
+      	<sch:report test="mri:resourceConstraints/*"														 diagnostics="rule.ga.mri.resourceconstraintspresent-success-en"/>
 
       	<sch:assert test="normalize-space(mri:topicCategory)"		diagnostics="rule.ga.mri.topiccategorypresent-failure-en"/>
-      	<sch:report test="normalize-space(mri:topicCategory)"		diagnostics="rule.ga.mri.topiccategorypresent-failure-en"/>
+      	<sch:report test="normalize-space(mri:topicCategory)"		diagnostics="rule.ga.mri.topiccategorypresent-success-en"/>
 
       	<sch:assert test="mri:resourceConstraints/mco:MD_SecurityConstraints"	diagnostics="rule.ga.mri.securityconstraintspresent-failure-en"/>
-      	<sch:report test="mri:resourceConstraints/mco:MD_SecurityConstraints"	diagnostics="rule.ga.mri.securityconstraintspresent-failure-en"/>
+      	<sch:report test="mri:resourceConstraints/mco:MD_SecurityConstraints"	diagnostics="rule.ga.mri.securityconstraintspresent-success-en"/>
 
       	<sch:assert test="mri:resourceConstraints/mco:MD_LegalConstraints"    diagnostics="rule.ga.mri.legalconstraintspresent-failure-en"/>
-      	<sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints"    diagnostics="rule.ga.mri.legalconstraintspresent-failure-en"/>
+      	<sch:report test="mri:resourceConstraints/mco:MD_LegalConstraints"    diagnostics="rule.ga.mri.legalconstraintspresent-success-en"/>
     </sch:rule>
   </sch:pattern>
 	<!-- ============================================================================================================ -->
@@ -277,12 +284,13 @@
 	<!-- ============================================================================================================ -->
   <sch:diagnostics>
 	 		<sch:diagnostic id="rule.ga.gex.extentinformationpresent-failure-en" xml:lang="en">MD_DataIdentification/ extent information not present.</sch:diagnostic>
+	 		<sch:diagnostic id="rule.ga.gex.extentinformationpresent-success-en" xml:lang="en">MD_DataIdentification/ extent information is present.</sch:diagnostic>
   </sch:diagnostics>
   <sch:pattern id="rule.ga.gex.identificationinformation">
 	 	<sch:title>Identification Information must have an extent if metadataScope is dataset.</sch:title>
 		<sch:rule context="//mdb:MD_Metadata[mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue=('dataset','')]">
       	<sch:assert test="count(mdb:identificationInfo/*/mri:extent/gex:EX_Extent/*)>0"		diagnostics="rule.ga.gex.extentinformationpresent-failure-en"/>
-      	<sch:report test="count(mdb:identificationInfo/*/mri:extent/gex:EX_Extent/*)>0"		diagnostics="rule.ga.gex.extentinformationpresent-failure-en"/>
+      	<sch:report test="count(mdb:identificationInfo/*/mri:extent/gex:EX_Extent/*)>0"		diagnostics="rule.ga.gex.extentinformationpresent-success-en"/>
     </sch:rule>
   </sch:pattern>
 	<!-- ============================================================================================================ -->
