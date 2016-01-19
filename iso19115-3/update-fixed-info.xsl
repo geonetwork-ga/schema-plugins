@@ -127,7 +127,10 @@
         </xsl:otherwise>
       </xsl:choose>
 
-      <!-- Add gaid if specified as alternativeMetadataReference, otherwise copy existing reference to gaid -->
+      <!-- Add gaid if specified as alternativeMetadataReference, otherwise copy existing reference to gaid 
+			     NOTE: If you change the codeSpace, you must also change it in index-fields.xsl, layout/layout-custom-fields.xsl, extract-ga-id.xsl
+					 and in the ISO19139-to-ISO19115-3 conversion script in web/src/main/webapp/xsl/conversion/import 
+					 This codeSpace value is the way in which the ga-id is recognized. -->
 			<xsl:choose>
 				<xsl:when test="/root/env/gaid">
 					<mdb:alternativeMetadataReference>

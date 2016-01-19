@@ -13,12 +13,9 @@
   exclude-result-prefixes="#all">
 
 
-  <!-- Readonly elements
-  [parent::mdb:metadataIdentifier and
-                        mcc:codeSpace/gco:CharacterString='urn:uuid']|
-                      mdb:dateInfo/cit:CI_Date[cit:dateType/cit:CI_DateTypeCode
-                        /@codeListValue='revision']
--->
+  <!-- Readonly elements - the rules in this template
+       will only match if the element at the root of the xpath is used
+			 in config-editor.xml -->
   <xsl:template mode="mode-iso19115-3"
                 match="mdb:metadataIdentifier/mcc:MD_Identifier/mcc:code|
                        mdb:metadataIdentifier/mcc:MD_Identifier/mcc:codeSpace|
@@ -52,6 +49,32 @@
 
   </xsl:template>
 
+  <!-- Readonly element - alternativeMetadataReference for eCatId
+       will only match if the element at the root of the xpath is used
+			 in config-editor.xml -->
+  <xsl:template mode="mode-iso19115-3"
+                match="mdb:alternativeMetadataReference[cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:codeSpace/gco:CharacterString='http://www.ga.gov.au/eCatId']"
+                priority="2000">
+    <xsl:param name="schema" select="$schema" required="no"/>
+    <xsl:param name="labels" select="$labels" required="no"/>
+
+		<xsl:for-each select="cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code">
+
+    	<xsl:call-template name="render-element">
+      	<xsl:with-param name="label" select="'eCat ID'"/>
+      	<xsl:with-param name="value" select="gco:CharacterString"/>
+      	<xsl:with-param name="cls" select="local-name()"/>
+      	<xsl:with-param name="xpath" select="gn-fn-metadata:getXPath(.)"/>
+      	<xsl:with-param name="type" select="gn-fn-metadata:getFieldType($editorConfig, name(), '')"/>
+      	<xsl:with-param name="name" select="'eCat ID'"/>
+      	<xsl:with-param name="editInfo" select="*/gn:element"/>
+      	<xsl:with-param name="parentEditInfo" select="gn:element"/>
+      	<xsl:with-param name="isDisabled" select="true()"/>
+    	</xsl:call-template>
+
+		</xsl:for-each>
+
+  </xsl:template>
 
   <!-- Duration
 

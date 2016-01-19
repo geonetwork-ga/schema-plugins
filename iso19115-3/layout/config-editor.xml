@@ -190,6 +190,8 @@
     <view name="default" displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='service']) = 0">
       <tab id="resourceDescription" default="true" mode="flat">
         <section name=" ">
+					<!-- special template to render this field readonly - see layout-custom-fields.xsl -->
+          <field xpath="/mdb:MD_Metadata/mdb:alternativeMetadataReference"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:purpose"/>
 					<field xpath="/mdb:MD_Metadata/mdb:metadataScope" in="/mdb:MD_Metadata"/>
