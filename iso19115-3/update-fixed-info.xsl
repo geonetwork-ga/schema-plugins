@@ -264,7 +264,21 @@
     </xsl:copy>
   </xsl:template>
   
-  
+  <!-- Fix funky and missing gco:Boolean values -->
+  <xsl:template match="gco:Boolean">
+		<xsl:choose>
+			<xsl:when test="string()=('true','false','1','0')">
+				<xsl:copy-of select="."/>
+			</xsl:when>
+			<xsl:when test="string()='optional'">
+				<gco:Boolean>true</gco:Boolean>
+			</xsl:when>
+			<xsl:otherwise>
+				<gco:Boolean>false</gco:Boolean>
+			</xsl:otherwise>
+		</xsl:choose>
+ 	</xsl:template>
+
   <xsl:template match="*[gco:CharacterString]">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name()='gco:nilReason')]"/>
