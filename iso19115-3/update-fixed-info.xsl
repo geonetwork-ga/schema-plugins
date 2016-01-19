@@ -141,7 +141,7 @@
            					<gco:CharacterString><xsl:value-of select="/root/env/gaid"/></gco:CharacterString>
          					</mcc:code>
          					<mcc:codeSpace>
-           					<gco:CharacterString>http://www.ga.gov.au</gco:CharacterString>
+           					<gco:CharacterString>http://www.ga.gov.au/eCatId</gco:CharacterString>
          					</mcc:codeSpace>
        					</mcc:MD_Identifier>
       				</cit:identifier>
