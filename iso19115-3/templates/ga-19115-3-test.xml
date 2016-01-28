@@ -37,16 +37,6 @@
     </mdb:MD_MetadataScope>
   </mdb:metadataScope>
 	<mdb:contact xlink:href="local://subtemplate?uuid=urn:ga-contacts:11&amp;process=cit:role/cit:CI_RoleCode/@codeListValue~author"/>
-  <mdb:dateInfo>
-    <cit:CI_Date>
-      <cit:date>
-        <gco:DateTime>2015-02-24T00:00:00</gco:DateTime>
-      </cit:date>
-      <cit:dateType>
-        <cit:CI_DateTypeCode codeList="codeListLocation#CI_DateTypeCode" codeListValue="creation">creation</cit:CI_DateTypeCode>
-      </cit:dateType>
-    </cit:CI_Date>
-  </mdb:dateInfo>
   <mdb:metadataStandard>
     <cit:CI_Citation>
       <cit:title>
