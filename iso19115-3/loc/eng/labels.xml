@@ -2741,7 +2741,7 @@
     <description>Angular sampling measure</description>
   </element>
   <element name="mri:levelOfDetail">
-    <label>Spatial resolution description</label>
+    <label>Spatial resolution / Scale</label>
     <description>Brief textual description of the spatial resolution of the resource</description>
   </element>
   <element name="mri:MD_Resolution_Type">
@@ -3330,7 +3330,19 @@
 			<option value="OGC:WFS">OGC Web Feature Service (OGC:WFS)</option>
 			<option value="OGC:WCS">OGC Web Coverage Service (OGC:WCS)</option>
 			<option value="W3C:HTML:DOWNLOAD">Download (W3C:HTML:DOWNLOAD)</option>
-			<option value="W3C:HTML:LINK">Information (W3C:HTML:LINK)</option>
+			<option value="W3C:HTML:INFORMATION">Information (W3C:HTML:Information)</option>
+			<option value="ESRI:ArcGIS:MapServer">ESRI Map Service (ESRI:ArcGIS:MapService)</option>
+			<option value="ESRI:ArcIMS">ESRI ArcIMS Service (ESRI:ArcIMS)</option>
+			<option value="ESRI:ArcGIS:GPServer">ESRI ArcGIS GP Server (ESRI:ArcGIS:GPServer)</option>
+			<option value="ESRI:ArcGIS:ImageServer">ESRI ArcGIS Image Server (ESRI:ArcGIS:ImageServer)</option>
+			<option value="OGC:CSW">OGC Catalogue Service for the Web (OGC:CSW)</option>
+			<option value="OGC:SOS">OGC Sensor Observation Service (OGC:SOS)</option>
+			<option value="OGC:WMTS">OGC Web Map Tile Service (OGC:WMTS)</option>
+			<option value="OGC:WPS">OGC Web Processing Service (OGC:WPS)</option>
+			<option value="OPeNDAP:OPeNDAP">OPeNDAP root URL (OPeNDAP:OPeNDAP)</option>
+
+
+
 		</helper>
 	</element>
 	<element name="srv:serviceTypeVersion">
