@@ -2903,7 +2903,7 @@
 		<label>Specification</label>
 	</element>
 	<element name="mrl:statement" id="83.0">
-		<label>Statement</label>
+		<label>Lineage statement</label>
 		<description>General explanation of the data producer_s knowledge about the lineage of a
             dataset</description>
 		<condition>conditional</condition>

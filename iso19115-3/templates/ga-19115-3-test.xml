@@ -78,6 +78,16 @@
               </cit:dateType>
             </cit:CI_Date>
           </cit:date>
+<!-- Martins changes start -->         
+          <cit:identifier>
+             <mcc:MD_Identifier>
+                <mcc:code>
+                   <gco:CharacterString>Link to be added by administrator</gco:CharacterString>
+                </mcc:code>
+                <mcc:codeSpace>
+                   <gco:CharacterString>ga-dataSetURI</gco:CharacterString>                                                                                                  </mcc:codeSpace>
+          </mcc:MD_Identifier>
+<!-- Martins Changes end -->                                                                                                                                          </cit:identifier>
         </cit:CI_Citation>
       </mri:citation>
       <mri:abstract>
@@ -148,7 +158,21 @@
           </mmi:maintenanceAndUpdateFrequency>
         </mmi:MD_MaintenanceInformation>
       </mri:resourceMaintenance>
-			<mri:resourceConstraints>
+      <mri:resourceFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>Administration to complete</gco:CharacterString>
+              </cit:title>
+              <cit:edition>
+                <gco:CharacterString>Administration to complete</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+        </mrd:MD_Format>
+      </mri:resourceFormat>		
+	<mri:resourceConstraints>
             <mco:MD_LegalConstraints uuid="urn:ga-licences:232">
                <mco:reference>
                   <cit:CI_Citation>

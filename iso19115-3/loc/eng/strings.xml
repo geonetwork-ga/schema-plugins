@@ -87,13 +87,13 @@
 	<metadataContact>Metadata Contacts</metadataContact>
 	<resourceSpatial>Spatial</resourceSpatial>
 	<resourceExtents>Extents</resourceExtents>
-	<resourceFormat>Format</resourceFormat>
-	<resourceFormatNoTitle></resourceFormatNoTitle>
 	<distribution_name>Name</distribution_name>
 	<distribution_version>Version</distribution_version>
 	<resourceType>Type</resourceType>
-  <resourceLineageTab>Lineage</resourceLineageTab>
-  <distribution>Distribution</distribution>
+        <resourceLineageTab>Lineage</resourceLineageTab>
+        <resourceFormat>Format (admin only)</resourceFormat>
+        <resourceFormatNoTitle></resourceFormatNoTitle>
+        <distribution>Distribution (admin only) </distribution>
 
   <useAssociatedResources><span>Add an online resource for distribution using the "<i class="fa fa-link"></i><i class="icon-external-link"></i>Associated resources" panel at the right hand side of the form</span></useAssociatedResources>
 
