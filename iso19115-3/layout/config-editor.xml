@@ -396,7 +396,7 @@
 
       <tab id="resourceLineageTab" mode="flat">
         <section name=" ">
-          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement" or="statement" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage"/>
+          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement"/>
           <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:scope"/>
           <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source"/>
 					<action type="add" name="source" or="source" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage">
@@ -477,7 +477,10 @@
     <view name="services" displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='service']) > 0">
       <tab id="resourceDescription" default="true" mode="flat">
         <section name=" ">
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:abstract"/>
+<!--Martins additions start-->
+ <field xpath="/mdb:MD_Metadata/mdb:alternativeMetadataReference"/>
+<!--Martins additions end-->         
+ <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:abstract"/>
           <field name="serviceType" templateModeOnly="true" xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType" or="serviceType" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification" del=".">
 						<template>
 							<values>
@@ -493,7 +496,10 @@
 						</template>
 					</field>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceTypeVersion" or="serviceTypeVersion" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
-				</section>
+	<!--Martins additions start-->		
+<field xpath="/mdb:MD_Metadata/mdb:metadataScope" in="/mdb:MD_Metadata"/>
+        <!--Martins additions end-->
+	</section>
 			</tab>
 
       <tab id="resourceCitation" mode="flat">
@@ -521,16 +527,31 @@
           <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
 				</section>
 			</tab>
+<!-- Martins additions start -->
+          <tab id="resourceLineageTab" mode="flat">
+                            <section name=" ">
+           <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement" or="statement" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage"/>
+<!-- <action type="add" name="statement" or="statement" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/">
+                                                <template>
+                                                         <snippet>
+                                                         <mdb:resourceLineage>
+                                                         <mrl:LI_Lineage>
+                                                         <mdb:statement>
+                                         <gco:CharacterString>Describe the lineage</gco:CharacterString>
+                                                                         </mdb:statement>
+                                                                         </snippet>
+                                                                         </template>
+                                                                         </action>
+-->
+
+                  </section>
+          </tab>
+
+ <!-- Martins additions end -->
 
       <tab id="resourceExtents" mode="flat">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:extent"/>
-				</section>
-			</tab>
-
-      <tab id="resourceLineageTab" mode="flat">
-        <section name=" ">
-          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement" or="statement" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage"/>
 				</section>
 			</tab>
 
