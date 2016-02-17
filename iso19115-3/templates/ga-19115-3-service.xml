@@ -211,17 +211,4 @@
         </mco:classification>
       </mco:MD_SecurityConstraints>
    </mdb:metadataConstraints>
-    <mdb:resourceLineage>
-     <mrl:LI_Lineage>
-      <mrl:statement>
-       <gco:CharacterString/>
-      </mrl:statement>
-       <mrl:scope>
-        <mcc:MD_Scope>
-         <mcc:level>
-         </mcc:level>
-        </mcc:MD_Scope>
-       </mrl:scope>
-      </mrl:LI_Lineage>
-    </mdb:resourceLineage>
 </mdb:MD_Metadata>
