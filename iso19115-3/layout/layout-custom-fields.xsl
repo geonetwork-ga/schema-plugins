@@ -9,6 +9,7 @@
   xmlns:gts="http://www.isotc211.org/2005/gts"
   xmlns:gml="http://www.opengis.net/gml/3.2"
   xmlns:gn="http://www.fao.org/geonetwork"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
   exclude-result-prefixes="#all">
 
@@ -247,6 +248,61 @@
         </xsl:apply-templates>
       </xsl:with-param>
     </xsl:call-template>
+  </xsl:template>
+
+	<!-- Show xlink'd individuals and contacts -->
+	<xsl:template mode="party-html" match="cit:individual">
+		<ul>
+			<li style="list-style-type: none;">
+				<xsl:if test="normalize-space(descendant::cit:name/gco:CharacterString)">
+				  <xsl:value-of select="string(descendant::cit:name/gco:CharacterString)"/>
+				  <xsl:if test="normalize-space(descendant::cit:positionName/gco:CharacterString)">
+						<xsl:value-of select="', '"/>
+					</xsl:if>
+				</xsl:if>
+				<xsl:if test="normalize-space(descendant::cit:positionName/gco:CharacterString)">
+					<xsl:value-of select="descendant::cit:positionName/gco:CharacterString"/>
+				</xsl:if>
+			</li>
+		</ul>
+	</xsl:template>
+
+	<xsl:template mode="party-html" match="cit:contactInfo">
+		<xsl:param name="organisationName"/>
+
+		<ul>
+			<li style="list-style-type: none;"><xsl:value-of select="$organisationName"/></li>
+			<li style="list-style-type: none;"><xsl:value-of select="descendant::cit:deliveryPoint/gco:CharacterString"/></li>
+			<li style="list-style-type: none;"><xsl:value-of select="descendant::cit:city/gco:CharacterString"/></li>
+			<li style="list-style-type: none;"><xsl:value-of select="descendant::cit:administrativeArea/gco:CharacterString"/></li>
+			<li style="list-style-type: none;"><xsl:value-of select="concat(descendant::cit:country/gco:CharacterString,' ',descendant::cit:postalCode/gco:CharacterString)"/></li>
+			<xsl:if test="normalize-space(descendant::cit:electronicMailAddress/gco:CharacterString)">
+				<li style="list-style-type: none;"><xsl:value-of select="concat('Email: ',descendant::cit:electronicMailAddress/gco:CharacterString)"/></li>
+			</xsl:if>
+			<xsl:if test="normalize-space(descendant::cit:voice/gco:CharacterString)">
+				<li style="list-style-type: none;"><xsl:value-of select="concat('Phone: ',descendant::cit:voice/gco:CharacterString)"/></li>
+			</xsl:if>
+		</ul>
+	</xsl:template>
+
+  <!-- XLINK'd cit:party 
+	 eg. <cit:party xlink:href="http://test.cmar.csiro.au:80/geonetwork/srv/eng/subtemplate?uuid=urn:marlin.csiro.au:person:958_person_organisation&amp;process=undefined">
+	       ....
+	     </cit:party>
+	-->
+  <xsl:template mode="mode-iso19115-3" match="mri:pointOfContact[@xlink:href!='']|mdb:contact[@xlink:href!='']" priority="33000">
+    <xsl:param name="schema" select="'iso19115-3'" required="no"/>
+    <xsl:param name="labels" select="$labels" required="no"/>
+
+		<xsl:variable name="organisationName" select="*/cit:party/*/cit:name/*"/>
+		<fieldset>
+			<legend><xsl:value-of select="gn-fn-metadata:getLabel($schema, name(), $labels)/label"/></legend>
+			<xsl:apply-templates mode="party-html" select="*/cit:party/*/cit:individual"/>
+				<!-- NOTE: Show only the first address in the contact info SP Nov. 2015 -->
+			<xsl:apply-templates mode="party-html" select="*/cit:party/*/cit:contactInfo[1]">
+				<xsl:with-param name="organisationName" select="$organisationName"/>
+			</xsl:apply-templates>
+		</fieldset>
   </xsl:template>
 
 
