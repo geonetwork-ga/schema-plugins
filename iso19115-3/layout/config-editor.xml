@@ -192,7 +192,10 @@
         <section name=" ">
 					<!-- special template to render this field readonly - see layout-custom-fields.xsl -->
           <field xpath="/mdb:MD_Metadata/mdb:alternativeMetadataReference"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
+<!--Martins additions start-->          
+ <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
+          <!--Martins additions end-->
+  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:purpose"/>
 					<field xpath="/mdb:MD_Metadata/mdb:metadataScope" in="/mdb:MD_Metadata"/>
 					<action type="add" name="metadataScope" or="metadataScope" in="/mdb:MD_Metadata">
@@ -217,7 +220,7 @@
 
       <tab id="resourceCitation" mode="flat">
         <section name=" ">
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
+	<!--Martin change start	<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/> -Martin change end-->
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
 
 					<!-- offer a cit:identifier for ga datasetURI if this record
@@ -435,7 +438,7 @@
 <gco:CharacterString>Australia</gco:CharacterString>
 </cit:country>
 <cit:electronicMailAddress>
-<gco:CharacterString>sales@ga.gov.au</gco:CharacterString>
+<gco:CharacterString>clientservices@ga.gov.au</gco:CharacterString>
 </cit:electronicMailAddress>
 </cit:CI_Address>
 </cit:address>
@@ -480,9 +483,10 @@
       <tab id="resourceDescription" default="true" mode="flat">
         <section name=" ">
 <!--Martins additions start-->
- <field xpath="/mdb:MD_Metadata/mdb:alternativeMetadataReference"/>
-<!--Martins additions end-->         
- <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:abstract"/>
+ <field xpath="/mdb:MD_Metadata/mdb:alternativeMetadataReference"/>         
+<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:title"/>
+<!--Martins additions end--> 
+<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:abstract"/>
           <field name="serviceType" templateModeOnly="true" xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType" or="serviceType" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification" del=".">
 						<template>
 							<values>
@@ -500,13 +504,13 @@
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceTypeVersion" or="serviceTypeVersion" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>
 	<!--Martins additions start-->		
 <field xpath="/mdb:MD_Metadata/mdb:metadataScope" in="/mdb:MD_Metadata"/>
-        <!--Martins additions end-->
+       <!--Martins additions end-->
 	</section>
 			</tab>
 
       <tab id="resourceCitation" mode="flat">
         <section name=" ">
-					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:title"/>
+					<!-- Martin change start><field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:title"/> -Martin change end-->
 					<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:citation/cit:CI_Citation"/>
 				</section>
 			</tab>
@@ -552,11 +556,14 @@
  <!-- Martins additions end -->
 
       <tab id="resourceExtents" mode="flat">
-        <section name=" ">
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:extent"/>
+        <section name=" "> 
+ <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/mri:extent"/>
+
+  <field xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo" or="referenceSystemInfo" in="/mdb:MD_Metadata"/>
+
 				</section>
 			</tab>
-
+                                                                          
       <tab id="containsOperations" mode="flat">
 				<section name=" ">
         	<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification/srv:containsOperations" in="/mdb:MD_Metadata/mdb:identificationInfo/srv:SV_ServiceIdentification"/>

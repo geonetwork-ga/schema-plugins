@@ -529,6 +529,9 @@
 <option value="AGSO Journal of Australian Geology and Geophysics">AGSO Journal of Australian Geology and Geophysics</option>
 <option value="Preview">Preview</option>
 <option value="AGU Fall Meeting 2013, 9-13 December 2013">AGU Fall Meeting 2013, 9-13 December 2013</option>
+<option value="Confidential record">Confidential record</option>
+<option value="Journal of Geochemical Exploration">Journal of Geochemical Exploration</option>
+<option value="Marine Geology">Marine Geology</option>
 			</helper>
     	<condition/>
   	</element>
