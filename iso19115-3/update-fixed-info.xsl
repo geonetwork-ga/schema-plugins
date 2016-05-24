@@ -159,22 +159,19 @@
 		 	<!-- Now process all other alternativeMetadataReference elements -->
       <xsl:apply-templates select="mdb:alternativeMetadataReference[cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:codeSpace/gco:CharacterString!='http://www.ga.gov.au/eCatId']"/>
       <xsl:apply-templates select="mdb:otherLocale"/>
-      <xsl:apply-templates select="mdb:metadataLinkage"/>
 
       <xsl:variable name="pointOfTruthUrl" select="concat($url, '/search?uuid=', $uuid)"/>
 
-      <xsl:if test="$createMetadataLinkage and count(mdb:metadataLinkage/cit:CI_OnlineResource/cit:linkage/*[. = $pointOfTruthUrl]) = 0">
+      <xsl:if test="$createMetadataLinkage">
         <!-- TODO: This should only be updated for not harvested records ? -->
         <mdb:metadataLinkage>
           <cit:CI_OnlineResource>
             <cit:linkage>
-              <!-- TODO: define a URL pattern and use it here -->
-              <!-- TODO: URL could be multilingual ? -->
               <gco:CharacterString><xsl:value-of select="$pointOfTruthUrl"/></gco:CharacterString>
             </cit:linkage>
-            <!-- TODO: Could be relevant to add description of the
-            point of truth for the metadata linkage but this
-            needs to be language dependant. -->
+						<cit:description>
+              <gco:CharacterString>Point-of-truth metadata URL</gco:CharacterString>
+						</cit:description>
             <cit:function>
               <cit:CI_OnLineFunctionCode codeList="{concat($codeListLocation,'#CI_OnLineFunctionCode')}"
                                          codeListValue="completeMetadata"/>
