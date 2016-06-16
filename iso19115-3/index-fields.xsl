@@ -206,7 +206,7 @@
 					<Field name="geoDescCode" string="{string(.)}" store="true" index="true"/>
 				</xsl:for-each>
 
-				<xsl:for-each select="mri:temporalElement/gex:EX_TemporalExtent/gex:extent">
+				<xsl:for-each select="gex:temporalElement/gex:EX_TemporalExtent/gex:extent">
 					<xsl:for-each select="gml:TimePeriod">
 						<xsl:variable name="times">
 							<xsl:call-template name="newGmlTime">
@@ -657,7 +657,7 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		
     <!-- mdb:dateInfo is change date -->
-		<xsl:for-each select="mdb:dateInfo/cit:date/cit:CI_Date[cit:dateType/cit:CI_DateTypeCode/@codeListValue='revision']/cit:date/*">
+		<xsl:for-each select="mdb:dateInfo/cit:CI_Date[cit:dateType/cit:CI_DateTypeCode/@codeListValue='revision']/cit:date/*">
 			<Field name="changeDate" string="{string(.)}" store="true" index="true"/>
 		</xsl:for-each>
 		
