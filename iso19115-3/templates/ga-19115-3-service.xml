@@ -146,6 +146,9 @@
           <srv:distributedComputingPlatform>
             <srv:DCPList codeList="codeListLocation#DCPList" codeListValue="WebServices">WebServices</srv:DCPList>
           </srv:distributedComputingPlatform>
+          <srv:operationDescription>
+            <gco:CharacterString></gco:CharacterString>
+          </srv:operationDescription>
           <srv:connectPoint>
             <cit:CI_OnlineResource>
               <cit:linkage>
