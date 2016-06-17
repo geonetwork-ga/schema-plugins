@@ -65,6 +65,9 @@
         <gco:CharacterString></gco:CharacterString>
       </mri:abstract>
 			<mri:pointOfContact xlink:href="local://subtemplate?uuid=urn:ga-contacts:11&amp;process=cit:role/cit:CI_RoleCode/@codeListValue~pointOfContact"/>
+      <mri:topicCategory>
+        <mri:MD_TopicCategoryCode>geoscientificInformation</mri:MD_TopicCategoryCode>
+      </mri:topicCategory>
       <mri:extent>
         <gex:EX_Extent>
           <gex:geographicElement>
