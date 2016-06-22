@@ -119,8 +119,17 @@
       <gco:CharacterString>
         <xsl:choose>
           <xsl:when test="mcc:MD_Identifier/mcc:codeSpace/gco2:CharacterString">
-            <xsl:value-of select="concat(mcc:MD_Identifier/mcc:codeSpace/gco2:CharacterString, ':',
+            <xsl:choose>
+              <!-- only do the concatenation thing of codeSpace and code when we aren't using urn:uuid
+                   otherwise things get confused -->
+              <xsl:when test="mcc:MD_Identifier/mcc:codeSpace/gco2:CharacterString!='urn:uuid'">
+                <xsl:value-of select="concat(mcc:MD_Identifier/mcc:codeSpace/gco2:CharacterString, ':',
                                          mcc:MD_Identifier/mcc:code/gco2:CharacterString)"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="mcc:MD_Identifier/mcc:code/gco2:CharacterString"/>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="mcc:MD_Identifier/mcc:code/gco2:CharacterString"/>
