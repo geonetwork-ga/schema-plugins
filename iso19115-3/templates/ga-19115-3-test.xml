@@ -88,7 +88,17 @@
                    <gco:CharacterString>ga-dataSetURI</gco:CharacterString>                                                                                                  </mcc:codeSpace>
           </mcc:MD_Identifier>
 <!-- Martins Changes end -->                                                                                                                                          </cit:identifier>
-        </cit:CI_Citation>
+		<cit:series>
+			<cit:CI_Series>
+				<cit:name>
+					<gco:CharacterString></gco:CharacterString>
+				</cit:name>
+				<cit:issueIdentification>
+					<gco:CharacterString></gco:CharacterString>
+				</cit:issueIdentification>
+			</cit:CI_Series>
+		</cit:series>
+	</cit:CI_Citation>
       </mri:citation>
       <mri:abstract>
         <gco:CharacterString></gco:CharacterString>
