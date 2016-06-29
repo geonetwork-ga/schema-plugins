@@ -833,7 +833,6 @@
                        mdb:metadataProfile|
                        mdb:alternativeMetadataReference|
                        mdb:metadataLinkage|
-                       mdb:resourceLineage|
                        mrl:LI_Source/mrl:scope|
                        mrl:sourceSpatialResolution|
                        mdq:derivedElement" priority="2"/>
