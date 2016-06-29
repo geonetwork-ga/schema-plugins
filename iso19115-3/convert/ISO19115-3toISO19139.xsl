@@ -337,72 +337,32 @@
     </srv:extent>
   </xsl:template>
 
-  <xsl:template match="mdb:dataQualityInfo">
+  <xsl:template match="mdb:resourceLineage">
     <gmd:dataQualityInfo>
       <gmd:DQ_DataQuality>
-        <xsl:if test="mdq:DQ_DataQuality/mdq:scope">
-          <gmd:scope>
-            <xsl:choose>
-              <xsl:when test="mdq:DQ_DataQuality/mdq:scope/@*">
-                <xsl:apply-templates select="mdq:DQ_DataQuality/mdq:scope/@*"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:apply-templates select="mdq:DQ_DataQuality/mdq:scope/mcc:DQ_Scope/*"/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </gmd:scope>
-        </xsl:if>
-        
-        <xsl:for-each select="mdq:DQ_DataQuality/mdq:report/*">
-          <gmd:report>
-            <xsl:element name="{concat('gmd:',local-name())}">
-              <xsl:call-template name="writeCharacterStringElement">
-                <xsl:with-param name="elementName" select="'gmd:nameOfMeasure'"/>
-                <xsl:with-param name="nodeWithStringToWrite" select="mdq:measure/mdq:DQ_MeasureReference/mdq:nameOfMeasure"/>
-              </xsl:call-template>
-              <xsl:apply-templates select="mdq:measure/mdq:DQ_MeasureReference/mdq:measureIdentification"/>
-              <xsl:call-template name="writeCharacterStringElement">
-                <xsl:with-param name="elementName" select="'gmd:measureDescription'"/>
-                <xsl:with-param name="nodeWithStringToWrite" select="mdq:measure/mdq:DQ_MeasureReference/mdq:measureDescription"/>
-              </xsl:call-template>
-              
-              
-              <xsl:call-template name="writeCodelistElement">
-                <xsl:with-param name="elementName" select="'gmd:evaluationMethodType'"/>
-                <xsl:with-param name="codeListName" select="'gmd:DQ_EvaluationMethodTypeCode'"/>
-                <xsl:with-param name="codeListValue" select="mdq:evaluation/mdq:DQ_FullInspection/mdq:evaluationMethodType/mdq:DQ_EvaluationMethodTypeCode "/>
-              </xsl:call-template>
-              
-              <xsl:call-template name="writeCharacterStringElement">
-                <xsl:with-param name="elementName" select="'gmd:evaluationMethodDescription'"/>
-                <xsl:with-param name="nodeWithStringToWrite" select="mdq:evaluation/mdq:DQ_FullInspection/mdq:evaluationMethodDescription"/>
-              </xsl:call-template>
-              
-              <gmd:evaluationProcedure>
-                <xsl:apply-templates select="mdq:evaluation/mdq:DQ_FullInspection/mdq:evaluationProcedure/cit:CI_Citation"/>
-              </gmd:evaluationProcedure>
-              <gmd:dateTime>
-                <xsl:apply-templates select="mdq:evaluation/mdq:DQ_FullInspection/mdq:dateTime/gco2:DateTime"/>
-              </gmd:dateTime>
-              <xsl:apply-templates select="mdq:result"/>
-            </xsl:element>
-          </gmd:report>
-        </xsl:for-each>
-        
-        
-        <xsl:for-each select="/*/mdb:resourceLineage">
+        <xsl:if test="mrl:LI_Lineage">
+          <xsl:choose>
+            <xsl:when test="mrl:LI_Lineage/mrl:scope/mcc:MD_Scope">
+              <gmd:scope>
+                <gmd:DQ_Scope>
+                  <xsl:apply-templates select="mrl:LI_Lineage/mrl:scope/mcc:MD_Scope/*"/>
+                </gmd:DQ_Scope>
+              </gmd:scope>
+            </xsl:when>
+          </xsl:choose>
+
           <gmd:lineage>
             <gmd:LI_Lineage>
-              <xsl:call-template name="writeCharacterStringElement">
-                <xsl:with-param name="elementName" select="'gmd:statement'"/>
-                <xsl:with-param name="nodeWithStringToWrite" select="mrl:LI_Lineage/mrl:statement"/>
-              </xsl:call-template>
-              
-              <xsl:apply-templates select="mrl:LI_Lineage/mrl:processStep"/>
-              <xsl:apply-templates select="mrl:LI_Lineage/mrl:source"/>
+              <xsl:for-each select="mrl:LI_Lineage/*">
+                <xsl:choose>
+                  <xsl:when test="name()!='mrl:scope'" >
+                    <xsl:apply-templates select="self::node()"/>
+                  </xsl:when>
+                </xsl:choose>
+              </xsl:for-each>
             </gmd:LI_Lineage>
           </gmd:lineage>
-        </xsl:for-each>
+        </xsl:if>
       </gmd:DQ_DataQuality>
     </gmd:dataQualityInfo>
   </xsl:template>
