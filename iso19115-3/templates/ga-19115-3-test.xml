@@ -90,9 +90,10 @@
 <!-- Martins Changes end -->                                                                                                                                          </cit:identifier>
 		<cit:series>
 			<cit:CI_Series>
+        <!-- Remove name field until picklist can be applied with it 
 				<cit:name>
 					<gco:CharacterString></gco:CharacterString>
-				</cit:name>
+				</cit:name> -->
 				<cit:issueIdentification>
 					<gco:CharacterString></gco:CharacterString>
 				</cit:issueIdentification>
