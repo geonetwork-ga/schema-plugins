@@ -374,7 +374,7 @@
 			<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 			<!--  Fields use to search on Service -->
 			
-			<xsl:for-each select="srv:serviceType/gco:LocalName">
+			<xsl:for-each select="srv:serviceType/gco:ScopedName">
 				<Field  name="serviceType" string="{string(.)}" store="true" index="true"/>
 			</xsl:for-each>
 			
