@@ -572,8 +572,8 @@
 				<Field name="type" string="dataset" store="true" index="true"/>
 			</xsl:otherwise>
 		</xsl:choose>
-		
-		
+
+
 		<!-- Metadata on maps -->
 		<xsl:variable name="isDataset" select="count(mdb:hierarchyLevel[mcc:MD_ScopeCode/@codeListValue='dataset']) > 0"/>
 		<xsl:variable name="isMapDigital" select="count(mri:identificationInfo/*/cit:citation/cit:CI_Citation/
@@ -645,6 +645,12 @@
 		<xsl:for-each select="mdb:alternativeMetadataReference/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='http://www.ga.gov.au']">
 			<Field name="gaId" string="{string(mcc:code/gco:CharacterString)}" store="false" index="true"/>
 		</xsl:for-each>
+
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- groundwater record -->
+     <xsl:for-each select="mdb:metadataStandard[cit:CI_Citation/cit:title/gco:CharacterString='groundwater template']">
+      <Field name="templateType" string="groundwater" store="true" index="true"/>
+     </xsl:for-each>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- parentIdentifier is deprecated in favour of parentMetadata -->
