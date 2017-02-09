@@ -51,6 +51,27 @@
       </sch:rule>
   </sch:pattern>
 
+	 <!-- ============================================================================================================ -->
+	 <!-- Assert that for ground water template, a groundwater keyword is present -->
+	 <!-- ============================================================================================================ -->
+  <sch:diagnostics>
+    <sch:diagnostic id="rule.ga.mdb.groundwaterkeywordpresent-failure-en" xml:lang="en">The groundwater keyword is not present.</sch:diagnostic>
+    <sch:diagnostic id="rule.ga.mdb.groundwaterkeywordpresent-success-en" xml:lang="en">The groundwater keyword is present.</sch:diagnostic>
+  </sch:diagnostics>
+
+  <sch:pattern id="rule.ga.mdb.groundwaterkeywordpresent">
+    <sch:title xml:lang="en">At least one keyword from the Groundwater thesaurus must be present when using the groundwater template.</sch:title>
+
+    <sch:rule context="//mdb:MD_Metadata[mdb:metadataStandard/cit:CI_Citation/cit:title/gco:CharacterString='groundwater template']">
+
+    <sch:let name="hasGwkw" value="mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords
+                                  [mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString = 'GA Groundwater Data Classification'
+                                  and mri:keyword/gco:CharacterString != '']"/>
+      <sch:assert test="$hasGwkw" diagnostics="rule.ga.mdb.groundwaterkeywordpresent-failure-en"/>
+      <sch:report test="$hasGwkw" diagnostics="rule.ga.mdb.groundwaterkeywordpresent-success-en"/>
+    </sch:rule>
+  </sch:pattern>
+
 	 <!-- mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue -->
 
 	 <!-- mdb:parentMetadata/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString -->
