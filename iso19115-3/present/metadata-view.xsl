@@ -48,9 +48,7 @@
         <img src="../../images/logos/{//geonet:info/source}.gif" alt="logo" class="logo"/>
       </xsl:with-param>
       <xsl:with-param name="relatedResources">
-        <xsl:apply-templates mode="relatedResources"
-          select="."
-        />
+        <xsl:apply-templates mode="iso19115-3-relatedResources" select="." />
       </xsl:with-param>
       <xsl:with-param name="tabs" select="$tabs"/>
       
@@ -543,8 +541,7 @@
 
   <!-- List of related resources defined in the online resource section of the metadata record.
 -->
-  <xsl:template mode="relatedResources"
-    match="*">
+  <xsl:template mode="iso19115-3-relatedResources" match="*">
     <table class="related">
       <tbody>
         <tr style="display:none;"><!-- FIXME needed by JS to append other type of relation from xml.relation service -->
