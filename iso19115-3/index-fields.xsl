@@ -640,6 +640,20 @@
 			<Field name="author" string="{substring-before(string(cit:party/cit:CI_Individual/cit:name/gco:CharacterString), ',')}" store="true" index="true"/>			
 		</xsl:for-each>
 
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- publisher is saved if present into publisher field within lucene -->
+               <xsl:for-each select="mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode[@codeListValue='publisher']]">
+                       <Field name="publisher" string="{string(cit:party/cit:CI_Organisation/cit:name/gco:CharacterString)}" store="true" index="true"/>
+               </xsl:for-each>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- legal constraints are saved if present into legalConstraints field within lucene -->
+               <xsl:for-each select="mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints/mco:MD_LegalConstraints">
+                       <Field name="legalConstraints" string="{string(mco:reference/cit:CI_Citation/cit:title/gco:CharacterString)}" store="true" index="true"/>
+                       <Field name="legalConstraints" string="{string(mco:otherConstraints/gco:CharacterString)}" store="true" index="true"/>
+               </xsl:for-each>
+        
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- ga identifier -->
 		<xsl:for-each select="mdb:alternativeMetadataReference/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString='http://www.ga.gov.au']">
