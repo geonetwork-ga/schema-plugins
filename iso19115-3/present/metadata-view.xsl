@@ -44,9 +44,10 @@
           </xsl:with-param>
         </xsl:call-template>
       </xsl:with-param>
-      <xsl:with-param name="logo">
+	  <!-- ========================================== Commented by Joseph =================================================== -->
+      <!--<xsl:with-param name="logo">
         <img src="../../images/logos/{//geonet:info/source}.gif" alt="logo" class="logo"/>
-      </xsl:with-param>
+      </xsl:with-param>-->
       <xsl:with-param name="relatedResources">
         <xsl:apply-templates mode="iso19115-3-relatedResources" select="." />
       </xsl:with-param>
