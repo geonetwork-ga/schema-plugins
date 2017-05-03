@@ -44,7 +44,7 @@
           </xsl:with-param>
         </xsl:call-template>
       </xsl:with-param>
-	  <!-- ========================================== Commented by Joseph =================================================== -->
+	  <!-- ========================================== Commented by Joseph  =================================================== -->
       <!--<xsl:with-param name="logo">
         <img src="../../images/logos/{//geonet:info/source}.gif" alt="logo" class="logo"/>
       </xsl:with-param>-->

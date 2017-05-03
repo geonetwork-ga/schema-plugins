@@ -758,7 +758,7 @@
 			<xsl:with-param name="schema" select="$schema" />
 		</xsl:apply-templates>
 
-		<!-- ========================================== Commented by Joseph =================================================== -->
+		<!-- ========================================== Commented by Joseph  =================================================== -->
 		<!--<xsl:apply-templates mode="elementEP" select="mdb:identificationInfo">
 			<xsl:with-param name="schema" select="$schema"/>
 			<xsl:with-param name="edit"   select="$edit"/>
