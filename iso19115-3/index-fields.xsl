@@ -451,7 +451,7 @@
 
 			<!-- index online protocol -->
 			
-			<xsl:for-each select="mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource[cit:linkage/*!='']">
+			<xsl:for-each select="//mrd:onLine/cit:CI_OnlineResource[cit:linkage/*!='']">
 				<xsl:variable name="download_check"><xsl:text>&amp;fname=&amp;access</xsl:text></xsl:variable>
 				<xsl:variable name="linkage" select="cit:linkage/*" /> 
 				<xsl:variable name="title" select="normalize-space(cit:name/gco:CharacterString|cit:name/gcx:MimeFileType)"/>
