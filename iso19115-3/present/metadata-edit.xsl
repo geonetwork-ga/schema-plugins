@@ -851,6 +851,26 @@
 						<xsl:with-param name="edit" select="$edit" />
 					</xsl:apply-templates>
 
+					<xsl:if test="srv:SV_ServiceIdentification">
+						<xsl:for-each select="srv:SV_ServiceIdentification">
+							<xsl:call-template name="complexElementGuiWrapper">
+								<xsl:with-param name="title"
+									select="/root/gui/schemas/iso19115-3/labels/element[@name='srv:SV_ServiceIdentification']/label" />
+								<xsl:with-param name="id"
+									select="generate-id(/root/gui/schemas/iso19115-3/labels/element[@name='srv:SV_ServiceIdentification']/label)" />
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+								<xsl:with-param name="content">
+									<xsl:apply-templates mode="elementEP" select="*">
+										<xsl:with-param name="schema" select="$schema" />
+										<xsl:with-param name="edit" select="$edit" />
+									</xsl:apply-templates>
+								</xsl:with-param>
+
+							</xsl:call-template>
+						</xsl:for-each>
+					</xsl:if>
+
 				</xsl:for-each>
 		
 			</xsl:with-param>
