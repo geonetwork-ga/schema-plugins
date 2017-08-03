@@ -3,6 +3,7 @@
   xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
   xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/1.0"
   xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
+  xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/1.0"
   exclude-result-prefixes="#all">
   
   <xsl:template match="/root">
