@@ -551,12 +551,6 @@
 		
 		<xsl:for-each-group select="mdb:distributionInfo/descendant::mrd:onLine[cit:CI_OnlineResource/cit:linkage/gco:CharacterString!='']"		group-by="cit:CI_OnlineResource/cit:protocol">
 			
-			<xsl:variable name="i" select="position()" />
-			<xsl:copy>
-				<xsl:if test="$i=1">
-					<tr><td colspan="2"><b>Product Downloads</b></td></tr>
-				</xsl:if>
-			</xsl:copy>
 			<xsl:for-each select="current-group()">
 				<xsl:variable name="desc">
 					<xsl:apply-templates mode="localised" select="cit:CI_OnlineResource/cit:description">
@@ -607,12 +601,6 @@
 		
 		<xsl:for-each-group select="mdb:distributionInfo/descendant::mrd:onLine[cit:CI_OnlineResource/cit:linkage/gco:CharacterString!='']" group-by="cit:CI_OnlineResource/cit:protocol">
 			
-			<xsl:variable name="i" select="position()" />
-			<xsl:copy>
-				<xsl:if test="$i=1">
-					<tr><td colspan="2"><b>Web Service Links</b></td></tr>
-				</xsl:if>
-			</xsl:copy>
 			<xsl:for-each select="current-group()">
 				<xsl:variable name="desc">
 				  <xsl:apply-templates mode="localised"
