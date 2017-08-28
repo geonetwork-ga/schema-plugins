@@ -13,6 +13,14 @@
   <xsl:template match="mdb:MD_Metadata|*[@gco:isoType='mdb:MD_Metadata']">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
+	  <xsl:apply-templates select="mdb:metadataIdentifier"/>
+      <xsl:apply-templates select="mdb:defaultLocale"/>
+      <xsl:apply-templates select="mdb:parentMetadata"/>
+      <xsl:apply-templates select="mdb:metadataScope"/>
+      <xsl:apply-templates select="mdb:contact"/>
+      <xsl:apply-templates select="mdb:dateInfo"/>
+      <xsl:apply-templates select="mdb:metadataStandard"/>
+      <xsl:apply-templates select="mdb:metadataProfile"/>
       <xsl:choose>
 			<xsl:when test="/root/env/gaid">
 				<mdb:alternativeMetadataReference>
@@ -44,7 +52,21 @@
 					select="mdb:alternativeMetadataReference[cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:codeSpace/gco:CharacterString='http://www.ga.gov.au/eCatId']" />
 			</xsl:otherwise>
 		</xsl:choose>
-      <xsl:apply-templates select="node()"/>
+      <xsl:apply-templates select="mdb:otherLocale"/>
+      <xsl:apply-templates select="mdb:metadataLinkage"/>
+      <xsl:apply-templates select="mdb:spatialRepresentationInfo"/>
+      <xsl:apply-templates select="mdb:referenceSystemInfo"/>
+      <xsl:apply-templates select="mdb:metadataExtensionInfo"/>
+      <xsl:apply-templates select="mdb:identificationInfo"/>
+      <xsl:apply-templates select="mdb:contentInfo"/>
+      <xsl:apply-templates select="mdb:distributionInfo"/>
+      <xsl:apply-templates select="mdb:dataQualityInfo"/>
+      <xsl:apply-templates select="mdb:resourceLineage"/>
+      <xsl:apply-templates select="mdb:portrayalCatalogueInfo"/>
+      <xsl:apply-templates select="mdb:metadataConstraints"/>
+      <xsl:apply-templates select="mdb:applicationSchemaInfo"/>
+      <xsl:apply-templates select="mdb:metadataMaintenance"/>
+      <xsl:apply-templates select="mdb:acquisitionInformation"/>
     </xsl:copy>
   </xsl:template>
   

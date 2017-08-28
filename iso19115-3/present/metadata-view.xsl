@@ -548,77 +548,120 @@
         <tr style="display:none;"><!-- FIXME needed by JS to append other type of relation from xml.relation service -->
           <td class="main"></td><td></td>
         </tr>
-        <xsl:for-each-group select="mdb:distributionInfo/descendant::mrd:onLine[cit:CI_OnlineResource/cit:linkage/gco:CharacterString!='']" group-by="cit:CI_OnlineResource/cit:protocol">
-        <tr>
-          <td class="main">
-            <!-- Usually, protocole format is OGC:WMS-version-blahblah, remove ':' and get
-            prefix of the protocol to set the CSS icon class-->
-            <span class="{translate(substring-before(current-grouping-key(), '-'), ':', '')} icon">
-                <xsl:value-of select="/root/gui/schemas/iso19115-3/labels/element[@name = 'cit:protocol']/helper/option[@value=normalize-space(current-grouping-key())]"/>
-            </span>
-          </td>
-          <td>
-            <ul>
-              <xsl:for-each select="current-group()">
-                <xsl:variable name="desc">
-                  <xsl:apply-templates mode="localised"
-                    select="cit:CI_OnlineResource/cit:description">
-                    <xsl:with-param name="langId" select="$langId"/>
-                  </xsl:apply-templates>
-                </xsl:variable>
-                <li>
-                  <a href="{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}">
-                    <xsl:choose>
-                      <xsl:when test="contains(current-grouping-key(), 'OGC') or contains(current-grouping-key(), 'DOWNLOAD')">
-                        <!-- Name contains layer, feature type, coverage ... -->
-                        <xsl:choose>
-                          <xsl:when test="normalize-space($desc)!=''">
-                            <xsl:value-of select="$desc"/>
-                            <xsl:if test="cit:CI_OnlineResource/cit:name/gmx:MimeFileType/@type">
-                              (<xsl:value-of select="cit:CI_OnlineResource/cit:name/gmx:MimeFileType/@type"/>)
-                            </xsl:if>
-                          </xsl:when>
-                          <xsl:when
-                            test="normalize-space(cit:CI_OnlineResource/cit:name/gco:CharacterString)!=''">
-                            <xsl:value-of select="cit:CI_OnlineResource/cit:name/gco:CharacterString"/>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <xsl:value-of select="cit:CI_OnlineResource/cit:linkage/gco:CharacterString"/>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:if test="normalize-space($desc)!=''">
-                          <xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
-                        </xsl:if>
-                        <xsl:choose>
-                          <xsl:when
-                            test="normalize-space(cit:CI_OnlineResource/cit:name/gco:CharacterString)!=''">
-                            <xsl:value-of select="cit:CI_OnlineResource/cit:name/gco:CharacterString"/>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <xsl:value-of select="cit:CI_OnlineResource/cit:linkage/gco:CharacterString"/>
-                          </xsl:otherwise>
-                        </xsl:choose>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                  </a>
-                  
-                  <!-- Display add to map action for WMS -->
-                  <xsl:if test="contains(current-grouping-key(), 'WMS')">
-                  &#160;
-                  <a href="#" class="md-mn addLayer"
-                    onclick="app.switchMode('1', true);app.getIMap().addWMSLayer([[
-                              '{cit:CI_OnlineResource/cit:description/gco:CharacterString}', 
-                              '{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}', 
-                              '{cit:CI_OnlineResource/cit:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a>
-                  </xsl:if>
-                </li>
-              </xsl:for-each>
-            </ul>
-          </td>
-        </tr>
-      </xsl:for-each-group>
+		
+		<xsl:for-each-group select="mdb:distributionInfo/descendant::mrd:onLine[cit:CI_OnlineResource/cit:linkage/gco:CharacterString!='']"		group-by="cit:CI_OnlineResource/cit:protocol">
+			
+			<xsl:variable name="i" select="position()" />
+			<xsl:copy>
+				<xsl:if test="$i=1">
+					<tr><td colspan="2"><b>Product Downloads</b></td></tr>
+				</xsl:if>
+			</xsl:copy>
+			<xsl:for-each select="current-group()">
+				<xsl:variable name="desc">
+					<xsl:apply-templates mode="localised" select="cit:CI_OnlineResource/cit:description">
+						<xsl:with-param name="langId" select="$langId"/>
+					</xsl:apply-templates>
+				</xsl:variable>
+					
+				<xsl:if test="not(contains(current-grouping-key(), 'OGC'))">
+					<tr>
+						<td class="main">
+							<!-- Usually, protocole format is OGC:WMS-version-blahblah, remove ':' and get
+							prefix of the protocol to set the CSS icon class-->
+							<span class="{translate(substring-before(current-grouping-key(), '-'), ':', '')} icon">
+								<xsl:value-of select="/root/gui/schemas/iso19115-3/labels/element[@name = 'cit:protocol']/helper/option[@value=normalize-space(current-grouping-key())]"/>
+							</span>
+						</td>
+						<td>
+							<ul>
+								<li>
+									<xsl:choose>
+									  <xsl:when test="normalize-space($desc)!=''">
+										<p><xsl:value-of select="$desc"/></p><span class="button-orange"><a href="{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}">Download</a></span>
+									  </xsl:when>
+									  <xsl:when
+										test="normalize-space(cit:CI_OnlineResource/cit:name/gco:CharacterString)!=''">
+										<p><xsl:value-of select="cit:CI_OnlineResource/cit:name/gco:CharacterString"/></p><span class="button-orange"><a href="{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}">Download</a></span>
+									  </xsl:when>
+									  <xsl:otherwise>
+										<p><xsl:value-of select="cit:CI_OnlineResource/cit:linkage/gco:CharacterString"/></p><span class="button-orange"><a href="{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}">Download</a></span>
+									  </xsl:otherwise>
+									</xsl:choose>
+									<!-- Display add to map action for WMS -->
+									<xsl:if test="contains(current-grouping-key(), 'WMS')">
+										&#160;
+										<a href="#" class="md-mn addLayer"
+											onclick="app.switchMode('1', true);app.getIMap().addWMSLayer([[
+												  '{cit:CI_OnlineResource/cit:description/gco:CharacterString}', 
+												  '{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}', 
+												  '{cit:CI_OnlineResource/cit:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a>
+									</xsl:if>
+								</li>
+							</ul>
+						</td>
+					</tr>
+			  </xsl:if>
+			</xsl:for-each>
+		</xsl:for-each-group>
+		
+		<xsl:for-each-group select="mdb:distributionInfo/descendant::mrd:onLine[cit:CI_OnlineResource/cit:linkage/gco:CharacterString!='']" group-by="cit:CI_OnlineResource/cit:protocol">
+			
+			<xsl:variable name="i" select="position()" />
+			<xsl:copy>
+				<xsl:if test="$i=1">
+					<tr><td colspan="2"><b>Web Service Links</b></td></tr>
+				</xsl:if>
+			</xsl:copy>
+			<xsl:for-each select="current-group()">
+				<xsl:variable name="desc">
+				  <xsl:apply-templates mode="localised"
+					select="cit:CI_OnlineResource/cit:description">
+					<xsl:with-param name="langId" select="$langId"/>
+				  </xsl:apply-templates>
+				</xsl:variable>
+				
+				<xsl:if test="contains(current-grouping-key(), 'OGC')">
+				
+					<tr>
+						<td class="main">
+							<!-- Usually, protocole format is OGC:WMS-version-blahblah, remove ':' and get
+							prefix of the protocol to set the CSS icon class-->
+							<span class="{translate(substring-before(current-grouping-key(), '-'), ':', '')} icon">
+								<xsl:value-of select="/root/gui/schemas/iso19115-3/labels/element[@name = 'cit:protocol']/helper/option[@value=normalize-space(current-grouping-key())]"/>
+							</span>
+						</td>
+						<td>
+							<ul>
+								<li>
+									<xsl:choose>
+									  <xsl:when test="normalize-space($desc)!=''">
+										<p><xsl:value-of select="$desc"/></p><span class="button-green"><a href="{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}">Link to Web Services</a></span>
+									  </xsl:when>
+									  <xsl:when
+										test="normalize-space(cit:CI_OnlineResource/cit:name/gco:CharacterString)!=''">
+										<p><xsl:value-of select="cit:CI_OnlineResource/cit:name/gco:CharacterString"/></p><span class="button-green"><a href="{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}">Link to Web Services</a></span>
+									  </xsl:when>
+									  <xsl:otherwise>
+										<p><xsl:value-of select="cit:CI_OnlineResource/cit:linkage/gco:CharacterString"/></p><span class="button-green"><a href="{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}">Link to Web Services</a></span>
+									  </xsl:otherwise>
+									</xsl:choose>
+									<!-- Display add to map action for WMS -->
+									<xsl:if test="contains(current-grouping-key(), 'WMS')">
+										&#160;
+										<a href="#" class="md-mn addLayer"
+											onclick="app.switchMode('1', true);app.getIMap().addWMSLayer([[
+												  '{cit:CI_OnlineResource/cit:description/gco:CharacterString}', 
+												  '{cit:CI_OnlineResource/cit:linkage/gco:CharacterString}', 
+												  '{cit:CI_OnlineResource/cit:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a>
+									</xsl:if>
+								</li>
+							</ul>
+						</td>
+					</tr>	
+			  </xsl:if>
+			</xsl:for-each>
+		</xsl:for-each-group>
       </tbody>
     </table>
   </xsl:template>

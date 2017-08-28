@@ -53,8 +53,16 @@
             <xsl:copy>
               <xsl:copy-of select="@*"/>
               <mrd:MD_Distribution>
-								<xsl:copy-of select="mrd:MD_Distribution/*"/>
-                <xsl:call-template name="fill"/>
+				
+				<!--<xsl:copy-of select="mrd:MD_Distribution/*"/>-->
+				<!-- Joseph added - Start -->
+				<xsl:apply-templates select="mrd:MD_Distribution/mrd:description"/>
+				<xsl:apply-templates select="mrd:MD_Distribution/mrd:distributionFormat"/>
+				<xsl:call-template name="fill"/>
+                <xsl:apply-templates select="mrd:MD_Distribution/mrd:distributor"/>
+				<xsl:apply-templates select="mrd:MD_Distribution/mrd:transferOptions"/>
+				<!-- Joseph added - End -->
+                <!--<xsl:call-template name="fill"/>-->
               </mrd:MD_Distribution>
             </xsl:copy>
           </xsl:for-each>
@@ -189,34 +197,34 @@
 													</cit:party>
 												</cit:CI_Responsibility>
 											</mrd:distributorContact>
-              				<mrd:distributorTransferOptions>
-                				<mrd:MD_DigitalTransferOptions>
-        									<mrd:onLine>
-          									<cit:CI_OnlineResource>
-            									<cit:linkage>
-              									<gco:CharacterString>
-                									<xsl:value-of select="$url"/>
-              									</gco:CharacterString>
-            									</cit:linkage>
-            									<cit:protocol>
-              									<gco:CharacterString>
-                									<xsl:value-of select="$protocol"/>
-              									</gco:CharacterString>
-            									</cit:protocol>
-            									<cit:name>
-              									<gco:CharacterString>
-                									<xsl:value-of select="."/>
-              									</gco:CharacterString>
-            									</cit:name>
-            									<cit:description>
-              									<gco:CharacterString>
-                									<xsl:value-of select="tokenize($desc, ',')[position() = $pos]"/>
-              									</gco:CharacterString>
-            									</cit:description>
-          									</cit:CI_OnlineResource>
-        									</mrd:onLine>
-                				</mrd:MD_DigitalTransferOptions>
-              				</mrd:distributorTransferOptions>
+											<mrd:distributorTransferOptions>
+												<mrd:MD_DigitalTransferOptions>
+															<mrd:onLine>
+															<cit:CI_OnlineResource>
+																<cit:linkage>
+																<gco:CharacterString>
+																	<xsl:value-of select="$url"/>
+																</gco:CharacterString>
+																</cit:linkage>
+																<cit:protocol>
+																<gco:CharacterString>
+																	<xsl:value-of select="$protocol"/>
+																</gco:CharacterString>
+																</cit:protocol>
+																<cit:name>
+																<gco:CharacterString>
+																	<xsl:value-of select="."/>
+																</gco:CharacterString>
+																</cit:name>
+																<cit:description>
+																<gco:CharacterString>
+																	<xsl:value-of select="tokenize($desc, ',')[position() = $pos]"/>
+																</gco:CharacterString>
+																</cit:description>
+															</cit:CI_OnlineResource>
+															</mrd:onLine>
+												</mrd:MD_DigitalTransferOptions>
+											</mrd:distributorTransferOptions>
 										</mrd:MD_Distributor>
 									</mrd:formatDistributor>
 								</mrd:MD_Format>
