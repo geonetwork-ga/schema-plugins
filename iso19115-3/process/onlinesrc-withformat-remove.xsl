@@ -25,10 +25,10 @@
     mrd:onLine[
     normalize-space(cit:CI_OnlineResource/cit:linkage/gco:CharacterString) = $url and 
     normalize-space(cit:CI_OnlineResource/cit:protocol/gco:CharacterString) = 'WWW:DOWNLOAD-1.0-http--download']|
-		mrd:distributionFormat[ancestor::mrd:onLine[
+		mrd:distributionFormat[descendant::mrd:onLine[
     normalize-space(cit:CI_OnlineResource/cit:linkage/gco:CharacterString) = $url and 
     normalize-space(cit:CI_OnlineResource/cit:name/gco:CharacterString) = $name]]|
-    mrd:distributionFormat[ancestor::mrd:onLine[
+    mrd:distributionFormat[descendant::mrd:onLine[
     normalize-space(cit:CI_OnlineResource/cit:linkage/gco:CharacterString) = $url and 
     normalize-space(cit:CI_OnlineResource/cit:protocol/gco:CharacterString) = 'WWW:DOWNLOAD-1.0-http--download']]
 		"
