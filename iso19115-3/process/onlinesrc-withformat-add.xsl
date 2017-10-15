@@ -114,8 +114,8 @@
     
     <!-- Add online source from URL -->
     <xsl:if test="$url">
-      <xsl:for-each select="tokenize($name, ',')">
-        <xsl:variable name="pos" select="position()"/>
+      <!--<xsl:for-each select="tokenize($name, ',')">
+        <xsl:variable name="pos" select="position()"/>--><!-- Joseph Commented - Creating mulitple records if comma is present in the Title -->
 							<mrd:distributionFormat>
 								<mrd:MD_Format>
 									<mrd:formatSpecificationCitation>
@@ -213,12 +213,14 @@
 																</cit:protocol>
 																<cit:name>
 																<gco:CharacterString>
-																	<xsl:value-of select="."/>
+																	<!--<xsl:value-of select="."/>-->
+																	<xsl:value-of select="$name"/>
 																</gco:CharacterString>
 																</cit:name>
 																<cit:description>
 																<gco:CharacterString>
-																	<xsl:value-of select="tokenize($desc, ',')[position() = $pos]"/>
+																	<!--<xsl:value-of select="tokenize($desc, ',')[position() = $pos]"/>-->
+																	<xsl:value-of select="$desc" />
 																</gco:CharacterString>
 																</cit:description>
 															</cit:CI_OnlineResource>
@@ -229,7 +231,7 @@
 									</mrd:formatDistributor>
 								</mrd:MD_Format>
 							</mrd:distributionFormat>
-      </xsl:for-each>
+      <!--</xsl:for-each>-->
     </xsl:if>
   </xsl:template>
 </xsl:stylesheet>

@@ -49,6 +49,13 @@
         /cit:date/*">
         <dc:date><xsl:value-of select="."/></dc:date>
       </xsl:for-each>
+
+      <!-- ecat ID -->
+      <xsl:for-each select="mdb:alternativeMetadataReference/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code">
+        <dc:source>
+           <xsl:value-of select="gco:CharacterString"/>
+        </dc:source>
+      </xsl:for-each>
       
       <!-- Identification -->
       <xsl:for-each select="$identification">	
@@ -101,7 +108,23 @@
         <xsl:for-each select="mri:citation/cit:CI_Citation/cit:date/cit:CI_Date[cit:dateType/cit:CI_DateTypeCode/@codeListValue='revision']/cit:date/*">
           <dct:modified><xsl:value-of select="."/></dct:modified>
         </xsl:for-each>
-        
+                               
+        <xsl:for-each select="mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue='author']/cit:party/cit:CI_Individual/cit:name">
+          <dc:creator>
+            <xsl:apply-templates mode="localised19115-3" select=".">
+              <xsl:with-param name="langId" select="$langId"/>
+            </xsl:apply-templates>
+          </dc:creator>
+        </xsl:for-each>
+
+        <xsl:for-each select="mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue='author']/cit:party/cit:CI_Organisation/cit:name">
+          <dc:creator>
+            <xsl:apply-templates mode="localised19115-3" select=".">
+              <xsl:with-param name="langId" select="$langId"/>
+            </xsl:apply-templates>
+          </dc:creator>
+        </xsl:for-each>
+
         <xsl:for-each select="mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue='originator']/cit:party/cit:CI_Organisation/cit:name">
           <dc:creator>
             <xsl:apply-templates mode="localised19115-3" select=".">
@@ -109,7 +132,15 @@
             </xsl:apply-templates>
           </dc:creator>
         </xsl:for-each>
-        
+
+        <xsl:for-each select="mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue='owner']/cit:party/cit:CI_Organisation/cit:name">
+          <dc:creator>
+            <xsl:apply-templates mode="localised" select=".">
+              <xsl:with-param name="langId" select="$langId"/>
+            </xsl:apply-templates>
+          </dc:creator>
+        </xsl:for-each>
+
         <xsl:for-each select="mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue='publisher']/cit:party/cit:CI_Organisation/cit:name">
           <dc:publisher>
             <xsl:apply-templates mode="localised19115-3" select=".">
@@ -117,7 +148,8 @@
             </xsl:apply-templates>
           </dc:publisher>
         </xsl:for-each>
-        
+
+<!--    
         <xsl:for-each select="mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue='author']/cit:party/cit:CI_Organisation/cit:name">
           <dc:contributor>
             <xsl:apply-templates mode="localised19115-3" select=".">
@@ -125,8 +157,10 @@
             </xsl:apply-templates>
           </dc:contributor>
         </xsl:for-each>
+-->   
+        
       </xsl:for-each>
-      
+
       
       <!-- abstract -->
       <xsl:for-each select="$identification/mri:abstract">
@@ -167,6 +201,7 @@
       
       
       <!-- Lineage -->
+	  <!-- Source tag is being used for the ecat ID
       <xsl:for-each select="../../mdb:resourceLineage/mrl:LI_Lineage/mrl:statement">
         <dc:source>
           <xsl:apply-templates mode="localised19115-3" select=".">
@@ -174,6 +209,7 @@
           </xsl:apply-templates>				
         </dc:source>
       </xsl:for-each>
+	  -->
       
       
       <!-- Parent Identifier -->
@@ -185,18 +221,22 @@
       
       <!-- bounding box -->
       <xsl:for-each select="$identification/mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_GeographicBoundingBox">
+        <!-- ISO19115-1:2014 bounding box does not have a CRS specified.  CRS being extracted below is for the resource. 
         <xsl:variable name="rsi"  select="/mdb:MD_Metadata/mdb:referenceSystemInfo/*/mrs:referenceSystemIdentifier/mcc:MD_Identifier"/>
         <xsl:variable name="auth" select="$rsi/mcc:codeSpace/gco:CharacterString"/>
         <xsl:variable name="id"   select="$rsi/mcc:code/gco:CharacterString"/>
         <xsl:variable name="crs" select="concat('urn:ogc:def:crs:', $auth, '::', $id)"/>
+        -->
         
         <ows:BoundingBox>
+          <!--
           <xsl:attribute name="crs">
             <xsl:choose>
               <xsl:when test="$crs = 'urn:ogc:def:crs:::'">urn:ogc:def:crs:EPSG:6.6:4326</xsl:when>
               <xsl:otherwise><xsl:value-of select="$crs"/></xsl:otherwise>
             </xsl:choose>
           </xsl:attribute>
+          -->
           
           <ows:LowerCorner>
             <xsl:value-of select="concat(gex:eastBoundLongitude/gco:Decimal, ' ', gex:southBoundLatitude/gco:Decimal)"/>
@@ -244,9 +284,41 @@
         </xsl:for-each>
         
       </xsl:for-each>
-      
-      
+            
       <xsl:for-each select="mdb:distributionInfo/mrd:MD_Distribution">
+        
+        <xsl:for-each select="mrd:distributionFormat/mrd:MD_Format/mrd:formatDistributor/mrd:MD_Distributor/mrd:distributorTransferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource">
+          <xsl:if test="cit:linkage">
+            <dc:URI>
+              <xsl:if test="cit:protocol/gco:CharacterString != ''">
+                <xsl:attribute name="protocol"><xsl:value-of select="cit:protocol/gco:CharacterString"/></xsl:attribute>
+              </xsl:if>
+              
+              <xsl:if test="cit:name/gco:CharacterString != ''">
+                <xsl:attribute name="name">
+                  <xsl:for-each select="cit:name">
+                    <xsl:apply-templates mode="localised19115-3" select=".">
+                      <xsl:with-param name="langId" select="$langId"/>
+                    </xsl:apply-templates>
+                  </xsl:for-each>
+                </xsl:attribute>
+              </xsl:if>
+              
+              <xsl:if test="cit:description/gco:CharacterString != ''">
+                <xsl:attribute name="description">
+                  <xsl:for-each select="cit:description">
+                    <xsl:apply-templates mode="localised19115-3" select=".">
+                      <xsl:with-param name="langId" select="$langId"/>
+                    </xsl:apply-templates>
+                  </xsl:for-each>
+                </xsl:attribute>
+              </xsl:if>
+              
+              <xsl:value-of select="cit:linkage/*"/>
+            </dc:URI>
+          </xsl:if>
+        </xsl:for-each>
+        
         <xsl:for-each select="mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource">
           <xsl:if test="cit:linkage">
             <dc:URI>
@@ -279,6 +351,7 @@
           </xsl:if>
         </xsl:for-each>
       </xsl:for-each>
+      
       
       <xsl:for-each select="$identification/mri:graphicOverview/mcc:MD_BrowseGraphic">
         <xsl:variable name="fileName" select="mcc:fileName/gco:CharacterString"/>

@@ -777,99 +777,102 @@
 			<xsl:with-param name="content">
 
 				<xsl:for-each select="mdb:identificationInfo">
-					<!--<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:title">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>-->
-					<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:date">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:edition">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:editionDate">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:identifier">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:citedResponsibleParty">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:series">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-				
-					<!--<xsl:apply-templates mode="elementEP" select="*/mri:abstract">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>-->
-					<!--<xsl:apply-templates mode="elementEP" select="*/mri:pointOfContact">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>-->
-					<xsl:apply-templates mode="elementEP" select="*/mri:spatialResolution">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:topicCategory">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:extent">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					<xsl:apply-templates mode="elementEP" select="*/mri:resourceMaintenance">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-					
-					<!--<xsl:apply-templates mode="elementEP" select="*/mri:resourceFormat">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>-->
+					<xsl:choose>
+						<xsl:when test="srv:SV_ServiceIdentification">
+							<xsl:for-each select="srv:SV_ServiceIdentification">
+								<xsl:call-template name="complexElementGuiWrapper">
+									<xsl:with-param name="title"
+										select="/root/gui/schemas/iso19115-3/labels/element[@name='srv:SV_ServiceIdentification']/label" />
+									<xsl:with-param name="id"
+										select="generate-id(/root/gui/schemas/iso19115-3/labels/element[@name='srv:SV_ServiceIdentification']/label)" />
+									<xsl:with-param name="schema" select="$schema" />
+									<xsl:with-param name="edit" select="$edit" />
+									<xsl:with-param name="content">
+										<xsl:apply-templates mode="elementEP" select="*">
+											<xsl:with-param name="schema" select="$schema" />
+											<xsl:with-param name="edit" select="$edit" />
+										</xsl:apply-templates>
+									</xsl:with-param>
 
-					<xsl:apply-templates mode="elementEP" select="*/mri:descriptiveKeywords">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-
-					<xsl:apply-templates mode="elementEP" select="*/mri:resourceConstraints">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-
-					<xsl:apply-templates mode="elementEP" select="*/mri:defaultLocale">
-						<xsl:with-param name="schema" select="$schema" />
-						<xsl:with-param name="edit" select="$edit" />
-					</xsl:apply-templates>
-
-					<xsl:if test="srv:SV_ServiceIdentification">
-						<xsl:for-each select="srv:SV_ServiceIdentification">
-							<xsl:call-template name="complexElementGuiWrapper">
-								<xsl:with-param name="title"
-									select="/root/gui/schemas/iso19115-3/labels/element[@name='srv:SV_ServiceIdentification']/label" />
-								<xsl:with-param name="id"
-									select="generate-id(/root/gui/schemas/iso19115-3/labels/element[@name='srv:SV_ServiceIdentification']/label)" />
+								</xsl:call-template>
+							</xsl:for-each>
+						</xsl:when>
+						<xsl:otherwise>
+							<!--<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:title">
 								<xsl:with-param name="schema" select="$schema" />
 								<xsl:with-param name="edit" select="$edit" />
-								<xsl:with-param name="content">
-									<xsl:apply-templates mode="elementEP" select="*">
-										<xsl:with-param name="schema" select="$schema" />
-										<xsl:with-param name="edit" select="$edit" />
-									</xsl:apply-templates>
-								</xsl:with-param>
+							</xsl:apply-templates>-->
+							<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:date">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:edition">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:editionDate">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:identifier">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:citedResponsibleParty">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:citation/cit:CI_Citation/cit:series">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+						
+							<!--<xsl:apply-templates mode="elementEP" select="*/mri:abstract">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>-->
+							<!--<xsl:apply-templates mode="elementEP" select="*/mri:pointOfContact">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>-->
+							<xsl:apply-templates mode="elementEP" select="*/mri:spatialResolution">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:topicCategory">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:extent">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							<xsl:apply-templates mode="elementEP" select="*/mri:resourceMaintenance">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+							
+							<!--<xsl:apply-templates mode="elementEP" select="*/mri:resourceFormat">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>-->
 
-							</xsl:call-template>
-						</xsl:for-each>
-					</xsl:if>
+							<xsl:apply-templates mode="elementEP" select="*/mri:descriptiveKeywords">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+
+							<xsl:apply-templates mode="elementEP" select="*/mri:resourceConstraints">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+
+							<xsl:apply-templates mode="elementEP" select="*/mri:defaultLocale">
+								<xsl:with-param name="schema" select="$schema" />
+								<xsl:with-param name="edit" select="$edit" />
+							</xsl:apply-templates>
+				        </xsl:otherwise>
+					</xsl:choose>
 
 				</xsl:for-each>
 		
