@@ -1121,7 +1121,7 @@
               </xsl:for-each>
 
               <xsl:variable name="type" select="mri:MD_Keywords/mri:type/mri:MD_KeywordTypeCode/@codeListValue"/>
-              <xsl:if test="$type">
+              <xsl:if test="$type != ''">
                 (<xsl:value-of
                   select="/root/gui/schemas/*[name(.)=$schema]/codelists/codelist[@name = 'mri:MD_KeywordTypeCode']/
                   entry[code = $type]/label"/>)

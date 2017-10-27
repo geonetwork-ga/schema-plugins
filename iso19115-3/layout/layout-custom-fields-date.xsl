@@ -68,8 +68,10 @@
     <xsl:variable name="labelConfig"
                   select="gn-fn-metadata:getLabel($schema, name(), $labels)"/>
 
-    <xsl:variable name="dateTypeElementRef"
-                  select="../gn:element/@ref"/>
+	<!-- Updated by Joseph - Issue: deleting edition date removes whole block -->
+	<xsl:variable name="dateTypeElementRef" select="if (name()='cit:editionDate') then (gn:element/@ref) else (../gn:element/@ref)"/>
+    <!--<xsl:variable name="dateTypeElementRef"
+                  select="../gn:element/@ref"/>-->
 
     <xsl:message>SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS <xsl:value-of select="name()"/></xsl:message>
 
@@ -123,11 +125,23 @@
           </xsl:apply-templates>
         </div>
       </div>
+
+	  <!-- Updated by Joseph - Issue: deleting edition date removes whole block -->
       <div class="col-sm-1 gn-control">
-        <xsl:call-template name="render-form-field-control-remove">
-          <xsl:with-param name="editInfo" select="../gn:element"/>
-          <xsl:with-param name="parentEditInfo" select="../../gn:element"/>
-        </xsl:call-template>
+		<xsl:choose>
+			<xsl:when test="name()='cit:editionDate'">
+				<xsl:call-template name="render-form-field-control-remove">
+				  <xsl:with-param name="editInfo" select="gn:element"/>
+				  <xsl:with-param name="parentEditInfo" select="gn:element"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="render-form-field-control-remove">
+				  <xsl:with-param name="editInfo" select="../gn:element"/>
+				  <xsl:with-param name="parentEditInfo" select="../../gn:element"/>
+				</xsl:call-template>		
+			</xsl:otherwise>
+		</xsl:choose>
       </div>
     </div>
   </xsl:template>
