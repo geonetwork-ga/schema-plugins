@@ -190,9 +190,9 @@
   <!-- View configuration -->
   <views>
 
-	<!-- GROUNDWATER TEMPLATE START -->
-		<view name="groundwaters"
-			displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='groundwater']) > 0">
+	<!-- SOURCE DATASET TEMPLATE START -->
+		<view name="sources"
+			displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='source']) > 0">
 			<tab id="resourceDescription" default="true" mode="flat">
 				<section name=" ">
 					<!-- special template to render this field readonly - see layout-custom-fields.xsl -->
@@ -365,7 +365,7 @@
 				</section>
 			</tab>
 			<tab id="gwReferenceSystemInfo" mode="flat"
-				displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','groundwater','series')]) > 0">
+				displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','source','series')]) > 0">
 				<section name=" ">
 					<field xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo" or="referenceSystemInfo"
 						in="/mdb:MD_Metadata" />
@@ -382,7 +382,7 @@
 				</section>
 			</tab>
 			<tab id="resourceExtents" mode="flat"
-				displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','groundwater','series')]) > 0">
+				displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','source','series')]) > 0">
 				<section name=" ">
 					<field
 						xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent" />
@@ -436,10 +436,10 @@
 				<for name="mrl:LI_Lineage" />
 			</flatModeExceptions>
 		</view>
-		<!-- GROUNDWATER TEMPLATE END -->
+		<!-- SOURCE DATASET TEMPLATE END -->
 
 		<view name="default"
-			displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='service' or @codeListValue='groundwater']) = 0">
+			displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue='service' or @codeListValue='source']) = 0">
       <tab id="resourceDescription" default="true" mode="flat">
         <section name=" ">
 					<!-- special template to render this field readonly - see layout-custom-fields.xsl -->
