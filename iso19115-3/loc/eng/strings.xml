@@ -16,6 +16,7 @@
   <advanced>Full Standard</advanced>
   <default>Tabs</default>
   <services>Services Tabs</services>
+  <sources>Source Tab</sources>
   <simple>Simple Standard</simple>
   <inspire>INSPIRE</inspire>
   <resource>Resource</resource>
@@ -27,6 +28,7 @@
   <resourceLineage>Lineage</resourceLineage>
   <spatialRepresentationInfo>Spatial rep.</spatialRepresentationInfo>
   <referenceSystemInfo>Ref. system</referenceSystemInfo>
+  <gwReferenceSystemInfo>Ref. system</gwReferenceSystemInfo>
   <contentInfo>Content</contentInfo>
   <portrayalCatalogueInfo>Portrayal</portrayalCatalogueInfo>
   <metadataMaintenance>Md. maintenance</metadataMaintenance>
@@ -45,7 +47,9 @@
 	<resourceIdentification>Resource Identification</resourceIdentification>
 
 	<metadataScope>Type of Resource</metadataScope>
-
+	
+	<legalConstraints>Legal Constraints</legalConstraints>
+	<securtiyConstraints>Securtiy Constraints</securtiyConstraints>
 
 	<resourceQuality>Resource Quality</resourceQuality>
 	<conceptualConsistency>Logical Consistency</conceptualConsistency>
@@ -92,9 +96,11 @@
 	<resourceType>Type</resourceType>
         <resourceLineageTab>Lineage</resourceLineageTab>
         <resourceFormat>Format (admin only)</resourceFormat>
+		<gwResourceFormat>Resource Format</gwResourceFormat>
+		<gwTransferOptions>Transfer Options</gwTransferOptions>
         <resourceFormatNoTitle></resourceFormatNoTitle>
         <distribution>Distribution</distribution>
-
+	<transferOptions>Transfer Options</transferOptions>
   <useAssociatedResources><span>Add an online resource for distribution using the "<i class="fa fa-link"></i><i class="icon-external-link"></i>Associated resources" panel at the right hand side of the form</span></useAssociatedResources>
 
 	<!-- gaDatasetURI -->
