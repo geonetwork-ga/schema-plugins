@@ -17,6 +17,8 @@
   <default>Tabs</default>
   <services>Services Tabs</services>
   <sources>Source Tab</sources>
+  <datasetNLI>NLI Dataset Tab</datasetNLI>
+  <serviceNLI>NLI Service Tab</serviceNLI>
   <simple>Simple Standard</simple>
   <inspire>INSPIRE</inspire>
   <resource>Resource</resource>
