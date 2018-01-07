@@ -141,6 +141,7 @@
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:resourceFormat" />
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:descriptiveKeywords" />
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:resourceConstraints" />
+						<xsl:apply-templates select="mri:MD_DataIdentification/mri:associatedResource" />
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:defaultLocale" />
 					</mri:MD_DataIdentification>
 				</xsl:copy>
