@@ -77,6 +77,7 @@
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:resourceSpecificUsage" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:resourceConstraints" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:aggregationInfo" />
+							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:associatedResource" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/srv:serviceType" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/srv:serviceTypeVersion" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/srv:accessProperties" />
