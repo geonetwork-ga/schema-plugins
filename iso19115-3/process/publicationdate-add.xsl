@@ -77,6 +77,7 @@
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:resourceSpecificUsage" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:resourceConstraints" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:aggregationInfo" />
+							<xsl:apply-templates select="srv:SV_ServiceIdentification/mri:associatedResource" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/srv:serviceType" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/srv:serviceTypeVersion" />
 							<xsl:apply-templates select="srv:SV_ServiceIdentification/srv:accessProperties" />
@@ -141,6 +142,7 @@
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:resourceFormat" />
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:descriptiveKeywords" />
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:resourceConstraints" />
+						<xsl:apply-templates select="mri:MD_DataIdentification/mri:associatedResource" />
 						<xsl:apply-templates select="mri:MD_DataIdentification/mri:defaultLocale" />
 					</mri:MD_DataIdentification>
 				</xsl:copy>
