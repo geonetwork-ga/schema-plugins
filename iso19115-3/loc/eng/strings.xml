@@ -17,6 +17,7 @@
   <default>Tabs</default>
   <services>Services Tabs</services>
   <sources>Source Tab</sources>
+  <SourceDataset>Source Dataset Tab</SourceDataset>
   <datasetNLI>NLI Dataset Tab</datasetNLI>
   <serviceNLI>NLI Service Tab</serviceNLI>
   <simple>Simple Standard</simple>
@@ -97,7 +98,7 @@
 	<distribution_version>Version</distribution_version>
 	<resourceType>Type</resourceType>
         <resourceLineageTab>Lineage</resourceLineageTab>
-        <resourceFormat>Format (admin only)</resourceFormat>
+        <resourceFormat>Format</resourceFormat>
 		<gwResourceFormat>Resource Format</gwResourceFormat>
 		<gwTransferOptions>Transfer Options</gwTransferOptions>
         <resourceFormatNoTitle></resourceFormatNoTitle>
