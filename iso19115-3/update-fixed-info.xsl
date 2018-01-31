@@ -384,6 +384,32 @@
     </xsl:copy>
   </xsl:template>
   
+  <!-- Joseph added - For source dataset online resource, append eCatId to linkage -->
+   <xsl:template match="cit:CI_OnlineResource[(cit:name/gco:CharacterString='Link to Source Dataset')]">
+ 
+    <xsl:variable name="mimeType">
+      <xsl:call-template name="getMimeTypeUrl">
+        <xsl:with-param name="linkage" select="cit:linkage/gco:CharacterString"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="srclinkage" select="cit:linkage/gco:CharacterString" />
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <cit:linkage>
+        <gco:CharacterString>
+			<xsl:value-of select="concat($srclinkage,/root/env/gaid)"/>
+        </gco:CharacterString>
+      </cit:linkage>
+      <xsl:copy-of select="cit:protocol"/>
+      <xsl:copy-of select="cit:applicationProfile"/>
+      <cit:name>
+        <gcx:MimeFileType type="{$mimeType}"/>
+      </cit:name>
+      <xsl:copy-of select="cit:description"/>
+      <xsl:copy-of select="cit:function"/>
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:template match="gcx:FileName[name(..)!='cit:contactInstructions']">
     <xsl:copy>
       <xsl:attribute name="src">
