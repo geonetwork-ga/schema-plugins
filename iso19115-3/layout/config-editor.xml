@@ -204,9 +204,12 @@
 <!--Martins additions start-->
  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title"/>
           <!--Martins additions end-->
-  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
+ <!--  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
+ <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement"/>
 <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:keyword" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
+  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+         <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/> -->
 <!--  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:purpose"/> -->
 <!--                                        <field xpath="/mdb:MD_Metadata/mdb:metadataScope" in="/mdb:MD_Metadata"/>
                                         <action type="add" name="metadataScope" or="metadataScope" in="/mdb:MD_Metadata">
@@ -263,12 +266,18 @@
 <!--                                </section>
                         </tab> -->
 
-<!-- <tab id="resourceKeywords" mode="flat">
-        <section name=" "> -->
+ <tab id="resourceMandatory" mode="flat">
+        <section name=" ">
+  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract"/>
+ <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement"/>
+<field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:keyword" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+ <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:date" or="date" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation"/>
+  <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+         <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
     <!--      <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory"/> -->
 <!--          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords" or="descriptiveKeywords" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/> -->
-                              <!--  </section>
-                        </tab> -->
+                                </section>
+                        </tab> 
 
    <!--   <tab id="resourceMaintenance" mode="flat">
         <section name=" ">
@@ -296,26 +305,26 @@
                         </tab>
                         -->
 
-      <tab id="contacts" mode="flat">
+<!--      <tab id="contacts" mode="flat">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact" or="pointOfContact" in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-          <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
+	 <field xpath="/mdb:MD_Metadata/mdb:contact" or="contact" in="/mdb:MD_Metadata"/>
                                 </section>
-                        </tab>
+                        </tab> -->
 
-      <tab id="resourceExtents" mode="flat"> <!-- displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','dataset','series')]) > 0">  -->
+      <tab id="resourceOptional" mode="flat"> <!-- displayIfRecord="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue=('','dataset','series')]) > 0">  -->
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent"/>
 	  <field xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo" or="referenceSystemInfo" in="/mdb:MD_Metadata"/>
                                 </section>
                         </tab>
 
-      <tab id="resourceLineageTab" mode="flat">
+     <!--  <tab id="resourceLineageTab" mode="flat">
         <section name=" ">
           <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement"/>
-<!--      <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:scope"/>  -->
- <!--     <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source"/> -->
-                                     <!--  <action type="add" name="source" or="source" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage">
+      <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:scope"/> 
+      <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source"/> 
+                                       <action type="add" name="source" or="source" in="/mdb:MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage">
                                                 <template>
                                                         <snippet>
                                                         <mrl:source>
@@ -366,9 +375,9 @@
                                                         </mrl:source>
                                                         </snippet>
                                                 </template>
-                                        </action> -->
+                                        </action>
                                 </section>
-                        </tab>
+                        </tab> -->
 
 
  <!-- <tab id="resourceFormat" mode="flat">
