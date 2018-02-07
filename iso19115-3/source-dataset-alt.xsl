@@ -14,8 +14,6 @@
 		<xsl:variable name="url" select="'file://nas/gw/'" />
 		<xsl:variable name="source_url"
 			select="concat($url, $sdlKeyword, '/', $eCatId)"></xsl:variable>
-		<xsl:variable name="source_url"
-			select="concat($url, $sdlKeyword, $eCatId)"></xsl:variable>
 		<!-- <xsl:message>
 			Keyword for source dataset:
 			<xsl:value-of select="$source_url" /> 

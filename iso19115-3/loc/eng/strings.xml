@@ -109,7 +109,7 @@
 	<!-- gaDatasetURI -->
 	<gaDatasetURI>GA Dataset URI</gaDatasetURI>
 
-	<!-- Service stuff -->
+	<!-- Service Template  -->
 	<serviceDescription>Description</serviceDescription>
 	<serviceType>Service Type</serviceType>
 	<serviceParameter>Parameter</serviceParameter>
@@ -121,6 +121,11 @@
 	<parameter-description>Description</parameter-description>
 	<optionality>Optional?</optionality>
 	<repeatability>Repeatable?</repeatability>
+
+	<!-- Source Dataset Template -->
+	<resourceMandatory>Mandatory</resourceMandatory>
+        <resourceOptional>Optional</resourceOptional>
+
 
   <useAssociatedResourcesForOperatesOn><span>Select metadata records describing datasets that the service operates on using the "<i class="fa fa-link"></i><i class="icon-external-link"></i>Associated resources" panel at the right hand side of the form. Use the "<i class="fa fa-files-o"></i><i class="icon-external-link"></i>Link to a dataset" menu option.</span></useAssociatedResourcesForOperatesOn>
 </strings>
