@@ -10,12 +10,14 @@
   xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
   xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/1.0"
   xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0"
+  xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+  xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
   xmlns:xlink="http://www.w3.org/1999/xlink" 
   xmlns:gn="http://www.fao.org/geonetwork"
   exclude-result-prefixes="#all">
   
   <xsl:import href="convert/create19115-3Namespaces.xsl"/>
-  
+  <xsl:import href="source-dataset-alt.xsl"/>
   <xsl:include href="convert/functions.xsl"/>
 
 	<!-- The correct codeList Location goes here -->
@@ -185,7 +187,27 @@
       <xsl:apply-templates select="mdb:metadataExtensionInfo"/>
       <xsl:apply-templates select="mdb:identificationInfo"/>
       <xsl:apply-templates select="mdb:contentInfo"/>
-      <xsl:apply-templates select="mdb:distributionInfo"/>
+      <!--<xsl:apply-templates select="mdb:distributionInfo"/>-->
+	  <xsl:choose>
+		<xsl:when
+			test="//cit:CI_Citation[starts-with(cit:title/gco:CharacterString, 'Source Dataset Copy Location')]">
+			<xsl:apply-templates select="mdb:distributionInfo[1]" />
+			<xsl:for-each select="//mri:MD_Keywords[starts-with(mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString, 'Source Dataset Copy Location')]/mri:keyword">
+				
+					<xsl:variable name="sdlKeyword" select="gco:CharacterString" />
+					<xsl:variable name="eCatId" select="//mdb:alternativeMetadataReference/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString" />
+					<xsl:call-template name="sdl_online">
+						<xsl:with-param name="sdlKeyword" select="$sdlKeyword" />
+						<xsl:with-param name="eCatId" select="$eCatId" />
+					</xsl:call-template>
+				
+			</xsl:for-each>
+
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:apply-templates select="mdb:distributionInfo" />
+		</xsl:otherwise>
+	  </xsl:choose>
       <xsl:apply-templates select="mdb:dataQualityInfo"/>
       <xsl:apply-templates select="mdb:resourceLineage"/>
       <xsl:apply-templates select="mdb:portrayalCatalogueInfo"/>
