@@ -189,25 +189,37 @@
       <xsl:apply-templates select="mdb:contentInfo"/>
       <!--<xsl:apply-templates select="mdb:distributionInfo"/>-->
 	  <xsl:choose>
-		<xsl:when
-			test="//cit:CI_Citation[starts-with(cit:title/gco:CharacterString, 'Source Dataset Copy Location')]">
-			<xsl:apply-templates select="mdb:distributionInfo[1]" />
-			<xsl:for-each select="//mri:MD_Keywords[starts-with(mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString, 'Source Dataset Copy Location')]/mri:keyword">
-				
-					<xsl:variable name="sdlKeyword" select="gco:CharacterString" />
-					<xsl:variable name="eCatId" select="//mdb:alternativeMetadataReference/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString" />
-					<xsl:call-template name="sdl_online">
-						<xsl:with-param name="sdlKeyword" select="$sdlKeyword" />
-						<xsl:with-param name="eCatId" select="$eCatId" />
-					</xsl:call-template>
-				
-			</xsl:for-each>
+			<xsl:when
+				test="//cit:CI_Citation[starts-with(cit:title/gco:CharacterString, 'Source Dataset Copy Location')]">
+				<mdb:distributionInfo>
+					<mrd:MD_Distribution>
+					<xsl:for-each select="//mrd:MD_Distribution/mrd:distributionFormat">
+						<xsl:copy>
+							<xsl:if test="position() = 1">
+								<xsl:copy-of select="*"/>
+							</xsl:if>
+						</xsl:copy>
+					  </xsl:for-each>
+						
+						<xsl:for-each
+							select="//mri:MD_Keywords[starts-with(mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString, 'Source Dataset Copy Location')]/mri:keyword">
 
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:apply-templates select="mdb:distributionInfo" />
-		</xsl:otherwise>
-	  </xsl:choose>
+							<xsl:variable name="sdlKeyword" select="gco:CharacterString" />
+							<xsl:variable name="eCatId"
+								select="//mdb:alternativeMetadataReference/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString" />
+							<xsl:call-template name="sdl_online">
+								<xsl:with-param name="sdlKeyword" select="$sdlKeyword" />
+								<xsl:with-param name="eCatId" select="$eCatId" />
+							</xsl:call-template>
+
+						</xsl:for-each>
+					</mrd:MD_Distribution>
+				</mdb:distributionInfo>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates select="mdb:distributionInfo" />
+			</xsl:otherwise>
+		</xsl:choose>
       <xsl:apply-templates select="mdb:dataQualityInfo"/>
       <xsl:apply-templates select="mdb:resourceLineage"/>
       <xsl:apply-templates select="mdb:portrayalCatalogueInfo"/>
