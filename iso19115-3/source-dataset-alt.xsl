@@ -13,11 +13,7 @@
 		<xsl:param name="eCatId" />
 		<xsl:variable name="url" select="'file://nas/gw/'" />
 		<xsl:variable name="source_url"
-			select="concat($url, $sdlKeyword, '/', $eCatId)"></xsl:variable>
-		<!-- <xsl:message>
-			Keyword for source dataset:
-			<xsl:value-of select="$source_url" /> 
-		</xsl:message>-->
+			select="concat($url, $sdlKeyword, '/', $eCatId)"></xsl:variable>		
 		<mdb:distributionInfo xmlns:gmw="http://standards.iso.org/iso/19115/-3/gmw/1.0">
 			<mrd:MD_Distribution>
 				<mrd:distributionFormat>
