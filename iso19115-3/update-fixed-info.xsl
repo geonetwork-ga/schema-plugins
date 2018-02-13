@@ -193,14 +193,7 @@
 				test="//cit:CI_Citation[starts-with(cit:title/gco:CharacterString, 'Source Dataset Copy Location')]">
 				<mdb:distributionInfo>
 					<mrd:MD_Distribution>
-					<xsl:for-each select="//mrd:MD_Distribution/mrd:distributionFormat">
-						<xsl:copy>
-							<xsl:if test="position() = 1">
-								<xsl:copy-of select="*"/>
-							</xsl:if>
-						</xsl:copy>
-					  </xsl:for-each>
-						
+						<xsl:copy-of select="mdb:distributionInfo/mrd:MD_Distribution/mrd:distributionFormat[1]"/>
 						<xsl:for-each
 							select="//mri:MD_Keywords[starts-with(mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString, 'Source Dataset Copy Location')]/mri:keyword">
 
