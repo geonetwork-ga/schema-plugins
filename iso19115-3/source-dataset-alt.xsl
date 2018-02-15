@@ -11,7 +11,7 @@
 	<xsl:template name="sdl_online">
 		<xsl:param name="sdlKeyword" />
 		<xsl:param name="eCatId" />
-		<xsl:variable name="url" select="'file://nas/gw/'" />
+		<xsl:variable name="url" select="'file://prod.lan/active/data/sdl/'" />
 		<xsl:variable name="source_url"
 			select="concat($url, $sdlKeyword, '/', $eCatId)"></xsl:variable>		
 				<mrd:distributionFormat>
