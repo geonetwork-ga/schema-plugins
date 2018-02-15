@@ -11,9 +11,17 @@
 	<xsl:template name="sdl_online">
 		<xsl:param name="sdlKeyword" />
 		<xsl:param name="eCatId" />
-		<xsl:variable name="url" select="'file://prod.lan/active/data/sdl/'" />
+		<xsl:variable name="url"> 
+		    <xsl:if test="$sdlKeyword = 'NEMO'">
+		       <xsl:text>https://s3.console.aws.amazon.com/s3/buckets/ga-ecat-test</xsl:text>
+		    </xsl:if>
+		    <xsl:if test="$sdlKeyword != 'NEMO'">
+		       <xsl:text>file://prod.lan/active/data/sdl/</xsl:text><xsl:value-of select="$sdlKeyword"/>
+		    </xsl:if>
+		</xsl:variable>
+		<!--<xsl:variable name="url" select="'file://prod.lan/active/data/sdl/'" />-->
 		<xsl:variable name="source_url"
-			select="concat($url, $sdlKeyword, '/', $eCatId)"></xsl:variable>		
+			select="concat($url, '/', $eCatId)"></xsl:variable>		
 				<mrd:distributionFormat>
 					<mrd:MD_Format>
 						<mrd:formatSpecificationCitation>
